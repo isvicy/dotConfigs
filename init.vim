@@ -124,7 +124,7 @@ nnoremap <C-p> :Files<cr>
 nnoremap <leader>r :Rg 
 nnoremap <C-l> :TagbarToggle<cr>
 nnoremap <leader>ob :Buffers<cr>
-nnoremap ss <Plug>(easymotion-s2)
+
 
 " Position the (global) quickfix window at the very bottom of the window
 " (useful for making sure that it appears underneath splits)
@@ -132,6 +132,24 @@ nnoremap ss <Plug>(easymotion-s2)
 " NOTE: Using a check here to make sure that window-specific location-lists
 " aren't effected, as they use the same `FileType` as quickfix-lists.
 autocmd FileType qf if (getwininfo(win_getid())[0].loclist != 1) | wincmd J | endif
+
+" ------------------- easymotion configuration --------------------
+" <Leader>f{char} to move to {char}
+map  <Leader>t <Plug>(easymotion-bd-f)
+nmap <Leader>t <Plug>(easymotion-overwin-f)
+
+" s{char}{char} to move to {char}{char}
+nmap s <Plug>(easymotion-overwin-f2)
+
+" Move to line
+map <Leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader>L <Plug>(easymotion-overwin-line)
+
+" Move to word
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
+" ------------------- easymotion configuration finished --------------------
+
 
 " ------------------- vim-go.vim configuration --------------------
 " use golang language server
