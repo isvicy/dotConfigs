@@ -24,6 +24,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'jiangmiao/auto-pairs'
 Plug 'ap/vim-css-color'
+Plug 'tpope/vim-obsession'
 
 " Theme
 Plug 'NLKNguyen/papercolor-theme'
