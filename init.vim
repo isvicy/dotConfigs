@@ -151,6 +151,14 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 " ------------------- easymotion configuration finished --------------------
 
 
+" ------------------- fzf configuration --------------------
+command! -bang -nargs=* Rg
+      \ call fzf#vim#grep(
+      \   "rg --column --line-number --no-heading --color=always --smart-case --no-ignore-vcs ".shellescape(<q-args>), 1,
+      \   fzf#vim#with_preview(), <bang>0)
+" ------------------- fzf configuration finished--------------------
+
+
 " ------------------- vim-go.vim configuration --------------------
 " use golang language server
 let g:go_def_mode='gopls'
