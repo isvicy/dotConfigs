@@ -119,7 +119,6 @@ let g:airline#extensions#tabline#formatter = 'default'
 let g:airline_theme='gruvbox'
 
 " custom hot-key
-nnoremap <C-]> gd
 nnoremap <C-p> :Files<cr>
 nnoremap <leader>r :Rg 
 nnoremap <C-l> :TagbarToggle<cr>
