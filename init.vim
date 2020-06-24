@@ -15,16 +15,12 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Tools
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'majutsushi/tagbar'
-Plug 'honza/vim-snippets'
 Plug 'easymotion/vim-easymotion'
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'jiangmiao/auto-pairs'
-Plug 'ap/vim-css-color'
 Plug 'tpope/vim-obsession'
+Plug 'sheerun/vim-polyglot'
 
 " Theme
 Plug 'NLKNguyen/papercolor-theme'
@@ -32,7 +28,6 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'rakr/vim-one'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-
 call plug#end()
 
 "----------------------------------------------
@@ -52,8 +47,7 @@ set list                          " show trailing whitespace
 set listchars=tab:\|\ ,trail:▫
 set nospell                       " disable spelling
 set noswapfile                    " disable swapfile usage
-" set nowrap
-set wrap
+set nowrap
 set noerrorbells                  " No bells!
 set novisualbell                  " I said, no bells!
 set number                        " show number ruler
@@ -65,6 +59,14 @@ set tabstop=2
 set title                         " let vim set the terminal title
 set ignorecase
 set ffs=unix,dos
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+
+" Give more space for displaying messages.
+set cmdheight=2
+
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=50
 
 " neovim specific settings
 if has('nvim')
@@ -86,7 +88,7 @@ endif
 syntax enable
 
 " Set the leader button
-let mapleader = ','
+let mapleader = ' '
 
 " Credit joshdick
 " Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
@@ -101,11 +103,17 @@ let mapleader = ','
   " Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
   " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
   if (has("termguicolors"))
+	" fix bug for vim
+    set t_8f=[38;2;%lu;%lu;%lum
+    set t_8b=[48;2;%lu;%lu;%lum
     set termguicolors
   endif
 " endif
 
 " Set colorscheme
+let g:gruvbox_contrast_dark = 'hard'
+let g:gruvbox_invert_selection='0'
+
 set background=dark
 colorscheme gruvbox
 
@@ -114,7 +122,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline#extensions#tabline#formatter = 'default'
+let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 let g:airline_theme='gruvbox'
 
@@ -122,7 +130,13 @@ let g:airline_theme='gruvbox'
 nnoremap <C-p> :Files<cr>
 nnoremap <leader>r :Rg 
 nnoremap <C-l> :TagbarToggle<cr>
-nnoremap <leader>ob :Buffers<cr>
+nnoremap <leader>b :Buffers<cr>
+nnoremap <leader>h :wincmd h<CR>
+nnoremap <leader>j :wincmd j<CR>
+nnoremap <leader>k :wincmd k<CR>
+nnoremap <leader>l :wincmd l<CR>
+nnoremap <Leader><CR> :so ~/.vimrc<CR>
+nnoremap <silent> <Leader>y  :<C-u>CocList -A --normal yank<cr>
 
 
 " Position the (global) quickfix window at the very bottom of the window
@@ -155,6 +169,9 @@ command! -bang -nargs=* Rg
       \ call fzf#vim#grep(
       \   "rg --column --line-number --no-heading --color=always --smart-case --no-ignore-vcs ".shellescape(<q-args>), 1,
       \   fzf#vim#with_preview(), <bang>0)
+
+" set float window
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Todo', 'border': 'sharp'  }  }
 " ------------------- fzf configuration finished--------------------
 
 
@@ -162,7 +179,10 @@ command! -bang -nargs=* Rg
 " use golang language server
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
-" Highlight more info
+" disable gd mapping of vim-go
+let g:go_def_mapping_enabled = 0
+let g:go_metalinter_enabled = 1
+" more highlight
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_fields = 1
@@ -171,22 +191,15 @@ let g:go_highlight_methods = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_types = 1
-" highlight same variable in view
-" let g:go_auto_sameids = 1
+let g:go_highlight_function_parameters = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_generate_tags = 1
+let g:go_highlight_format_strings = 1
+let g:go_highlight_variable_declarations = 1
 " show type info in statusbar
 let g:go_auto_type_info = 1
-" disable gd mapping of vim-go
-let g:go_def_mapping_enabled = 0
-let g:go_metalinter_enabled = 1
+let g:go_auto_sameids = 1
 " -------------------- vim-go.vim configuration finished --------------------
-" -------------------- nerdtree --------------------
-" open NERDTree automatically when vim starts up on opening a directory
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
-" close NERDTree when file closed
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-" -------------------- nerdtree finished--------------------
-
 
 " ------------------- coc.nvim configuration --------------------
 " if hidden is not set, TextEdit might fail.
@@ -317,6 +330,47 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " -------------------- coc.nvim configuration finished --------------------
+
+" -------------------- coc-explorer configuration --------------------
+nnoremap <space>e :CocCommand explorer<CR>
+
+let g:coc_explorer_global_presets = {
+\   '.vim': {
+\     'root-uri': '~/.vim',
+\   },
+\   'floating': {
+\     'position': 'floating',
+\     'open-action-strategy': 'sourceWindow',
+\   },
+\   'floatingTop': {
+\     'position': 'floating',
+\     'floating-position': 'center-top',
+\     'open-action-strategy': 'sourceWindow',
+\   },
+\   'floatingLeftside': {
+\     'position': 'floating',
+\     'floating-position': 'left-center',
+\     'floating-width': 50,
+\     'open-action-strategy': 'sourceWindow',
+\   },
+\   'floatingRightside': {
+\     'position': 'floating',
+\     'floating-position': 'left-center',
+\     'floating-width': 50,
+\     'open-action-strategy': 'sourceWindow',
+\   },
+\   'simplify': {
+\     'file-child-template': '[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]'
+\   }
+\ }
+
+" Use preset argument to open it
+nmap <space>ed :CocCommand explorer --preset .vim<CR>
+nmap <space>ef :CocCommand explorer --preset floating<CR>
+
+" List all presets
+nmap <space>el :CocList explPresets
+" -------------------- coc-explorer configuration finished --------------------
 
 "----------------------------------------------
 " Language: apiblueprint
@@ -488,4 +542,3 @@ au FileType go set noexpandtab
 au FileType go set shiftwidth=4
 au FileType go set softtabstop=4
 au FileType go set tabstop=4
-
