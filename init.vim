@@ -6,7 +6,7 @@
 " https://github.com/junegunn/vim-plug
 "----------------------------------------------
 call plug#begin('~/.vim/plugged')
-" Language support
+" Golang support
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " Language server
@@ -21,13 +21,13 @@ Plug 'easymotion/vim-easymotion'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-obsession'
 Plug 'sheerun/vim-polyglot'
+Plug 'jceb/vim-orgmode'
+Plug 'dansomething/vim-hackernews'
+Plug 'vim-scripts/BufOnly.vim'
 
 " Theme
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'gruvbox-community/gruvbox'
-Plug 'rakr/vim-one'
+Plug 'sainnhe/gruvbox-material'
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 "----------------------------------------------
@@ -51,7 +51,7 @@ set nowrap
 set noerrorbells                  " No bells!
 set novisualbell                  " I said, no bells!
 set number                        " show number ruler
-set relativenumber                " show relative numbers in the ruler
+set ru
 set ruler
 set formatoptions=tcqronj         " set vims text formatting options
 set softtabstop=2
@@ -95,27 +95,29 @@ let mapleader = ' '
 " If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
 " (see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
 " if (empty($TMUX))
-  if (has("nvim"))
-  " For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-  endif
-  " For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
-  " Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
-  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
-  if (has("termguicolors"))
-	" fix bug for vim
+if (has("nvim"))
+    " For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
+" For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+" Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+" < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+if (has("termguicolors"))
+    " fix bug for vim
     set t_8f=[38;2;%lu;%lu;%lum
     set t_8b=[48;2;%lu;%lu;%lum
     set termguicolors
-  endif
+endif
 " endif
 
 " Set colorscheme
-let g:gruvbox_contrast_dark = 'hard'
-let g:gruvbox_invert_selection='0'
-
 set background=dark
-colorscheme gruvbox
+
+let g:gruvbox_material_background = 'hard'
+let g:gruvbox_material_palette = 'mix'
+let g:gruvbox_material_enable_italic = 1
+let g:gruvbox_material_disable_italic_comment = 1
+colorscheme gruvbox-material
 
 " Airline
 let g:airline#extensions#tabline#enabled = 1
@@ -124,18 +126,20 @@ let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 
-let g:airline_theme='gruvbox'
+let g:airline_theme = 'gruvbox_material'
 
 " custom hot-key
 nnoremap <C-p> :Files<cr>
-nnoremap <leader>r :Rg 
 nnoremap <C-l> :TagbarToggle<cr>
+" move between window easier
 nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
+nnoremap <leader>D :BufOnly<cr>
 nnoremap <Leader><CR> :so ~/.vimrc<CR>
+nnoremap <Leader>fw :Rg <C-R><C-W><CR>
 nnoremap <silent> <Leader>y  :<C-u>CocList -A --normal yank<cr>
 
 
@@ -174,7 +178,6 @@ command! -bang -nargs=* Rg
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Todo', 'border': 'sharp'  }  }
 " ------------------- fzf configuration finished--------------------
 
-
 " ------------------- vim-go.vim configuration --------------------
 " use golang language server
 let g:go_def_mode='gopls'
@@ -198,7 +201,7 @@ let g:go_highlight_format_strings = 1
 let g:go_highlight_variable_declarations = 1
 " show type info in statusbar
 let g:go_auto_type_info = 1
-let g:go_auto_sameids = 1
+" let g:go_auto_sameids = 1
 " -------------------- vim-go.vim configuration finished --------------------
 
 " ------------------- coc.nvim configuration --------------------
@@ -263,7 +266,7 @@ function! s:show_documentation()
 endfunction
 
 " Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
+" autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
