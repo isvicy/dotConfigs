@@ -22,8 +22,14 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-obsession'
 Plug 'sheerun/vim-polyglot'
 Plug 'jceb/vim-orgmode'
-Plug 'dansomething/vim-hackernews'
+" clean mess :)
 Plug 'vim-scripts/BufOnly.vim'
+Plug 'tpope/vim-surround'
+" swagger preview, a bit of slow causing it uses docker
+Plug 'xavierchow/vim-swagger-preview'
+
+" Reading
+Plug 'dansomething/vim-hackernews'
 
 " Theme
 Plug 'sainnhe/gruvbox-material'
@@ -114,7 +120,7 @@ endif
 set background=dark
 
 let g:gruvbox_material_background = 'hard'
-let g:gruvbox_material_palette = 'mix'
+let g:gruvbox_material_palette = 'material'
 let g:gruvbox_material_enable_italic = 1
 let g:gruvbox_material_disable_italic_comment = 1
 colorscheme gruvbox-material
@@ -138,10 +144,9 @@ nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>D :BufOnly<cr>
-nnoremap <Leader><CR> :so ~/.vimrc<CR>
-nnoremap <Leader>fw :Rg <C-R><C-W><CR>
+nnoremap <leader><CR> :so ~/.vimrc<CR>
+nnoremap <leader>fw :Rg <C-R><C-W><CR>
 nnoremap <silent> <Leader>y  :<C-u>CocList -A --normal yank<cr>
-
 
 " Position the (global) quickfix window at the very bottom of the window
 " (useful for making sure that it appears underneath splits)
@@ -373,6 +378,8 @@ nmap <space>ef :CocCommand explorer --preset floating<CR>
 
 " List all presets
 nmap <space>el :CocList explPresets
+" change default scheme, it quicker than <leader>x, don't know why.
+nmap <C-e> :CocCommand explorer<CR>
 " -------------------- coc-explorer configuration finished --------------------
 
 "----------------------------------------------
