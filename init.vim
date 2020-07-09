@@ -31,9 +31,10 @@ Plug 'xavierchow/vim-swagger-preview'
 " Reading
 Plug 'dansomething/vim-hackernews'
 
-" Theme
+" Theme && status line
 Plug 'sainnhe/gruvbox-material'
-Plug 'vim-airline/vim-airline'
+Plug 'itchyny/lightline.vim'
+Plug 'mengelbrecht/lightline-bufferline'
 call plug#end()
 
 "----------------------------------------------
@@ -85,9 +86,9 @@ if has('nvim')
     let g:python3_host_prog = '/usr/local/bin/python3'
 endif
 
-" Enable mouse if possible
+" Enable mouse if possible, but disable auto visual mode when using mouse.
 if has('mouse')
-    set mouse=a
+    set mouse-=a
 endif
 
 " Allow vim to set a custom font or color for a word
@@ -125,15 +126,6 @@ let g:gruvbox_material_enable_italic = 1
 let g:gruvbox_material_disable_italic_comment = 1
 colorscheme gruvbox-material
 
-" Airline
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline#extensions#tabline#formatter = 'unique_tail'
-
-let g:airline_theme = 'gruvbox_material'
-
 " custom hot-key
 nnoremap <C-p> :Files<cr>
 nnoremap <C-l> :TagbarToggle<cr>
@@ -146,6 +138,7 @@ nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>D :BufOnly<cr>
 nnoremap <leader><CR> :so ~/.vimrc<CR>
 nnoremap <leader>fw :Rg <C-R><C-W><CR>
+nnoremap <leader>rw :CocSearch <C-R><C-W><CR>
 nnoremap <silent> <Leader>y  :<C-u>CocList -A --normal yank<cr>
 
 " Position the (global) quickfix window at the very bottom of the window
@@ -176,7 +169,7 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 " ------------------- fzf configuration --------------------
 command! -bang -nargs=* Rg
       \ call fzf#vim#grep(
-      \   "rg --column --line-number --no-heading --color=always --smart-case --no-ignore-vcs ".shellescape(<q-args>), 1,
+      \   "rg --column --line-number --no-heading --smart-case --no-ignore-vcs ".shellescape(<q-args>), 1,
       \   fzf#vim#with_preview(), <bang>0)
 
 " set float window
@@ -228,6 +221,9 @@ set shortmess+=c
 
 " always show signcolumns
 set signcolumn=yes
+
+" for lightline buffer plugin
+set showtabline=2
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
@@ -307,16 +303,34 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 " Add diagnostic info for https://github.com/itchyny/lightline.vim
+function! CocCurrentFunction()
+    return get(b:, 'coc_current_function', '')
+endfunction
+
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
+      \ 'colorscheme': 'gruvbox_material',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
+      \             [ 'gitbranch', 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'tabline': {
+      \   'left': [ ['buffers'] ],
+      \   'right': [ ['close'] ]
+      \ },
+      \ 'component_expand': {
+      \   'buffers': 'lightline#bufferline#buffers'
+      \ },
+      \ 'component_type': {
+      \   'buffers': "tabsel"
       \ },
       \ 'component_function': {
-      \   'cocstatus': 'coc#status'
+      \   'cocstatus': 'coc#status',
+      \   'currentfunction': 'CocCurrentFunction',
+      \   'gitbranch': 'FugitiveHead'
       \ },
       \ }
+" auot update modified status
+autocmd BufWritePost,TextChanged,TextChangedI * call lightline#update()
 
 
 
