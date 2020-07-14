@@ -27,12 +27,15 @@ Plug 'vim-scripts/BufOnly.vim'
 Plug 'tpope/vim-surround'
 " swagger preview, a bit of slow causing it uses docker
 Plug 'xavierchow/vim-swagger-preview'
+Plug 'vimwiki/vimwiki'
 
 " Reading
 Plug 'dansomething/vim-hackernews'
 
 " Theme && status line
 Plug 'sainnhe/gruvbox-material'
+Plug 'franbach/miramare'
+Plug 'sainnhe/forest-night'
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
 call plug#end()
@@ -67,6 +70,13 @@ set title                         " let vim set the terminal title
 set ignorecase
 set ffs=unix,dos
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+" for vim-wiki
+set nocompatible
+filetype plugin on
+" for lightline
+set laststatus=2
+" won't show mode indicator below status line
+set noshowmode
 
 " Give more space for displaying messages.
 set cmdheight=2
@@ -119,12 +129,23 @@ endif
 
 " Set colorscheme
 set background=dark
-
 let g:gruvbox_material_background = 'hard'
-let g:gruvbox_material_palette = 'material'
+let g:gruvbox_material_palette = 'mix'
 let g:gruvbox_material_enable_italic = 1
 let g:gruvbox_material_disable_italic_comment = 1
 colorscheme gruvbox-material
+
+" the configuration options should be placed before `colorscheme miramare`
+"let g:miramare_enable_italic = 1
+"let g:miramare_disable_italic_comment = 1
+"let g:miramare_disable_italic_comment = 1
+"
+"colorscheme miramare
+
+" let g:forest_night_enable_italic = 1
+" let g:forest_night_disable_italic_comment = 1
+"
+" colorscheme forest-night
 
 " custom hot-key
 nnoremap <C-p> :Files<cr>
@@ -329,6 +350,9 @@ let g:lightline = {
       \   'gitbranch': 'FugitiveHead'
       \ },
       \ }
+let g:lightline#bufferline#show_number  = 1
+let g:lightline#bufferline#unnamed      = '[No Name]'
+let g:lightline#bufferline#filename_modifier = ':t'
 " auot update modified status
 autocmd BufWritePost,TextChanged,TextChangedI * call lightline#update()
 
