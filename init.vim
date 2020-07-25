@@ -6,9 +6,6 @@
 " https://github.com/junegunn/vim-plug
 "----------------------------------------------
 call plug#begin('~/.vim/plugged')
-" Golang support
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-
 " Language server
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -16,7 +13,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
-Plug 'majutsushi/tagbar'
+Plug 'liuchengxu/vista.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-obsession'
@@ -28,6 +25,8 @@ Plug 'tpope/vim-surround'
 " swagger preview, a bit of slow causing it uses docker
 Plug 'xavierchow/vim-swagger-preview'
 Plug 'vimwiki/vimwiki'
+    set nocompatible
+    filetype plugin on
 Plug 'itchyny/calendar.vim'
 
 " Reading
@@ -37,8 +36,14 @@ Plug 'dansomething/vim-hackernews'
 Plug 'sainnhe/gruvbox-material'
 Plug 'franbach/miramare'
 Plug 'sainnhe/forest-night'
+Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'itchyny/lightline.vim'
+    set laststatus=2
+    " won't show mode indicator below status line
+    set noshowmode
 Plug 'mengelbrecht/lightline-bufferline'
+Plug 'luochen1990/rainbow'
+    let g:rainbow_active = 1
 call plug#end()
 
 "----------------------------------------------
@@ -62,8 +67,9 @@ set nowrap
 set noerrorbells                  " No bells!
 set novisualbell                  " I said, no bells!
 set number                        " show number ruler
-set ru
 set ruler
+set splitbelow
+set splitright
 set formatoptions=tcqronj         " set vims text formatting options
 set softtabstop=2
 set tabstop=2
@@ -71,17 +77,8 @@ set title                         " let vim set the terminal title
 set ignorecase
 set ffs=unix,dos
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
-" for vim-wiki
-set nocompatible
-filetype plugin on
-" for lightline
-set laststatus=2
-" won't show mode indicator below status line
-set noshowmode
-
 " Give more space for displaying messages.
 set cmdheight=2
-
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
 set updatetime=50
@@ -157,7 +154,7 @@ colorscheme gruvbox-material
 
 " custom hot-key
 nnoremap <C-p> :Files<cr>
-nnoremap <C-l> :TagbarToggle<cr>
+nnoremap <C-l> :Vista!!<cr>
 " move between window easier
 nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>h :wincmd h<CR>
@@ -176,6 +173,11 @@ nnoremap <silent> <Leader>y  :<C-u>CocList -A --normal yank<cr>
 " NOTE: Using a check here to make sure that window-specific location-lists
 " aren't effected, as they use the same `FileType` as quickfix-lists.
 autocmd FileType qf if (getwininfo(win_getid())[0].loclist != 1) | wincmd J | endif
+
+" ------------------- coc-go configuration --------------------
+autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
+autocmd FileType go nmap gtj :CocCommand go.tags.add json<cr>
+" ------------------- coc-go configuration finished --------------------
 
 " ------------------- easymotion configuration --------------------
 " <Leader>f{char} to move to {char}
@@ -217,13 +219,6 @@ command! -bang -nargs=* Rg
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Todo', 'border': 'sharp'  }  }
 " ------------------- fzf configuration finished--------------------
 
-" ------------------- vim-go.vim configuration --------------------
-" use golang language server
-let g:go_def_mode='gopls'
-let g:go_info_mode='gopls'
-" disable gd mapping of vim-go
-let g:go_def_mapping_enabled = 0
-let g:go_metalinter_enabled = 1
 " more highlight
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_extra_types = 1
@@ -238,10 +233,6 @@ let g:go_highlight_function_calls = 1
 let g:go_highlight_generate_tags = 1
 let g:go_highlight_format_strings = 1
 let g:go_highlight_variable_declarations = 1
-" show type info in statusbar
-let g:go_auto_type_info = 1
-" let g:go_auto_sameids = 1
-" -------------------- vim-go.vim configuration finished --------------------
 
 " ------------------- coc.nvim configuration --------------------
 " if hidden is not set, TextEdit might fail.
@@ -265,19 +256,6 @@ set signcolumn=yes
 
 " for lightline buffer plugin
 set showtabline=2
-
-" Use tab for trigger completion with characters ahead and navigate.
-" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-" inoremap <silent><expr> <TAB>
-"       \ pumvisible() ? "\<C-n>" :
-"       \ <SID>check_back_space() ? "\<TAB>" :
-"       \ coc#refresh()
-" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-" 
-" function! s:check_back_space() abort
-"   let col = col('.') - 1
-"   return !col || getline('.')[col - 1]  =~# '\s'
-" endfunction
 
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -352,7 +330,9 @@ let g:lightline = {
       \ 'colorscheme': 'gruvbox_material',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'cocstatus', 'currentfunction', 'readonly', 'relativepath', 'modified' ] ]
+      \             [ 'gitbranch', 'cocstatus', 'currentfunction', 'readonly', 'relativepath', 'modified' ] ],
+      \   'right':[
+      \     [ 'filetype', 'fileencoding', 'lineinfo', 'percent' ] ],
       \ },
       \ 'tabline': {
       \   'left': [ ['buffers'] ],
@@ -376,25 +356,20 @@ let g:lightline#bufferline#filename_modifier = ':t'
 " auot update modified status
 autocmd BufWritePost,TextChanged,TextChangedI * call lightline#update()
 
-
-
 " Using CocList
-" Show all diagnostics
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-" Show commands
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
-nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
-nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+nnoremap <silent>  <leader>lm  :CocList mru -A<CR>
+nnoremap <silent>  <leader>lf  :CocList files<CR>
+nnoremap <silent>  <leader>ls  :CocList grep<CR>
+nnoremap <silent>  <leader>lt  :CocList symbols<CR>
+nnoremap <silent>  <leader>lo  :CocList outline<CR>
+nnoremap <silent>  <leader>ll  :CocList lines<CR>
+nnoremap <silent>  <leader>ld  :CocList diagnostics<CR>
+nnoremap <silent>  <leader>lw  :CocList --number-select windows<CR>
+nnoremap <silent>  <leader>lb  :CocList --number-select buffers<CR>
+nnoremap <silent>  <leader>ly  :CocList --number-select yank<CR>
+nnoremap <silent>  <leader>lg  :CocList --number-select gstatus<CR>
+nnoremap <silent>  <leader>lr  :CocList --number-select tasks<CR>
+nnoremap <silent>  <leader>lp  :CocListResume<CR>
 " -------------------- coc.nvim configuration finished --------------------
 
 " -------------------- coc-explorer configuration --------------------
