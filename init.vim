@@ -67,6 +67,7 @@ set nowrap
 set noerrorbells                  " No bells!
 set novisualbell                  " I said, no bells!
 set number                        " show number ruler
+set relativenumber
 set ruler
 set splitbelow
 set splitright
