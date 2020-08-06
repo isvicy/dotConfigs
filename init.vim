@@ -28,6 +28,13 @@ Plug 'vimwiki/vimwiki'
     set nocompatible
     filetype plugin on
 Plug 'itchyny/calendar.vim'
+Plug 'shumphrey/fugitive-gitlab.vim'
+    let g:fugitive_gitlab_domains = ['']
+" just work like a charm
+Plug 'itchyny/vim-cursorword'
+Plug 'vim-scripts/vim-auto-save'
+    let g:auto_save = 1  " enable AutoSave on Vim startup
+    let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
 
 " Reading
 Plug 'dansomething/vim-hackernews'
@@ -37,6 +44,7 @@ Plug 'sainnhe/gruvbox-material'
 Plug 'franbach/miramare'
 Plug 'sainnhe/forest-night'
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'git@gitlab.com:yorickpeterse/happy_hacking.vim.git'
 Plug 'itchyny/lightline.vim'
     set laststatus=2
     " won't show mode indicator below status line
@@ -135,23 +143,21 @@ endif
 
 " Set colorscheme
 set background=dark
-let g:gruvbox_material_background = 'hard'
-let g:gruvbox_material_palette = 'mix'
-let g:gruvbox_material_enable_italic = 1
-let g:gruvbox_material_disable_italic_comment = 1
 colorscheme gruvbox-material
+    " let g:gruvbox_material_background = 'hard'
+    " let g:gruvbox_material_palette = 'mix'
+    " let g:gruvbox_material_enable_italic = 0
+    let g:gruvbox_material_disable_italic_comment = 0
 
 " the configuration options should be placed before `colorscheme miramare`
 "let g:miramare_enable_italic = 1
 "let g:miramare_disable_italic_comment = 1
 "let g:miramare_disable_italic_comment = 1
-"
-"colorscheme miramare
+    "colorscheme miramare
 
-" let g:forest_night_enable_italic = 1
-" let g:forest_night_disable_italic_comment = 1
-"
 " colorscheme forest-night
+    " let g:forest_night_enable_italic = 1
+    " let g:forest_night_disable_italic_comment = 1
 
 " custom hot-key
 nnoremap <C-p> :Files<cr>
@@ -167,6 +173,10 @@ nnoremap <leader><CR> :so ~/.vimrc<CR>
 nnoremap <leader>fw :Rg <C-R><C-W><CR>
 nnoremap <leader>rw :CocSearch <C-R><C-W><CR>
 nnoremap <silent> <Leader>y  :<C-u>CocList -A --normal yank<cr>
+
+abbr rg Rg
+abbr Wg wg
+abbr QA qa
 
 " Position the (global) quickfix window at the very bottom of the window
 " (useful for making sure that it appears underneath splits)
