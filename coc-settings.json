@@ -1,0 +1,65 @@
+{
+  "python.jediEnabled": false,
+  "diagnostic.virtualText": true,
+  "diagnostic.checkCurrentLine": false,
+  "languageserver": {
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": [
+        "go.mod",
+        ".vim/",
+        ".git/",
+        ".hg/"
+      ],
+      "filetypes": [
+        "go"
+      ],
+      "initializationOptions": {
+        "usePlaceholders": false,
+        "completeUnimported": true
+      }
+    },
+    "ccls": {
+      "command": "ccls",
+      "filetypes": [
+        "c",
+        "cpp",
+        "objc",
+        "objcpp"
+      ],
+      "rootPatterns": [
+        ".ccls",
+        "compile_commands.json",
+        ".vim/",
+        ".git/",
+        ".hg/"
+      ],
+      "initializationOptions": {
+        "cache": {
+          "directory": "/tmp/ccls"
+        },
+        "clang": {
+          "extraArgs": [
+            "-isystem/Library/Developer/CommandLineTools/usr/include/c++/v1",
+            "-isysroot/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk"
+          ]
+        }
+      }
+    },
+    "bash": {
+      "command": "bash-language-server",
+      "args": [
+        "start"
+      ],
+      "filetypes": [
+        "sh"
+      ],
+      "ignoredRootPaths": [
+        "~"
+      ]
+    }
+  },
+  "explorer.keyMappings": {
+    "P": "gotoParent"
+  }
+}
