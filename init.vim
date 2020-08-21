@@ -8,6 +8,24 @@
 call plug#begin('~/.vim/plugged')
 " Language server support
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    let g:coc_global_extensions = [
+        \ 'coc-explorer',
+        \ 'coc-highlight',
+        \ 'coc-snippets',
+        \ 'coc-git',
+        \ 'coc-yank',
+        \ 'coc-lists',
+        \ 'coc-python',
+        \ 'coc-json',
+        \ 'coc-highlight',
+        \ 'coc-html',
+        \ 'coc-rls',
+        \ 'coc-rust-analyzer',
+        \ 'coc-yank',
+        \ 'coc-yaml',
+        \ 'coc-tsserver',
+        \ 'coc-swagger'
+        \]
 
 " Tools
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
