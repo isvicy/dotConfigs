@@ -28,9 +28,6 @@ Plug 'vimwiki/vimwiki'
 Plug 'itchyny/calendar.vim'
 " just work like a charm
 Plug 'itchyny/vim-cursorword'
-Plug 'vim-scripts/vim-auto-save'
-    let g:auto_save = 1  " enable AutoSave on Vim startup
-    let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
 Plug 'lervag/vimtex'
     let g:tex_flavor = 'latex'
     let g:vimtex_compiler_latexmk_engines = {'_':'-xelatex'}
