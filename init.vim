@@ -22,8 +22,6 @@ Plug 'jceb/vim-orgmode'
 " clean mess :)
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'tpope/vim-surround'
-" swagger preview, a bit of slow causing it uses docker
-Plug 'xavierchow/vim-swagger-preview'
 Plug 'vimwiki/vimwiki'
     set nocompatible
     filetype plugin on
