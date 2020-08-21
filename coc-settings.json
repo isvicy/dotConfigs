@@ -2,6 +2,8 @@
   "python.jediEnabled": false,
   "diagnostic.virtualText": true,
   "diagnostic.checkCurrentLine": false,
+  "diagnostic.refreshAfterSave": true,
+  "diagnostic.enableMessage": "never",
   "languageserver": {
     "golang": {
       "command": "gopls",
