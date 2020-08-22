@@ -5,29 +5,31 @@
 " instructions:
 " https://github.com/junegunn/vim-plug
 "----------------------------------------------
+
+" {{{ plug
 call plug#begin('~/.vim/plugged')
-" Language server support
+" {{{ coc
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
     let g:coc_global_extensions = [
         \ 'coc-explorer',
-        \ 'coc-highlight',
-        \ 'coc-snippets',
         \ 'coc-git',
-        \ 'coc-yank',
-        \ 'coc-lists',
-        \ 'coc-python',
-        \ 'coc-json',
+        \ 'coc-go',
         \ 'coc-highlight',
         \ 'coc-html',
+        \ 'coc-json',
+        \ 'coc-lists',
+        \ 'coc-python',
         \ 'coc-rls',
         \ 'coc-rust-analyzer',
-        \ 'coc-yank',
-        \ 'coc-yaml',
+        \ 'coc-snippets',
+        \ 'coc-swagger',
         \ 'coc-tsserver',
-        \ 'coc-swagger'
+        \ 'coc-yaml',
+        \ 'coc-yank'
         \]
+" }}}
 
-" Tools
+" {{{ Tools
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
@@ -50,29 +52,35 @@ Plug 'lervag/vimtex'
     let g:tex_flavor = 'latex'
     let g:vimtex_compiler_latexmk_engines = {'_':'-xelatex'}
     let g:vimtex_compiler_latexrun_engines ={'_':'xelatex'}
+    let g:vimtex_compiler_progname = 'nvr'
+Plug 'luochen1990/rainbow'
+    let g:rainbow_active = 1
+" }}}
 
 " Reading
 Plug 'dansomething/vim-hackernews'
 
-" Theme && status line
+" {{{ Theme && status line
 Plug 'sainnhe/gruvbox-material'
 Plug 'franbach/miramare'
 Plug 'sainnhe/forest-night'
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'vimoxide/vim-cinnabar'
 Plug 'itchyny/lightline.vim'
     set laststatus=2
     " won't show mode indicator below status line
     set noshowmode
 Plug 'mengelbrecht/lightline-bufferline'
-Plug 'luochen1990/rainbow'
-    let g:rainbow_active = 1
+" }}}
 call plug#end()
+" }}}
 
-"----------------------------------------------
-" General settings
-"----------------------------------------------
+" {{{ General settings
+" Allow vim to set a custom font or color for a word
+syntax enable
 set autoindent                    " take indent for new line from previous line
 set smartindent                   " enable smart indentation
+set fdm=marker
 set autoread                      " reload file if the file changes on the disk
 set clipboard=unnamed
 set colorcolumn=81                " highlight the 80th column as an indicator
@@ -106,7 +114,16 @@ set cmdheight=2
 " delays and poor user experience.
 set updatetime=50
 
-" neovim specific settings
+" Set the leader button
+let mapleader = ' '
+
+" Enable mouse if possible, but disable auto visual mode when using mouse.
+if has('mouse')
+    set mouse-=a
+endif
+" }}}
+
+"{{{ neovim specific settings && true color config
 if has('nvim')
     set clipboard=unnamedplus
     " Set the Python binaries neovim is using. Please note that you will need to
@@ -115,28 +132,16 @@ if has('nvim')
     " pip3.6 install -U neovim
     let g:python_host_prog = '/usr/local/bin/python2'
     let g:python3_host_prog = '/usr/local/bin/python3'
-endif
 
-" Enable mouse if possible, but disable auto visual mode when using mouse.
-if has('mouse')
-    set mouse-=a
-endif
-
-" Allow vim to set a custom font or color for a word
-syntax enable
-
-" Set the leader button
-let mapleader = ' '
-
-" Credit joshdick
-" Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
-" If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
-" (see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
-" if (empty($TMUX))
-if has("nvim")
+    " Credit joshdick
+    " Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
+    " If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
+    " (see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
+    " if (empty($TMUX))
     " For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
     let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
+
 " For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
 " Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
 " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
@@ -146,7 +151,6 @@ if has("termguicolors")
     set t_8b=[48;2;%lu;%lu;%lum
     set termguicolors
 endif
-" endif
 
 " enable italic support for vim when use xterm-256color in zsh when use tmux
 if !has('nvim')
@@ -154,27 +158,36 @@ if !has('nvim')
   set t_ZH=[3m
   set t_ZR=[23m
 endif
+" }}}
 
-" Set colorscheme
+" {{{ Color schemes
 set background=dark
 
-let g:gruvbox_material_disable_italic_comment = 1
+" gruvbox-material theme {{{
 " let g:gruvbox_material_background = 'hard'
 " let g:gruvbox_material_palette = 'mix'
 " let g:gruvbox_material_enable_italic = 1
+let g:gruvbox_material_disable_italic_comment = 1
     colorscheme gruvbox-material
+"}}}
 
-" the configuration options should be placed before `colorscheme miramare`
+" miramare theme {{{
 "let g:miramare_enable_italic = 1
 "let g:miramare_disable_italic_comment = 1
 "let g:miramare_disable_italic_comment = 1
     "colorscheme miramare
+"}}}
 
-" colorscheme forest-night
-    " let g:forest_night_enable_italic = 1
-    " let g:forest_night_disable_italic_comment = 1
+" {{{ forest_night theme
+" let g:forest_night_enable_italic = 1
+" let g:forest_night_disable_italic_comment = 1
+    " colorscheme forest-night
+" }}}
 
-" custom hot-key
+" colorscheme cinnabar
+" }}}
+
+" {{{ custom hot-key
 nnoremap <C-p> :Files<cr>
 nnoremap <C-l> :Vista!!<cr>
 " move between window easier
@@ -189,10 +202,13 @@ nnoremap <leader>fw :Rg <C-R><C-W><CR>
 nnoremap <leader>rw :CocSearch <C-R><C-W><CR>
 nnoremap <silent> <Leader>y  :<C-u>CocList -A --normal yank<cr>
 
+" {{{ fix typo
 abbr rg Rg
 abbr Wg wg
 abbr QA qa
 abbr format Format
+abbr cc CocCommand
+" }}}
 
 " Position the (global) quickfix window at the very bottom of the window
 " (useful for making sure that it appears underneath splits)
@@ -200,13 +216,9 @@ abbr format Format
 " NOTE: Using a check here to make sure that window-specific location-lists
 " aren't effected, as they use the same `FileType` as quickfix-lists.
 autocmd FileType qf if (getwininfo(win_getid())[0].loclist != 1) | wincmd J | endif
+" }}}
 
-" ------------------- coc-go configuration --------------------
-autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
-autocmd FileType go nmap gtj :CocCommand go.tags.add json<cr>
-" ------------------- coc-go configuration finished --------------------
-
-" ------------------- easymotion configuration --------------------
+" {{{ easymotion configuration
 " <Leader>f{char} to move to {char}
 map  <Leader>t <Plug>(easymotion-bd-f)
 nmap <Leader>t <Plug>(easymotion-overwin-f)
@@ -221,9 +233,9 @@ nmap <Leader>L <Plug>(easymotion-overwin-line)
 " Move to word
 map  <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
-" ------------------- easymotion configuration finished --------------------
+" }}}
 
-" ------------------- vimwiki configuration --------------------
+" {{{ vimwiki configuration
 let g:vimwiki_list = [{'path': '~/vimwiki/',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
 let g:vimwiki_listsyms = '✗○◐●✓'
@@ -234,9 +246,9 @@ augroup vimwikigroup
     " automatically update links on read diary
     autocmd BufRead,BufNewFile diary.md VimwikiDiaryGenerateLinks
 augroup end
-" ------------------- vimwiki configuration finished --------------------
+" }}}
 
-" ------------------- fzf configuration --------------------
+" {{{ fzf configuration
 command! -bang -nargs=* Rg
       \ call fzf#vim#grep(
       \   "rg --column --line-number --no-heading --smart-case --no-ignore-vcs ".shellescape(<q-args>), 1,
@@ -244,9 +256,9 @@ command! -bang -nargs=* Rg
 
 " set float window
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Todo', 'border': 'sharp'  }  }
-" ------------------- fzf configuration finished--------------------
+" }}}
 
-" more highlight
+" {{{ highlight configuration for golang with enhancement from polyglot
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_fields = 1
@@ -260,8 +272,9 @@ let g:go_highlight_function_calls = 1
 let g:go_highlight_generate_tags = 1
 let g:go_highlight_format_strings = 1
 let g:go_highlight_variable_declarations = 1
+" }}}
 
-" ------------------- coc.nvim configuration --------------------
+" {{{ coc.nvim configuration
 " if hidden is not set, TextEdit might fail.
 set hidden
 
@@ -283,6 +296,8 @@ set signcolumn=yes
 
 " for lightline buffer plugin
 set showtabline=2
+
+hi CocErrorVirtualText ctermfg=Red guifg=#ff0000
 
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -348,41 +363,6 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 " Use `:Prettier` to format current buffer
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
-" Add diagnostic info for https://github.com/itchyny/lightline.vim
-function! CocCurrentFunction()
-    return get(b:, 'coc_current_function', '')
-endfunction
-
-let g:lightline = {
-      \ 'colorscheme': 'gruvbox_material',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'cocstatus', 'currentfunction', 'readonly', 'relativepath', 'modified' ] ],
-      \   'right':[
-      \     [ 'filetype', 'fileencoding', 'lineinfo', 'percent' ] ],
-      \ },
-      \ 'tabline': {
-      \   'left': [ ['buffers'] ],
-      \   'right': [ ['close'] ]
-      \ },
-      \ 'component_expand': {
-      \   'buffers': 'lightline#bufferline#buffers'
-      \ },
-      \ 'component_type': {
-      \   'buffers': "tabsel"
-      \ },
-      \ 'component_function': {
-      \   'cocstatus': 'coc#status',
-      \   'currentfunction': 'CocCurrentFunction',
-      \   'gitbranch': 'FugitiveHead'
-      \ },
-      \ }
-let g:lightline#bufferline#show_number  = 1
-let g:lightline#bufferline#unnamed      = '[No Name]'
-let g:lightline#bufferline#filename_modifier = ':t'
-" auot update modified status
-autocmd BufWritePost,TextChanged,TextChangedI * call lightline#update()
-
 " Using CocList
 nnoremap <silent>  <leader>lm  :CocList mru -A<CR>
 nnoremap <silent>  <leader>lf  :CocList files<CR>
@@ -397,9 +377,14 @@ nnoremap <silent>  <leader>ly  :CocList --number-select yank<CR>
 nnoremap <silent>  <leader>lg  :CocList --number-select gstatus<CR>
 nnoremap <silent>  <leader>lr  :CocList --number-select tasks<CR>
 nnoremap <silent>  <leader>lp  :CocListResume<CR>
-" -------------------- coc.nvim configuration finished --------------------
+" }}}
 
-" -------------------- coc-explorer configuration --------------------
+" {{{ coc-go configuration
+autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
+autocmd FileType go nmap gtj :CocCommand go.tags.add json<cr>
+" }}}
+
+" {{{ coc-explorer configuration
 nnoremap <space>e :CocCommand explorer<CR>
 
 let g:coc_explorer_global_presets = {
@@ -440,8 +425,46 @@ nmap <space>ef :CocCommand explorer --preset floating<CR>
 nmap <space>el :CocList explPresets
 " change default scheme, it quicker than <leader>x, don't know why.
 nmap <C-e> :CocCommand explorer<CR>
-" -------------------- coc-explorer configuration finished --------------------
+" }}}
 
+" {{{ lightline configuration
+" Add diagnostic info for https://github.com/itchyny/lightline.vim
+function! CocCurrentFunction()
+    return get(b:, 'coc_current_function', '')
+endfunction
+
+let g:lightline = {
+      \ 'colorscheme': 'gruvbox_material',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'cocstatus', 'currentfunction', 'readonly', 'relativepath', 'modified' ] ],
+      \   'right':[
+      \     [ 'filetype', 'fileencoding', 'lineinfo', 'percent' ] ],
+      \ },
+      \ 'tabline': {
+      \   'left': [ ['buffers'] ],
+      \   'right': [ ['close'] ]
+      \ },
+      \ 'component_expand': {
+      \   'buffers': 'lightline#bufferline#buffers'
+      \ },
+      \ 'component_type': {
+      \   'buffers': "tabsel"
+      \ },
+      \ 'component_function': {
+      \   'cocstatus': 'coc#status',
+      \   'currentfunction': 'CocCurrentFunction',
+      \   'gitbranch': 'FugitiveHead'
+      \ },
+      \ }
+let g:lightline#bufferline#show_number  = 1
+let g:lightline#bufferline#unnamed      = '[No Name]'
+let g:lightline#bufferline#filename_modifier = ':t'
+" auot update modified status
+autocmd BufWritePost,TextChanged,TextChangedI * call lightline#update()
+" }}}
+
+" {{{ indent settings for different file type
 "----------------------------------------------
 " Language: apiblueprint
 "----------------------------------------------
@@ -612,3 +635,4 @@ au FileType go set noexpandtab
 au FileType go set shiftwidth=4
 au FileType go set softtabstop=4
 au FileType go set tabstop=4
+" }}}
