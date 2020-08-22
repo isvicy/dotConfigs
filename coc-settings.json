@@ -1,26 +1,12 @@
 {
   "python.jediEnabled": false,
   "diagnostic.virtualText": true,
-  "diagnostic.checkCurrentLine": false,
-  "diagnostic.refreshAfterSave": true,
+  "diagnostic.checkCurrentLine": true,
+  "diagnostic.virtualTextCurrentLineOnly": false,
+  "diagnostic.refreshAfterSave": false,
+  "diagnostic.refreshOnInsertMode": true,
   "diagnostic.enableMessage": "never",
   "languageserver": {
-    "golang": {
-      "command": "gopls",
-      "rootPatterns": [
-        "go.mod",
-        ".vim/",
-        ".git/",
-        ".hg/"
-      ],
-      "filetypes": [
-        "go"
-      ],
-      "initializationOptions": {
-        "usePlaceholders": false,
-        "completeUnimported": true
-      }
-    },
     "ccls": {
       "command": "ccls",
       "filetypes": [
