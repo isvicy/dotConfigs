@@ -32,6 +32,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " {{{ Tools
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'stsewd/fzf-checkout.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'liuchengxu/vista.vim'
 Plug 'easymotion/vim-easymotion'
@@ -157,6 +158,14 @@ if !has('nvim')
 endif
 " }}}
 
+" {{{ Airline theme
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+" }}}
+
 " {{{ Color schemes
 set background=dark
 
@@ -195,6 +204,8 @@ nnoremap <leader>D :BufOnly<cr>
 nnoremap <leader><CR> :so ~/.vimrc<CR>
 nnoremap <leader>fw :Rg <C-R><C-W><CR>
 nnoremap <leader>rw :CocSearch <C-R><C-W><CR>
+nnoremap <leader>gc :GCheckout<CR>
+nnoremap <leader>gt :GCheckoutTag<CR>
 nnoremap <silent> <Leader>y  :<C-u>CocList -A --normal yank<cr>
 
 " {{{ fix typo
@@ -250,7 +261,7 @@ command! -bang -nargs=* Rg
       \   fzf#vim#with_preview(), <bang>0)
 
 " set float window
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Todo', 'border': 'sharp'  }  }
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Todo' }  }
 " }}}
 
 " {{{ highlight configuration for golang with enhancement from polyglot
