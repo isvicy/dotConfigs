@@ -63,14 +63,9 @@ Plug 'dansomething/vim-hackernews'
 " {{{ Theme && status line
 Plug 'sainnhe/gruvbox-material'
 Plug 'franbach/miramare'
-Plug 'sainnhe/forest-night'
-Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'vimoxide/vim-cinnabar'
-Plug 'itchyny/lightline.vim'
-    set laststatus=2
-    " won't show mode indicator below status line
-    set noshowmode
-Plug 'mengelbrecht/lightline-bufferline'
+Plug 'vim-airline/vim-airline'
+    let g:airline#extensions#coc#enabled = 1
 " }}}
 call plug#end()
 " }}}
@@ -167,22 +162,17 @@ set background=dark
 " let g:gruvbox_material_background = 'hard'
 " let g:gruvbox_material_palette = 'mix'
 " let g:gruvbox_material_enable_italic = 1
-let g:gruvbox_material_disable_italic_comment = 1
-    colorscheme gruvbox-material
+"let g:gruvbox_material_disable_italic_comment = 1
+"let g:airline_theme = 'gruvbox_material'
+"    colorscheme gruvbox-material
 "}}}
 
 " miramare theme {{{
 "let g:miramare_enable_italic = 1
-"let g:miramare_disable_italic_comment = 1
-"let g:miramare_disable_italic_comment = 1
-    "colorscheme miramare
+let g:miramare_disable_italic_comment = 1
+let g:airline_theme = 'miramare'
+    colorscheme miramare
 "}}}
-
-" {{{ forest_night theme
-" let g:forest_night_enable_italic = 1
-" let g:forest_night_disable_italic_comment = 1
-    " colorscheme forest-night
-" }}}
 
 " colorscheme cinnabar
 " }}}
@@ -425,43 +415,6 @@ nmap <space>ef :CocCommand explorer --preset floating<CR>
 nmap <space>el :CocList explPresets
 " change default scheme, it quicker than <leader>x, don't know why.
 nmap <C-e> :CocCommand explorer<CR>
-" }}}
-
-" {{{ lightline configuration
-" Add diagnostic info for https://github.com/itchyny/lightline.vim
-function! CocCurrentFunction()
-    return get(b:, 'coc_current_function', '')
-endfunction
-
-let g:lightline = {
-      \ 'colorscheme': 'gruvbox_material',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'cocstatus', 'currentfunction', 'readonly', 'relativepath', 'modified' ] ],
-      \   'right':[
-      \     [ 'filetype', 'fileencoding', 'lineinfo', 'percent' ] ],
-      \ },
-      \ 'tabline': {
-      \   'left': [ ['buffers'] ],
-      \   'right': [ ['close'] ]
-      \ },
-      \ 'component_expand': {
-      \   'buffers': 'lightline#bufferline#buffers'
-      \ },
-      \ 'component_type': {
-      \   'buffers': "tabsel"
-      \ },
-      \ 'component_function': {
-      \   'cocstatus': 'coc#status',
-      \   'currentfunction': 'CocCurrentFunction',
-      \   'gitbranch': 'FugitiveHead'
-      \ },
-      \ }
-let g:lightline#bufferline#show_number  = 1
-let g:lightline#bufferline#unnamed      = '[No Name]'
-let g:lightline#bufferline#filename_modifier = ':t'
-" auot update modified status
-autocmd BufWritePost,TextChanged,TextChangedI * call lightline#update()
 " }}}
 
 " {{{ indent settings for different file type
