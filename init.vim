@@ -180,15 +180,15 @@ set background=dark
 
 " miramare theme {{{
 "let g:miramare_enable_italic = 1
-"let g:miramare_disable_italic_comment = 1
-"let g:airline_theme = 'miramare'
-"    colorscheme miramare
+let g:miramare_disable_italic_comment = 1
+let g:airline_theme = 'miramare'
+    colorscheme miramare
 "}}}
 
-let g:airline_theme = 'miramare'
-" elite border between splits window
-set fillchars=vert:\
-colorscheme cinnabar
+"let g:airline_theme = 'miramare'
+"" elite border between splits window
+"set fillchars=vert:\
+"colorscheme cinnabar
 " }}}
 
 " {{{ custom hot-key
