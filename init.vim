@@ -185,10 +185,12 @@ let g:airline_theme = 'miramare'
     colorscheme miramare
 "}}}
 
+" {{{ cinnabar
 "let g:airline_theme = 'miramare'
 "" elite border between splits window
 "set fillchars=vert:\
 "colorscheme cinnabar
+" }}}
 " }}}
 
 " {{{ custom hot-key
