@@ -12,6 +12,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
     let g:coc_global_extensions = [
         \ 'coc-explorer',
+        \ 'coc-floaterm',
         \ 'coc-git',
         \ 'coc-go',
         \ 'coc-highlight',
@@ -30,9 +31,11 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " }}}
 
 " {{{ Tools
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'stsewd/fzf-checkout.vim'
+Plug 'voldikss/vim-floaterm'
 Plug 'tpope/vim-fugitive'
 Plug 'liuchengxu/vista.vim'
 Plug 'easymotion/vim-easymotion'
@@ -171,16 +174,16 @@ set background=dark
 " let g:gruvbox_material_background = 'hard'
 " let g:gruvbox_material_palette = 'mix'
 " let g:gruvbox_material_enable_italic = 1
-"let g:gruvbox_material_disable_italic_comment = 1
-"let g:airline_theme = 'gruvbox_material'
-"    colorscheme gruvbox-material
+let g:gruvbox_material_disable_italic_comment = 1
+let g:airline_theme = 'gruvbox_material'
+    colorscheme gruvbox-material
 "}}}
 
 " miramare theme {{{
 "let g:miramare_enable_italic = 1
-let g:miramare_disable_italic_comment = 1
-let g:airline_theme = 'miramare'
-    colorscheme miramare
+"let g:miramare_disable_italic_comment = 1
+"let g:airline_theme = 'miramare'
+"    colorscheme miramare
 "}}}
 
 " {{{ cinnabar
@@ -190,8 +193,10 @@ let g:airline_theme = 'miramare'
 "colorscheme cinnabar
 " }}}
 
+" {{{ gruvbox
 "let g:airline_theme = 'gruvbox'
 "colorscheme gruvbox
+" }}}
 " }}}
 
 " {{{ custom hot-key
@@ -267,7 +272,14 @@ command! -bang -nargs=* Rg
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Todo' }  }
 " }}}
 
-" {{{ highlight configuration for golang with enhancement from polyglot
+" {{{ vim-go configuration and highligth enhancement with polyglot
+" use golang language server
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
+" disable func from vim-go and use func from coc instead
+let g:go_def_mapping_enabled = 0
+let g:go_code_completion_enabled = 0
+" highlight enhancement
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_fields = 1
