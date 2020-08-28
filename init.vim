@@ -58,13 +58,11 @@ Plug 'luochen1990/rainbow'
     let g:rainbow_active = 1
 " }}}
 
-" Reading
-Plug 'dansomething/vim-hackernews'
-
 " {{{ Theme && status line
 Plug 'sainnhe/gruvbox-material'
 Plug 'franbach/miramare'
 Plug 'vimoxide/vim-cinnabar'
+Plug 'gruvbox-community/gruvbox'
 Plug 'vim-airline/vim-airline'
     let g:airline#extensions#coc#enabled = 1
 " stausline comes with cinnabar theme, but not working as expected.
@@ -191,6 +189,9 @@ let g:airline_theme = 'miramare'
 "set fillchars=vert:\
 "colorscheme cinnabar
 " }}}
+
+"let g:airline_theme = 'gruvbox'
+"colorscheme gruvbox
 " }}}
 
 " {{{ custom hot-key
@@ -203,7 +204,7 @@ nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>D :BufOnly<cr>
-nnoremap <leader><CR> :so ~/.vimrc<CR>
+nnoremap <leader><CR> :so ~/.config/nvim/init.vim<CR>
 nnoremap <leader>fw :Rg <C-R><C-W><CR>
 nnoremap <leader>rw :CocSearch <C-R><C-W><CR>
 nnoremap <leader>gc :GCheckout<CR>
