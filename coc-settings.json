@@ -1,5 +1,6 @@
 {
   "python.jediEnabled": false,
+  "diagnostic.displayByAle": true,
   "diagnostic.virtualText": true,
   "diagnostic.checkCurrentLine": true,
   "diagnostic.virtualTextCurrentLineOnly": false,

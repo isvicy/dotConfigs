@@ -30,6 +30,17 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
         \]
 " }}}
 
+" {{{ ale
+Plug 'dense-analysis/ale'
+    let g:ale_disable_lsp = 1
+    let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+    let g:airline#extensions#ale#enabled = 1
+    let g:ale_virtualtext_cursor = 1
+    let g:ale_echo_cursor = 0
+    nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+    nmap <silent> <C-j> <Plug>(ale_next_wrap)
+" }}}
+
 " {{{ Tools
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -75,6 +86,9 @@ call plug#end()
 " }}}
 
 " {{{ General settings
+" Set the leader button
+let mapleader = ' '
+
 " Allow vim to set a custom font or color for a word
 syntax enable
 set autoindent                    " take indent for new line from previous line
@@ -100,7 +114,7 @@ set relativenumber
 set ruler
 set splitbelow
 set splitright
-set formatoptions=tcqronj         " set vims text formatting options
+autocmd FileType * set formatoptions-=cro
 set softtabstop=2
 set tabstop=2
 set title                         " let vim set the terminal title
@@ -112,9 +126,6 @@ set cmdheight=2
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
 set updatetime=50
-
-" Set the leader button
-let mapleader = ' '
 
 " Enable mouse if possible, but disable auto visual mode when using mouse.
 if has('mouse')
@@ -159,7 +170,7 @@ if !has('nvim')
 endif
 " }}}
 
-" {{{ Airline theme
+" {{{ Airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#left_sep = ' '
@@ -214,6 +225,9 @@ nnoremap <leader>fw :Rg <C-R><C-W><CR>
 nnoremap <leader>rw :CocSearch <C-R><C-W><CR>
 nnoremap <leader>gc :GCheckout<CR>
 nnoremap <leader>gt :GCheckoutTag<CR>
+nnoremap <leader>gs :G<CR>
+nnoremap <leader>gj :diffget //3<CR>
+nnoremap <leader>gf :diffget //2<CR>
 nnoremap <silent> <Leader>y  :<C-u>CocList -A --normal yank<cr>
 
 " {{{ fix typo
