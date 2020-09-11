@@ -3,14 +3,14 @@
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
 # set by alacritty itself.
-# env:
+env:
   # TERM variable
   #
   # This value is used to set the `$TERM` environment variable for
   # each instance of Alacritty. If it is not present, alacritty will
   # check the local terminfo database and use `alacritty` if it is
   # available, otherwise `xterm-256color` is used.
-  # TERM: xterm-256color
+  TERM: xterm-256color
 
 window:
   # Window dimensions (changes require restart)
@@ -173,43 +173,43 @@ colors:
 
   # Bright colors
   bright:
-    black:   '0x928374'
-    red:     '0xfb4934'
-    green:   '0xb8bb26'
-    yellow:  '0xfabd2f'
-    blue:    '0x83a598'
-    magenta: '0xd3869b'
-    cyan:    '0x8ec07c'
-    white:   '0xebdbb2'
+   black:   '0x928374'
+   red:     '0xfb4934'
+   green:   '0xb8bb26'
+   yellow:  '0xfabd2f'
+   blue:    '0x83a598'
+   magenta: '0xd3869b'
+   cyan:    '0x8ec07c'
+   white:   '0xebdbb2'
 
 # Colors (Blood Moon)
-#colors:
-#  # Default colors
-#  primary:
-#    background: '0x10100E'
-#    foreground: '0xC6C6C4'
-#
-#  # Normal colors
-#  normal:
-#    black:   '0x10100E'
-#    red:     '0xC40233'
-#    green:   '0x009F6B'
-#    yellow:  '0xFFD700'
-#    blue:    '0x0087BD'
-#    magenta: '0x9A4EAE'
-#    cyan:    '0x20B2AA'
-#    white:   '0xC6C6C4'
-#
-#  # Bright colors
-#  bright:
-#    black:   '0x696969'
-#    red:     '0xFF2400'
-#    green:   '0x03C03C'
-#    yellow:  '0xFDFF00'
-#    blue:    '0x007FFF'
-#    magenta: '0xFF1493'
-#    cyan:    '0x00CCCC'
-#    white:   '0xFFFAFA'
+# colors:
+#   # Default colors
+#   primary:
+#     background: '0x10100E'
+#     foreground: '0xC6C6C4'
+# 
+#   # Normal colors
+#   normal:
+#     black:   '0x10100E'
+#     red:     '0xC40233'
+#     green:   '0x009F6B'
+#     yellow:  '0xFFD700'
+#     blue:    '0x0087BD'
+#     magenta: '0x9A4EAE'
+#     cyan:    '0x20B2AA'
+#     white:   '0xC6C6C4'
+# 
+#   # Bright colors
+#   bright:
+#     black:   '0x696969'
+#     red:     '0xFF2400'
+#     green:   '0x03C03C'
+#     yellow:  '0xFDFF00'
+#     blue:    '0x007FFF'
+#     magenta: '0xFF1493'
+#     cyan:    '0x00CCCC'
+#     white:   '0xFFFAFA'
 
 # Colors (Tomorrow Night Bright)
 #colors:
