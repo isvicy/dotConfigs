@@ -36,7 +36,8 @@ Plug 'dense-analysis/ale'
     let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
     let g:airline#extensions#ale#enabled = 1
     let g:ale_virtualtext_cursor = 1
-    let g:ale_echo_cursor = 0
+    let g:ale_echo_cursor = 1
+    let g:ale_set_highlights = 0
     nmap <silent> <C-k> <Plug>(ale_previous_wrap)
     nmap <silent> <C-j> <Plug>(ale_next_wrap)
 " }}}
@@ -77,8 +78,13 @@ Plug 'sainnhe/gruvbox-material'
 Plug 'franbach/miramare'
 Plug 'vimoxide/vim-cinnabar'
 Plug 'gruvbox-community/gruvbox'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'rakr/vim-one'
+Plug 'cormacrelf/vim-colors-github'
+Plug 'ayu-theme/ayu-vim'
 Plug 'vim-airline/vim-airline'
     let g:airline#extensions#coc#enabled = 1
+Plug 'vim-airline/vim-airline-themes'
 " stausline comes with cinnabar theme, but not working as expected.
 " Plug 'vimoxide/vim-spaceline'
 " }}}
@@ -176,38 +182,6 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
-" }}}
-
-" {{{ Color schemes
-set background=dark
-
-" gruvbox-material theme {{{
-" let g:gruvbox_material_background = 'hard'
-" let g:gruvbox_material_palette = 'mix'
-" let g:gruvbox_material_enable_italic = 1
-let g:gruvbox_material_disable_italic_comment = 1
-let g:airline_theme = 'gruvbox_material'
-    colorscheme gruvbox-material
-"}}}
-
-" miramare theme {{{
-"let g:miramare_enable_italic = 1
-"let g:miramare_disable_italic_comment = 1
-"let g:airline_theme = 'miramare'
-"    colorscheme miramare
-"}}}
-
-" {{{ cinnabar
-"let g:airline_theme = 'miramare'
-"" elite border between splits window
-"set fillchars=vert:\
-"colorscheme cinnabar
-" }}}
-
-" {{{ gruvbox
-"let g:airline_theme = 'gruvbox'
-"colorscheme gruvbox
-" }}}
 " }}}
 
 " {{{ custom hot-key
@@ -460,6 +434,70 @@ nmap <space>ef :CocCommand explorer --preset floating<CR>
 nmap <space>el :CocList explPresets
 " change default scheme, it quicker than <leader>x, don't know why.
 nmap <C-e> :CocCommand explorer<CR>
+" }}}
+
+" {{{ Color schemes
+
+" gruvbox-material theme {{{
+" let g:gruvbox_material_background = 'hard'
+" let g:gruvbox_material_palette = 'mix'
+" let g:gruvbox_material_enable_italic = 1
+" set background=dark
+" let g:gruvbox_material_disable_italic_comment = 1
+" let g:airline_theme = 'gruvbox_material'
+"     colorscheme gruvbox-material
+"}}}
+
+" miramare theme {{{
+" set background=dark
+"let g:miramare_enable_italic = 1
+let g:miramare_disable_italic_comment = 1
+let g:airline_theme = 'miramare'
+    colorscheme miramare
+"}}}
+
+" {{{ cinnabar
+" set background=dark
+"let g:airline_theme = 'miramare'
+"" elite border between splits window
+"set fillchars=vert:\
+"colorscheme cinnabar
+" }}}
+
+" {{{ gruvbox
+"set background=dark
+"let g:airline_theme = 'gruvbox'
+"colorscheme gruvbox
+" }}}
+
+" {{{ papercolor light
+" set background=light
+" colorscheme PaperColor
+" let g:airline_theme='papercolor'
+" }}}
+
+" {{{ vim-one light
+" set background=light
+" colorscheme one
+" let g:airline_theme='one'
+" }}}
+
+" {{{ github light
+" colorscheme github
+" let g:airline_theme = "github"
+" }}}
+
+" {{{ ayu light
+" let ayucolor="light"
+" colorscheme ayu
+" }}}
+
+" }}}
+
+" {{{ custom highlight
+highlight ALEVirtualTextWarning ctermbg=Red guifg=#ff0000
+highlight ALEVirtualTextError ctermbg=Red guifg=#ff0000
+
 " }}}
 
 " {{{ indent settings for different file type
