@@ -1,13 +1,41 @@
 {
   "python.jediEnabled": false,
-  "diagnostic.displayByAle": true,
-  "diagnostic.virtualText": true,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "go"
+  ],
+  "diagnostic.virtualText": false,
   "diagnostic.checkCurrentLine": true,
-  "diagnostic.virtualTextCurrentLineOnly": false,
+  "diagnostic.virtualTextCurrentLineOnly": true,
   "diagnostic.refreshAfterSave": false,
   "diagnostic.refreshOnInsertMode": true,
-  "diagnostic.enableMessage": "never",
+  "diagnostic.enableMessage": "always",
+  "go.goplsArgs": [
+    "-remote",
+    "auto",
+    "-logfile",
+    "/tmp/gopls.log"
+  ],
+  "go.goplsOptions": {
+    "completeUnimported": true,
+    "usePlaceholders": false
+  },
   "languageserver": {
+    "golangci-lint-languageserver": {
+      "command": "golangci-lint-langserver",
+      "filetypes": [
+        "go"
+      ],
+      "initializationOptions": {
+        "command": [
+          "golangci-lint",
+          "run",
+          "--config",
+          "~/.golangci.yml",
+          "--out-format",
+          "json"
+        ]
+      }
+    },
     "ccls": {
       "command": "ccls",
       "filetypes": [
