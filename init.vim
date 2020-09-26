@@ -30,24 +30,12 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
         \]
 " }}}
 
-" {{{ ale
-Plug 'dense-analysis/ale'
-    let g:ale_disable_lsp = 1
-    let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-    let g:airline#extensions#ale#enabled = 1
-    let g:ale_virtualtext_cursor = 1
-    let g:ale_echo_cursor = 1
-    let g:ale_set_highlights = 0
-    nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-    nmap <silent> <C-j> <Plug>(ale_next_wrap)
-" }}}
-
 " {{{ Tools
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'stsewd/fzf-checkout.vim'
 Plug 'voldikss/vim-floaterm'
+Plug 'sebdah/vim-delve'
 Plug 'tpope/vim-fugitive'
 Plug 'liuchengxu/vista.vim'
 Plug 'easymotion/vim-easymotion'
@@ -57,7 +45,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'jceb/vim-orgmode'
 " clean mess :)
 Plug 'vim-scripts/BufOnly.vim'
-Plug 'tpope/vim-surround'
+Plug 'machakann/vim-sandwich'
 Plug 'vimwiki/vimwiki'
     set nocompatible
     filetype plugin on
@@ -82,6 +70,7 @@ Plug 'NLKNguyen/papercolor-theme'
 Plug 'rakr/vim-one'
 Plug 'cormacrelf/vim-colors-github'
 Plug 'ayu-theme/ayu-vim'
+Plug 'branwright1/salvation-vim'
 Plug 'vim-airline/vim-airline'
     let g:airline#extensions#coc#enabled = 1
 Plug 'vim-airline/vim-airline-themes'
@@ -252,13 +241,7 @@ command! -bang -nargs=* Rg
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Todo' }  }
 " }}}
 
-" {{{ vim-go configuration and highligth enhancement with polyglot
-" use golang language server
-let g:go_def_mode='gopls'
-let g:go_info_mode='gopls'
-" disable func from vim-go and use func from coc instead
-let g:go_def_mapping_enabled = 0
-let g:go_code_completion_enabled = 0
+" {{{ highligth enhancement with polyglot in vim-go style config
 " highlight enhancement
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_extra_types = 1
@@ -297,8 +280,6 @@ set signcolumn=yes
 
 " for lightline buffer plugin
 set showtabline=2
-
-hi CocErrorVirtualText ctermfg=Red guifg=#ff0000
 
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -441,19 +422,19 @@ nmap <C-e> :CocCommand explorer<CR>
 "}}}
 
 " miramare theme {{{
-" set background=dark
-"let g:miramare_enable_italic = 1
-let g:miramare_disable_italic_comment = 1
-let g:airline_theme = 'miramare'
-    colorscheme miramare
+ set background=dark
+ "let g:miramare_enable_italic = 1
+ let g:miramare_disable_italic_comment = 1
+ let g:airline_theme = 'miramare'
+     colorscheme miramare
 "}}}
 
 " {{{ cinnabar
-" set background=dark
-"let g:airline_theme = 'miramare'
-"" elite border between splits window
-"set fillchars=vert:\
-"colorscheme cinnabar
+"  set background=dark
+" let g:airline_theme = 'miramare'
+" " elite border between splits window
+" set fillchars=vert:\
+" colorscheme cinnabar
 " }}}
 
 " {{{ gruvbox
@@ -484,12 +465,17 @@ let g:airline_theme = 'miramare'
 " colorscheme ayu
 " }}}
 
+" {{{ salvation dark
+" set background=dark
+" color salvation
+" }}}
+
 " }}}
 
 " {{{ custom highlight
-highlight ALEVirtualTextWarning ctermbg=Red guifg=#ff0000
-highlight ALEVirtualTextError ctermbg=Red guifg=#ff0000
-
+""" Customize colors
+hi CocErrorVirtualText ctermfg=Red guifg=#ff0000
+hi Pmenu guibg=#666666 guifg=#000000
 " }}}
 
 " {{{ indent settings for different file type
