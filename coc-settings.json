@@ -17,7 +17,12 @@
   ],
   "go.goplsOptions": {
     "completeUnimported": true,
-    "usePlaceholders": false
+    "usePlaceholders": false,
+    "analyses": {
+      "unusedparams": true,
+      "nonewvars": true
+    },
+    "staticcheck": true
   },
   "languageserver": {
     "golangci-lint-languageserver": {
