@@ -3,12 +3,12 @@
   "coc.preferences.formatOnSaveFiletypes": [
     "go"
   ],
-  "diagnostic.virtualText": false,
-  "diagnostic.checkCurrentLine": true,
-  "diagnostic.virtualTextCurrentLineOnly": true,
+  "diagnostic.virtualText": true,
+  "diagnostic.checkCurrentLine": false,
+  "diagnostic.virtualTextCurrentLineOnly": false,
   "diagnostic.refreshAfterSave": false,
   "diagnostic.refreshOnInsertMode": true,
-  "diagnostic.enableMessage": "always",
+  "diagnostic.enableMessage": "never",
   "go.goplsArgs": [
     "-remote",
     "auto",
