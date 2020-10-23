@@ -11,6 +11,9 @@ Plug 'junegunn/fzf.vim'
 Plug 'stsewd/fzf-checkout.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'voldikss/vim-floaterm'
+Plug 'flyoverGu/cu.vim'
+Plug 'godlygeek/tabular'
+Plug 'hotoo/pangu.vim'
 
 " move or ui enhancements
 Plug 'machakann/vim-sandwich'
