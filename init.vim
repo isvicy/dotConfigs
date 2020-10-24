@@ -24,14 +24,14 @@ endif
 " }}}
 "
 " This script contains all file plugs used in this config
-source ~/.vim/config/plugs.vim
+source ~/.vim/configs/plugs.vim
 " This script contains vim native settings
-source ~/.vim/config/general_settings.vim
-" This script contains colorscheme we keeped
-source ~/.vim/config/colors.vim
+source ~/.vim/configs/general_settings.vim
 " This script contains configs for plug we use
-source ~/.vim/config/plug_configs.vim
+source ~/.vim/configs/plug_configs.vim
+" This script contains colorscheme we keeped
+source ~/.vim/configs/colors.vim
 " This script contains custom hot-key, abbr and other settings like highlighting
-source ~/.vim/config/customize.vim
+source ~/.vim/configs/customize.vim
 " This script sepicied indent width for some kinds of file type
-source ~/.vim/config/indent.vim
+source ~/.vim/configs/indent.vim
