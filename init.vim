@@ -39,7 +39,7 @@ endif
 
 " {{{ Plugs
 call plug#begin(plug_path)
-" {{{ DEV
+" {{{ Dev
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sebdah/vim-delve'
 Plug 'liuchengxu/vista.vim'
@@ -49,15 +49,21 @@ Plug 'liuchengxu/vista.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'stsewd/fzf-checkout.vim'
+" git
 Plug 'tpope/vim-fugitive'
 Plug 'voldikss/vim-floaterm'
+" convert between camelCase and underscoreCase. usage: :Underscore :Camel
 Plug 'flyoverGu/cu.vim'
-Plug 'godlygeek/tabular'
+" Format markdown typesetting when mixed chinese and english
 Plug 'hotoo/pangu.vim'
+" this is a life saver. align everything.
+Plug 'junegunn/vim-easy-align'
+
+Plug 'jiangmiao/auto-pairs'
 
 " move or ui enhancements
+" chagne surround character
 Plug 'machakann/vim-sandwich'
-Plug 'jiangmiao/auto-pairs'
 Plug 'luochen1990/rainbow'
 Plug 'itchyny/vim-cursorword'
 Plug 'easymotion/vim-easymotion'
@@ -66,12 +72,13 @@ Plug 'easymotion/vim-easymotion'
 Plug 'vimwiki/vimwiki'
 Plug 'itchyny/calendar.vim'
 Plug 'lervag/vimtex'
+" simple task manager, clean this one when you off duty.
 Plug 'vuciv/vim-bujo'
 
 " clean mess :)
 Plug 'vim-scripts/BufOnly.vim'
 
-" save vim session
+" save vim session automatically
 Plug 'tpope/vim-obsession'
 " }}}
 
@@ -339,13 +346,29 @@ nmap <space>el :CocList explPresets
 nmap <C-e> :CocCommand explorer<CR>
 " }}}
 
-
 " {{{ vim-tex
 let g:tex_flavor = 'latex'
 let g:vimtex_compiler_latexmk_engines = {'_':'-xelatex'}
 let g:vimtex_compiler_latexrun_engines ={'_':'xelatex'}
 let g:vimtex_compiler_progname = 'nvr'
 " }}}}
+
+" {{{ vim-easy-align
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+" }}}
+
+" {{{ Bujo
+" insert a task
+nmap <C-S> <Plug>BujoAddnormal
+imap <C-S> <Plug>BujoAddinsert
+" check a task
+nmap <C-Q> <Plug>BujoChecknormal
+imap <C-Q> <Plug>BujoCheckinsert
+" }}}
 
 " enable rainbow parentheses pairs
 let g:rainbow_active = 1
