@@ -1,7 +1,7 @@
 {
   "python.jediEnabled": false,
   "coc.preferences.formatOnSaveFiletypes": [
-    "go"
+    "go", "rs"
   ],
   "diagnostic.virtualText": true,
   "diagnostic.checkCurrentLine": false,
@@ -81,7 +81,7 @@
       ]
     }
   },
-  "explorer.keyMappings": {
+  "explorer.keyMappings.global": {
     "P": "gotoParent"
   }
 }
