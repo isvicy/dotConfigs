@@ -80,13 +80,17 @@ Plug 'vim-scripts/BufOnly.vim'
 
 " save vim session automatically
 Plug 'tpope/vim-obsession'
+
+
+Plug 'szw/vim-maximizer'
 " }}}
 
 " {{{ Theme && status line
 " highlight enhancements
-Plug 'sheerun/vim-polyglot'
 Plug 'sainnhe/gruvbox-material'
 Plug '~/github/miramare'
+Plug 'kkga/vim-envy'
+Plug 'glepnir/zephyr-nvim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " }}}
@@ -142,7 +146,7 @@ autocmd FileType * set formatoptions-=cro
 "
 " NOTE: Using a check here to make sure that window-specific location-lists
 " aren't effected, as they use the same `FileType` as quickfix-lists.
-autocmd FileType qf if (getwininfo(win_getid())[0].loclist != 1) | wincmd J | endif
+" autocmd FileType qf if (getwininfo(win_getid())[0].loclist != 1) | wincmd J | endif
 
 "{{{ neovim specific settings && true color config
 if has('nvim')
@@ -194,7 +198,6 @@ let g:coc_global_extensions = [
     \ 'coc-python',
     \ 'coc-rls',
     \ 'coc-rust-analyzer',
-    \ 'coc-snippets',
     \ 'coc-swagger',
     \ 'coc-tsserver',
     \ 'coc-yaml',
@@ -255,13 +258,13 @@ nmap <leader>rn <Plug>(coc-rename)
 vmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
-augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
+"augroup mygroup
+"  autocmd!
+"  " Setup formatexpr specified filetype(s).
+"  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+"  " Update signature help on jump placeholder
+"  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+"augroup end
 
 " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
 vmap <leader>a  <Plug>(coc-codeaction-selected)
@@ -337,13 +340,18 @@ let g:coc_explorer_global_presets = {
 \ }
 
 " Use preset argument to open it
-nmap <space>ed :CocCommand explorer --preset .vim<CR>
-nmap <space>ef :CocCommand explorer --preset floating<CR>
+nmap <leader>ed :CocCommand explorer --preset .vim<CR>
+nmap <leader>ef :CocCommand explorer --preset floating<CR>
 
 " List all presets
-nmap <space>el :CocList explPresets
+nmap <leader>el :CocList explPresets
 " change default scheme, it quicker than <leader>x, don't know why.
-nmap <C-e> :CocCommand explorer<CR>
+nmap <leader>e :CocCommand explorer<CR>
+" }}}
+
+" {{{ coc-floatterm
+nnoremap   <silent>   <leader>nt    :FloatermNew<CR>
+nnoremap   <silent>   <leader>tt   :FloatermToggle<CR>
 " }}}
 
 " {{{ vim-tex
@@ -404,12 +412,12 @@ let g:vimwiki_list = [{'path': '~/vimwiki/',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
 let g:vimwiki_listsyms = '✗○◐●✓'
 
-command! Diary VimwikiDiaryIndex
-augroup vimwikigroup
-    autocmd!
-    " automatically update links on read diary
-    autocmd BufRead,BufNewFile diary.md VimwikiDiaryGenerateLinks
-augroup end
+"command! Diary VimwikiDiaryIndex
+"augroup vimwikigroup
+"    autocmd!
+"    " automatically update links on read diary
+"    autocmd BufRead,BufNewFile diary.md VimwikiDiaryGenerateLinks
+"augroup end
 " }}}
 
 " {{{ fzf configuration
@@ -423,23 +431,10 @@ let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Todo
 " }}}
 
 " {{{ highligth enhancement with polyglot in vim-go style config
-" highlight enhancement
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_types = 1
-let g:go_highlight_function_parameters = 1
-let g:go_highlight_function_calls = 1
-let g:go_highlight_generate_tags = 1
-let g:go_highlight_format_strings = 1
-let g:go_highlight_variable_declarations = 1
-" }}}
 
 autocmd BufWritePre *.markdown,*.md,*.text,*.txt,*.wiki,*.cnx call PanGuSpacing()
+" }}}
+
 " }}}
 
 " {{{ Colors
@@ -460,6 +455,16 @@ let g:miramare_palette = {'grey': ['#8b8b8b', '245', 'LightGrey']}
 let g:airline_theme = 'miramare'
    colorscheme miramare
 "}}}
+
+" {{{ vim-envy light
+"set background=light
+"let g:airline_theme = 'minimalist'
+"colorscheme envy
+" }}}
+
+" {{{ zephyr-nvim
+" colorscheme zephyr
+"}}}
 " }}}
 
 " {{{ Customize
@@ -469,6 +474,7 @@ nnoremap <leader><CR> :so ~/.config/nvim/init.vim<CR>
 " vscode style file searcher
 nnoremap <C-p> :Files<cr>
 nnoremap <C-l> :Vista!!<cr>
+nnoremap <leader>ft ::Vista finder<cr>
 
 " move between window easier
 nnoremap <leader>b :Buffers<cr>
@@ -480,6 +486,7 @@ nnoremap <leader>l :wincmd l<CR>
 " close all buffer but current focus one
 nnoremap <leader>D :BufOnly<cr>
 
+nnoremap <leader>d :r! date "+\%Y-\%m-\%d \%H:\%M:\%S"<cr>
 " search symbol
 nnoremap <leader>fw :Rg <C-R><C-W><CR>
 nnoremap <leader>rw :CocSearch <C-R><C-W><CR>
@@ -495,6 +502,9 @@ nnoremap <leader>gf :diffget //2<CR>
 nnoremap <silent> <Leader>y  :<C-u>CocList -A --normal yank<cr>
 " new term
 nnoremap <silent> <leader>nt :CocCommand floaterm.new<cr>
+" move to end or beggning within insert mode.
+inoremap <C-a> <C-o>0
+inoremap <C-e> <C-o>$
 " }}}
 
 " {{{ abbr
@@ -510,6 +520,7 @@ abbr cc CocCommand
 hi CocErrorVirtualText ctermfg=Red guifg=#ff0000
 hi CocWarningVirtualText ctermfg=Yellow guifg=#ffff00
 " }}}
+
 " }}}
 
 " {{{ Indent Settings
