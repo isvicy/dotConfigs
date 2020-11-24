@@ -250,6 +250,16 @@ function! LspStatus() abort
   return ''
 endfunction
 
+function! GitBranch()
+  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+endfunction
 
-set statusline=%{expand('%:~:.')}\ (line:\ %l/%L\ col:\ %c)\ FileType:\ %y
+function! StatuslineGit()
+  let l:branchname = GitBranch()
+  return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
+endfunction
+
+
+set statusline=%{StatuslineGit()}
+set statusline+=%{expand('%:~:.')}\ (line:\ %l/%L\ col:\ %c)\ FileType:\ %y
 set statusline+=\ %{LspStatus()}
