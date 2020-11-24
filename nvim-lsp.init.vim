@@ -262,4 +262,5 @@ endfunction
 
 set statusline=%{StatuslineGit()}
 set statusline+=%{expand('%:~:.')}\ (line:\ %l/%L\ col:\ %c)\ FileType:\ %y
+set statusline+=%=
 set statusline+=\ %{LspStatus()}
