@@ -250,4 +250,6 @@ function! LspStatus() abort
   return ''
 endfunction
 
-set statusline+=%{LspStatus()}
+
+set statusline=%{expand('%:~:.')}\ (line:\ %l/%L\ col:\ %c)\ FileType:\ %y
+set statusline+=\ %{LspStatus()}
