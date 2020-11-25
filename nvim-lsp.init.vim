@@ -218,8 +218,8 @@ set updatetime=300
 autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
 
 " Goto previous/next diagnostic warning/error
-nnoremap <silent> g[ <cmd>lua vim.lsp.diagnostic.goto_prev()<cr>
-nnoremap <silent> g] <cmd>lua vim.lsp.diagnostic.goto_next()<cr>
+nnoremap <silent> g[ <cmd>PrevDiagnosticCycle<cr>
+nnoremap <silent> g] <cmd>NextDiagnosticCycle<cr>
 
 " Enable type inlay hints
 autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
