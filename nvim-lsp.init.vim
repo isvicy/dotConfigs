@@ -62,6 +62,7 @@ Plug 'nvim-lua/plenary.nvim'
 
 " Git
 Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 
 " Foramtting
 Plug 'Chiel92/vim-autoformat'
@@ -253,7 +254,7 @@ nvim_lsp.pyls.setup({
         live_mode = false
         }
     },
-    on_attach = on_attach
+    on_attach = on_attach,
     capabilities = lsp_status.capabilities
 })
 
