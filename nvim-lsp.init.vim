@@ -67,6 +67,9 @@ Plug 'airblade/vim-gitgutter'
 " Foramtting
 Plug 'Chiel92/vim-autoformat'
 
+" FloatTerm
+Plug 'voldikss/vim-floaterm'
+
 " The gruvbox
 Plug 'sainnhe/gruvbox-material'
 
@@ -166,6 +169,8 @@ nnoremap <leader>gt :GCheckoutTag<CR>
 nnoremap <leader>gs :G<CR>
 nnoremap <leader>gj :diffget //3<CR>
 nnoremap <leader>gf :diffget //2<CR>
+
+nnoremap <leader>nt :FloatermNew --height=0.6 --width=0.95<CR>
 
 " move to end or beggning within insert mode.
 inoremap <C-a> <C-o>0
