@@ -49,40 +49,143 @@ Plug 'tjdevries/lsp_extensions.nvim'
 " Autocompletion framework for built-in LSP
 Plug 'nvim-lua/completion-nvim'
 
+" Status line plugin for lsp status
+Plug 'nvim-lua/lsp-status.nvim'
+
+" Better syntax highlight
 Plug 'nvim-treesitter/nvim-treesitter'
 
+" FZF alternertive of nvim
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 
-" Theme
+" Git
+Plug 'tpope/vim-fugitive'
+
+" Foramtting
+Plug 'Chiel92/vim-autoformat'
+
+" The gruvbox
 Plug 'sainnhe/gruvbox-material'
 
-Plug 'nvim-lua/lsp-status.nvim'
-
 call plug#end()
+" }}}
 
+" {{{ General configs
 let mapleader = ' '
 
+" Enable mouse if possible, but disable auto visual mode when using mouse.
+if has('mouse')
+    set mouse-=a
+endif
+
+set nocompatible
+
 syntax enable
+
 filetype plugin indent on
 
+set autoindent smartindent
+set autoread                      " reload file if the file changes on the disk
+set clipboard=unnamed
+" Give more space for displaying messages.
+set cmdheight=2
+set tabstop=2
+set softtabstop=2
+set expandtab                     " expands tabs to spaces
+set encoding=utf-8
+set fdm=marker
+set ffs=unix,dos
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+set ignorecase
+set list listchars=tab:\|\ ,trail:▫
+set maxmempattern=500000
+set noswapfile                    " disable swapfile usage
+set nowrap
+set nospell                       " disable spelling
+set noerrorbells novisualbell     " I said, no bells!
+set number relativenumber
+set ruler cursorline colorcolumn=81 
+set splitbelow
+set splitright
+set title                         " let vim set the terminal title
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=50
+
+" have a fixed column for the diagnostics to appear in
+" this removes the jitter when warnings/errors flow in
+set signcolumn=yes
+
+" disable auto comment when insert new line
+autocmd FileType * set formatoptions-=cro
 
 " Set completeopt to have a better completion experience
 set completeopt=menuone,noinsert,noselect
 
 " Avoid showing extra messages when using completion
 set shortmess+=c
+" }}}
 
+" {{{ Neovim specific settings
+if has('nvim')
+    set clipboard=unnamedplus
+    let g:python_host_prog = '/usr/bin/python2'
+    let g:python3_host_prog = '/usr/bin/python3'
+endif
 
-" Configure lsp
+if has('termguicolors')
+	set termguicolors
+endif
+" }}}
+
+" {{{ Netrw
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_winsize = 25
+" }}}
+
+" {{{ Customize
+" {{{ custom hot-key
+nnoremap <leader><CR> :so ~/.config/nvim/init.vim<CR>
+
+" move between window easier
+nnoremap <leader>b :Buffers<cr>
+nnoremap <leader>h :wincmd h<CR>
+nnoremap <leader>j :wincmd j<CR>
+nnoremap <leader>k :wincmd k<CR>
+nnoremap <leader>l :wincmd l<CR>
+
+nnoremap <leader>d :r! date "+\%Y-\%m-\%d \%H:\%M:\%S"<cr>
+
+" git related
+nnoremap <leader>gc :GCheckout<CR>
+nnoremap <leader>gt :GCheckoutTag<CR>
+nnoremap <leader>gs :G<CR>
+nnoremap <leader>gj :diffget //3<CR>
+nnoremap <leader>gf :diffget //2<CR>
+
+" move to end or beggning within insert mode.
+inoremap <C-a> <C-o>0
+inoremap <C-e> <C-o>$
+" }}}
+
+" {{{ abbr
+abbr Wg wg
+abbr QA qa
+abbr au Autoformat
+" }}}
+" }}}
+
+" {{{ LSP Configure
 " https://github.com/neovim/nvim-lspconfig#rust_analyzer
 lua <<EOF
 
 -- nvim_lsp object
 local nvim_lsp = require'lspconfig'
 
-local lsp_status = require('lsp-status')
+local lsp_status = require'lsp-status'
 
 lsp_status.config {
   kind_labels = vim.g.completion_customize_lsp_label,
@@ -138,6 +241,7 @@ nvim_lsp.gopls.setup {
             completeUnimported= true
         },
     },
+    capabilities = lsp_status.capabilities
 }
 
 
@@ -150,6 +254,7 @@ nvim_lsp.pyls.setup({
         }
     },
     on_attach = on_attach
+    capabilities = lsp_status.capabilities
 })
 
 require'nvim-treesitter.configs'.setup {
@@ -184,64 +289,46 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   }
   )
 EOF
+" }}}
 
+" {{{ LSP mapping
 " Code navigation shortcuts
 " as found in :help lsp
-nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> gtd   <cmd>lua vim.lsp.buf.type_definition()<CR>
 nnoremap <silent> gi    <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
-nnoremap <silent> gtD   <cmd>lua vim.lsp.buf.type_definition()<CR>
 nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
-nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
-nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
-" rust-analyzer does not yet support goto declaration
-" re-mapped `gd` to definition
-nnoremap <silent> gD    <cmd>lua vim.lsp.buf.definition()<CR>
-"nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
+nnoremap <silent> gca   <cmd>lua vim.lsp.buf.code_action()<CR>
+nnoremap <silent> <leader>fb <cmd>lua vim.lsp.buf.formatting()<CR>
+nnoremap <silent> <leader>lb <cmd>lua vim.lsp.buf.document_symbol()<CR>
+nnoremap <silent> <leader>lw <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+nnoremap <silent> <leader>rn <cmd>lua vim.lsp.buf.rename()<CR>
 
-
-"" Visualize diagnostics
-"let g:diagnostic_enable_virtual_text = 1
-"let g:diagnostic_trimmed_virtual_text = '40'
-"" Don't show diagnostics while in insert mode
-"let g:diagnostic_insert_delay = 1
-
-" have a fixed column for the diagnostics to appear in
-" this removes the jitter when warnings/errors flow in
-set signcolumn=yes
-
-" Set updatetime for CursorHold
-" 300ms of no cursor movement to trigger CursorHold
-set updatetime=300
 " Show diagnostic popup on cursor hover
 autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
 
 " Goto previous/next diagnostic warning/error
-nnoremap <silent> g[ <cmd>PrevDiagnosticCycle<cr>
-nnoremap <silent> g] <cmd>NextDiagnosticCycle<cr>
+nnoremap <silent> g[ <cmd>lua vim.lsp.diagnostic.goto_prev()<cr>
+nnoremap <silent> g] <cmd>lua vim.lsp.diagnostic.goto_next()<cr>
 
 " Enable type inlay hints
 autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
 \ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment" }
-
-
-" Important!!
-if has('termguicolors')
-	set termguicolors
-endif
 
 let g:gruvbox_material_enable_italic = 0
 let g:gruvbox_material_disable_italic_comment = 1
 colorscheme gruvbox-material
 
 " Find files using Telescope command-line sugar.
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <C-p>      <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+" }}}
 
-" Statusline
+" {{{ Statusline
 function! LspStatus() abort
   if luaeval('#vim.lsp.buf_get_clients() > 0')
     return luaeval("require('lsp-status').status()")
@@ -250,6 +337,7 @@ function! LspStatus() abort
   return ''
 endfunction
 
+" {{{ Simple func for getting git branch
 function! GitBranch()
   return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
 endfunction
@@ -258,9 +346,183 @@ function! StatuslineGit()
   let l:branchname = GitBranch()
   return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
 endfunction
+" }}}
 
-
-set statusline=%{StatuslineGit()}
-set statusline+=%{expand('%:~:.')}\ (line:\ %l/%L\ col:\ %c)\ FileType:\ %y
+set statusline=%{FugitiveStatusline()}
+set statusline+=\ %{expand('%:~:.')}\ (Ln:\ %l/%L\ Col:\ %c)\ %y
 set statusline+=%=
 set statusline+=\ %{LspStatus()}
+" }}}
+
+" {{{ Indent Settings
+"----------------------------------------------
+" Language: apiblueprint
+"----------------------------------------------
+au FileType apiblueprint set expandtab
+au FileType apiblueprint set shiftwidth=4
+au FileType apiblueprint set softtabstop=4
+au FileType apiblueprint set tabstop=4
+
+"----------------------------------------------
+" Language: Bash
+"----------------------------------------------
+au FileType sh set noexpandtab
+au FileType sh set shiftwidth=2
+au FileType sh set softtabstop=2
+au FileType sh set tabstop=2
+
+"----------------------------------------------
+" Language: C++
+"----------------------------------------------
+au FileType cpp set expandtab
+au FileType cpp set shiftwidth=4
+au FileType cpp set softtabstop=4
+au FileType cpp set tabstop=4
+
+"----------------------------------------------
+" Language: CSS
+"----------------------------------------------
+au FileType css set expandtab
+au FileType css set shiftwidth=2
+au FileType css set softtabstop=2
+au FileType css set tabstop=2
+
+"----------------------------------------------
+" Language: gitcommit
+"----------------------------------------------
+au FileType gitcommit setlocal spell
+au FileType gitcommit setlocal textwidth=80
+
+"----------------------------------------------
+" Language: fish
+"----------------------------------------------
+au FileType fish set expandtab
+au FileType fish set shiftwidth=2
+au FileType fish set softtabstop=2
+au FileType fish set tabstop=2
+
+"----------------------------------------------
+" Language: gitconfig
+"----------------------------------------------
+au FileType gitconfig set noexpandtab
+au FileType gitconfig set shiftwidth=2
+au FileType gitconfig set softtabstop=2
+au FileType gitconfig set tabstop=2
+
+"----------------------------------------------
+" Language: HTML
+"----------------------------------------------
+au FileType html set expandtab
+au FileType html set shiftwidth=2
+au FileType html set softtabstop=2
+au FileType html set tabstop=2
+
+"----------------------------------------------
+" Language: JavaScript
+"----------------------------------------------
+au FileType javascript set expandtab
+au FileType javascript set shiftwidth=2
+au FileType javascript set softtabstop=2
+au FileType javascript set tabstop=2
+
+"----------------------------------------------
+" Language: JSON
+"----------------------------------------------
+au FileType json set expandtab
+au FileType json set shiftwidth=2
+au FileType json set softtabstop=2
+au FileType json set tabstop=2
+
+"----------------------------------------------
+" Language: Make
+"----------------------------------------------
+au FileType make set noexpandtab
+au FileType make set shiftwidth=2
+au FileType make set softtabstop=2
+au FileType make set tabstop=2
+
+"----------------------------------------------
+" Language: Markdown
+"----------------------------------------------
+au FileType markdown setlocal spell
+au FileType markdown set expandtab
+au FileType markdown set shiftwidth=4
+au FileType markdown set softtabstop=4
+au FileType markdown set tabstop=4
+au FileType markdown set syntax=markdown
+
+"----------------------------------------------
+" Language: PlantUML
+"----------------------------------------------
+au FileType plantuml set expandtab
+au FileType plantuml set shiftwidth=2
+au FileType plantuml set softtabstop=2
+au FileType plantuml set tabstop=2
+
+"----------------------------------------------
+" Language: Protobuf
+"----------------------------------------------
+au FileType proto set expandtab
+au FileType proto set shiftwidth=2
+au FileType proto set softtabstop=2
+au FileType proto set tabstop=2
+
+"----------------------------------------------
+" Language: Python
+"----------------------------------------------
+au FileType python set expandtab
+au FileType python set shiftwidth=4
+au FileType python set softtabstop=4
+au FileType python set tabstop=4
+
+"----------------------------------------------
+" Language: Ruby
+"----------------------------------------------
+au FileType ruby set expandtab
+au FileType ruby set shiftwidth=2
+au FileType ruby set softtabstop=2
+au FileType ruby set tabstop=2
+
+" Enable neomake for linting.
+"au FileType ruby autocmd BufWritePost * Neomake
+
+"----------------------------------------------
+" Language: SQL
+"----------------------------------------------
+au FileType sql set expandtab
+au FileType sql set shiftwidth=2
+au FileType sql set softtabstop=2
+au FileType sql set tabstop=2
+
+"----------------------------------------------
+" Language: TypeScript
+"----------------------------------------------
+au FileType typescript set expandtab
+au FileType typescript set shiftwidth=4
+au FileType typescript set softtabstop=4
+au FileType typescript set tabstop=4
+
+"----------------------------------------------
+" Language: vimscript
+"----------------------------------------------
+au FileType vim set expandtab
+au FileType vim set shiftwidth=4
+au FileType vim set softtabstop=4
+au FileType vim set tabstop=4
+
+"----------------------------------------------
+" Language: YAML
+"----------------------------------------------
+au FileType yaml set expandtab
+au FileType yaml set shiftwidth=2
+au FileType yaml set softtabstop=2
+au FileType yaml set tabstop=2
+
+"----------------------------------------------
+" Language: Golang
+"----------------------------------------------
+au FileType go set noexpandtab
+au FileType go set shiftwidth=4
+au FileType go set softtabstop=4
+au FileType go set tabstop=4
+" }}}
