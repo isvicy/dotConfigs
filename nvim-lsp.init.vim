@@ -49,16 +49,18 @@ Plug 'tjdevries/lsp_extensions.nvim'
 " Autocompletion framework for built-in LSP
 Plug 'nvim-lua/completion-nvim'
 
+" LSP tags
+Plug 'liuchengxu/vista.vim'
+
 " Status line plugin for lsp status
 Plug 'nvim-lua/lsp-status.nvim'
 
 " Better syntax highlight
 Plug 'nvim-treesitter/nvim-treesitter'
 
-" FZF alternertive of nvim
-Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
+" FZF
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -99,7 +101,6 @@ set tabstop=2
 set softtabstop=2
 set expandtab                     " expands tabs to spaces
 set encoding=utf-8
-set fdm=marker
 set ffs=unix,dos
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 set ignorecase
@@ -130,6 +131,13 @@ set completeopt=menuone,noinsert,noselect
 
 " Avoid showing extra messages when using completion
 set shortmess+=c
+
+if system('uname -r') =~ "Microsoft"
+  augroup Yank
+    autocmd!
+    autocmd TextYankPost * :call system('clip.exe ',@")
+  augroup END
+endif
 " }}}
 
 " {{{ Neovim specific settings
@@ -153,6 +161,10 @@ let g:netrw_winsize = 25
 " {{{ Customize
 " {{{ custom hot-key
 nnoremap <leader><CR> :so ~/.config/nvim/init.vim<CR>
+
+nnoremap <C-p> :Files<CR>
+nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>fw :Rg <C-R><C-W><CR>
 
 " move between window easier
 nnoremap <leader>b :Buffers<cr>
@@ -181,6 +193,7 @@ inoremap <C-e> <C-o>$
 abbr Wg wg
 abbr QA qa
 abbr au Autoformat
+abbr rg Rg
 " }}}
 " }}}
 
@@ -267,7 +280,22 @@ require'nvim-treesitter.configs'.setup {
   ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   highlight = {
     enable = true,              -- false will disable the whole extension
+    custom_capture = {
+      ["TODO"] = "Identifier",
+    }
   },
+  indent = {
+    enable = true,
+  },
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "gnn",
+      node_incremental = "grn",
+      scope_incremental = "grc",
+      node_decremental = "grm",
+    }
+  }
 }
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
@@ -297,7 +325,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 EOF
 " }}}
 
-" {{{ LSP mapping
+" {{{ lsp mapping
 " Code navigation shortcuts
 " as found in :help lsp
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
@@ -319,6 +347,12 @@ autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
 nnoremap <silent> g[ <cmd>lua vim.lsp.diagnostic.goto_prev()<cr>
 nnoremap <silent> g] <cmd>lua vim.lsp.diagnostic.goto_next()<cr>
 
+set foldmethod=expr
+set foldlevel=2
+set foldlevelstart=2
+set foldnestmax=2
+set foldexpr=nvim_treesitter#foldexpr()
+
 " Enable type inlay hints
 autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
 \ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment" }
@@ -328,10 +362,20 @@ let g:gruvbox_material_disable_italic_comment = 1
 colorscheme gruvbox-material
 
 " Find files using Telescope command-line sugar.
-nnoremap <C-p>      <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+" nnoremap <C-p>      <cmd>Telescope find_files<cr>
+" nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+" nnoremap <leader>fb <cmd>Telescope buffers<cr>
+" nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+" }}}
+
+" {{{ fzf configuration
+command! -bang -nargs=* Rg
+      \ call fzf#vim#grep(
+      \   "rg --column --line-number --no-heading --smart-case --no-ignore-vcs ".shellescape(<q-args>), 1,
+      \   fzf#vim#with_preview(), <bang>0)
+
+" set float window
+let g:fzf_layout = { 'window': { 'width': 0.95, 'height': 0.6, 'highlight': 'Todo' }  }
 " }}}
 
 " {{{ Statusline
