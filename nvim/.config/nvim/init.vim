@@ -398,6 +398,13 @@ function! StatuslineGit()
 endfunction
 " }}}
 
+if system('uname -r') =~ "Microsoft"
+  augroup Yank
+    autocmd!
+    autocmd TextYankPost * :call system('clip.exe ',@")
+  augroup END
+endif
+
 set statusline=%{FugitiveStatusline()}
 set statusline+=\ %{expand('%:~:.')}\ (Ln:\ %l/%L\ Col:\ %c)\ %y
 set statusline+=%=

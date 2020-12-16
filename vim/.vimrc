@@ -521,6 +521,15 @@ hi CocErrorVirtualText ctermfg=Red guifg=#ff0000
 hi CocWarningVirtualText ctermfg=Yellow guifg=#ffff00
 " }}}
 
+" {{{ wsl specified
+if system('uname -r') =~ "Microsoft"
+  augroup Yank
+    autocmd!
+    autocmd TextYankPost * :call system('clip.exe ',@")
+  augroup END
+endif
+" }}}
+
 " }}}
 
 " {{{ Indent Settings
