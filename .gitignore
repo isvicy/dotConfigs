@@ -1,0 +1,6 @@
+.nvimlog
+nvim/.config/nvim/.netrwhist
+vim/.vim/.netrwhist
+vim/.vim/autoload/
+vim/.vim/plugged/
+vim/.vim/sessions/
