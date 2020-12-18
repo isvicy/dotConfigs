@@ -72,6 +72,12 @@ Plug 'Chiel92/vim-autoformat'
 " FloatTerm
 Plug 'voldikss/vim-floaterm'
 
+" FZF_LSP
+Plug 'gfanto/fzf-lsp.nvim'
+
+" Usage: gaip=
+Plug 'junegunn/vim-easy-align'
+
 " The gruvbox
 Plug 'sainnhe/gruvbox-material'
 
@@ -187,6 +193,12 @@ nnoremap <leader>nt :FloatermNew --height=0.6 --width=0.95<CR>
 " move to end or beggning within insert mode.
 inoremap <C-a> <C-o>0
 inoremap <C-e> <C-o>$
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 " }}}
 
 " {{{ abbr
@@ -205,6 +217,8 @@ lua <<EOF
 local nvim_lsp = require'lspconfig'
 
 local lsp_status = require'lsp-status'
+
+local fzf_lsp = require'fzf_lsp'
 
 lsp_status.config {
   kind_labels = vim.g.completion_customize_lsp_label,
@@ -322,6 +336,16 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     update_in_insert = false,
   }
   )
+
+  vim.lsp.handlers["textDocument/codeAction"]     = fzf_lsp.code_action_handler
+  vim.lsp.handlers["textDocument/definition"]     = fzf_lsp.definition_handler
+  vim.lsp.handlers["textDocument/declaration"]    = fzf_lsp.declaration_handler
+  vim.lsp.handlers["textDocument/typeDefinition"] = fzf_lsp.type_definition_handler
+  vim.lsp.handlers["textDocument/implementation"] = fzf_lsp.implementation_handler
+  vim.lsp.handlers["textDocument/references"]     = fzf_lsp.references_handler
+  vim.lsp.handlers["textDocument/documentSymbol"] = fzf_lsp.document_symbol_handler
+  vim.lsp.handlers["workspace/symbol"]            = fzf_lsp.workspace_symbol_handler
+
 EOF
 " }}}
 
@@ -375,6 +399,7 @@ command! -bang -nargs=* Rg
       \   fzf#vim#with_preview(), <bang>0)
 
 " set float window
+let g:fzf_preview_window = ['up:40%', 'ctrl-/']
 let g:fzf_layout = { 'window': { 'width': 0.95, 'height': 0.6, 'highlight': 'Todo' }  }
 " }}}
 
