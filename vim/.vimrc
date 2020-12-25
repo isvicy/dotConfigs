@@ -89,7 +89,6 @@ Plug 'szw/vim-maximizer'
 " highlight enhancements
 Plug 'sainnhe/gruvbox-material'
 Plug '~/github/miramare'
-Plug 'kkga/vim-envy'
 Plug 'glepnir/zephyr-nvim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -455,12 +454,6 @@ let g:airline_theme = 'gruvbox_material'
 "let g:airline_theme = 'miramare'
 "   colorscheme miramare
 "}}}
-
-" {{{ vim-envy light
-"set background=light
-"let g:airline_theme = 'minimalist'
-"colorscheme envy
-" }}}
 
 " {{{ zephyr-nvim
 " colorscheme zephyr
