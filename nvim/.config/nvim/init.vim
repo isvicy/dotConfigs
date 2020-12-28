@@ -59,7 +59,7 @@ Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 " FZF_LSP
-Plug 'gfanto/fzf-lsp.nvim'
+Plug 'gfanto/fzf-lsp.nvim', { 'branch': 'main' }
 
 " Git
 Plug 'tpope/vim-fugitive'
