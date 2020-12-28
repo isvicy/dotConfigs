@@ -43,9 +43,6 @@ call plug#begin(plug_path)
 " Collection of common configurations for the Nvim LSP client
 Plug 'neovim/nvim-lspconfig'
 
-" Extentions to built-in LSP, for example, providing type inlay hints
-Plug 'tjdevries/lsp_extensions.nvim'
-
 " Autocompletion framework for built-in LSP
 Plug 'nvim-lua/completion-nvim'
 
@@ -61,6 +58,8 @@ Plug 'nvim-treesitter/nvim-treesitter'
 " FZF
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+" FZF_LSP
+Plug 'gfanto/fzf-lsp.nvim'
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -71,9 +70,6 @@ Plug 'Chiel92/vim-autoformat'
 
 " FloatTerm
 Plug 'voldikss/vim-floaterm'
-
-" FZF_LSP
-Plug 'gfanto/fzf-lsp.nvim'
 
 " Usage: gaip=
 Plug 'junegunn/vim-easy-align'
@@ -377,10 +373,6 @@ set foldlevelstart=2
 set foldnestmax=2
 set foldexpr=nvim_treesitter#foldexpr()
 
-" Enable type inlay hints
-autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
-\ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment" }
-
 let g:gruvbox_material_enable_italic = 0
 let g:gruvbox_material_disable_italic_comment = 1
 colorscheme gruvbox-material
@@ -395,12 +387,12 @@ colorscheme gruvbox-material
 " {{{ fzf configuration
 command! -bang -nargs=* Rg
       \ call fzf#vim#grep(
-      \   "rg --column --line-number --no-heading --smart-case --no-ignore-vcs ".shellescape(<q-args>), 1,
+      \   "rg --column --line-number --hidden --no-heading --smart-case --no-ignore-vcs ".shellescape(<q-args>), 1,
       \   fzf#vim#with_preview(), <bang>0)
 
 " set float window
-let g:fzf_preview_window = ['up:40%', 'ctrl-/']
-let g:fzf_layout = { 'window': { 'width': 0.95, 'height': 0.6, 'highlight': 'Todo' }  }
+let g:fzf_preview_window = ['up:62%', 'ctrl-/']
+let g:fzf_layout = { 'window': { 'width': 0.95, 'height': 0.6, 'highlight': 'Todo' } }
 " }}}
 
 " {{{ Statusline
