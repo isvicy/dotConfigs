@@ -1,3 +1,3 @@
 # nvim-config-lua
 
-![Screenshot](screenshot/nvim.png)
+![Screenshot](/screenshots/nvim.png?raw=true "Example Screenshot")
