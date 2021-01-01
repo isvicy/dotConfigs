@@ -4,6 +4,7 @@ local fn = vim.fn
 local cmd = vim.cmd
 
 local lsp = require 'lspconfig'
+local nlua = require 'nlua.lsp.nvim'
 
 -- Bash-Language-Server
 lsp.bashls.setup {filetypes = {"sh", "zsh", "bash"}}
@@ -21,16 +22,11 @@ lsp.clangd.setup {cmd = {
 lsp.jsonls.setup {}
 
 -- Lua
-lsp.sumneko_lua.setup {
-    cmd = { "/Users/dennys/.cache/nvim/lspconfig/sumneko_lua/lua-language-server/bin/macOS/lua-language-server", "-E", "/Users/dennys/.cache/nvim/lspconfig/sumneko_lua/lua-language-server/main.lua" },
-    settings = {
-        Lua = {
-            diagnostics = {
-                globals = { 'vim' }
-            }
-        }
-    }
-}
+local custom_nvim_lspconfig_attach = function(...) end
+require('nlua.lsp.nvim').setup(require('lspconfig'), {
+    on_attach = custom_nvim_lspconfig_attach
+})
+
 
 -- Typescript Language Server
 lsp.tsserver.setup{}
