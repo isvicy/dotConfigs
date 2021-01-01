@@ -32,11 +32,11 @@ lsp.sumneko_lua.setup {
     }
 }
 
+-- Typescript Language Server
+lsp.tsserver.setup{}
+
 -- Pyls
 lsp.pyls.setup {root_dir = lsp.util.root_pattern('.git', fn.getcwd())}
-
--- Typescript
-lsp.tsserver.setup{}
 
 -- Design
 cmd 'sign define LspDiagnosticsSignError text='
