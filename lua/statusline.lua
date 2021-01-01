@@ -142,22 +142,13 @@ gls.left[2] = {
   },
 }
 gls.left[3] = {
-  FileName = {
-    provider = get_current_file_path,
-    condition = buffer_not_empty,
-    highlight = { colors.fg, colors.section_bg },
-    separator = "",
-    separator_highlight = {colors.section_bg, colors.bg},
-  }
-}
-gls.left[4] = {
   GitIcon = {
     provider = function() return ' ' end,
     condition = require('galaxyline.provider_vcs').check_git_workspace,
     highlight = {colors.red,colors.bg},
   }
 }
-gls.left[5] = {
+gls.left[4] = {
   GitBranch = {
     provider = 'GitBranch',
     separator = " ",
@@ -165,6 +156,17 @@ gls.left[5] = {
     highlight = {colors.fg,colors.bg},
   }
 }
+gls.left[5] = {
+  FileName = {
+    provider = get_current_file_path,
+    condition = buffer_not_empty,
+    highlight = { colors.fg, colors.section_bg },
+    separator = " ",
+    separator_highlight = {colors.section_bg, colors.bg},
+  }
+}
+
+
 gls.left[6] = {
   DiffAdd = {
     provider = 'DiffAdd',
@@ -189,7 +191,6 @@ gls.left[8] = {
     highlight = { colors.red,colors.bg },
   }
 }
-
 
 -- Right side
 gls.right[1] = {
