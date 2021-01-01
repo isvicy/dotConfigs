@@ -1,6 +1,6 @@
 local gl = require('galaxyline')
 package.path = "/Users/dennys/.config/nvim/nightly/utils.lua"
-local utils = require('utils')
+local utils = require('personal.utils')
 
 local gls = gl.section
 gl.short_line_list = { 'defx', 'packager', 'vista' }
