@@ -3,9 +3,6 @@
 local fn = vim.fn
 local cmd = vim.cmd
 
-local ts = require 'nvim-treesitter.configs'
-ts.setup {ensure_installed = 'maintained', highlight = {enable = true}}
-
 local lsp = require 'lspconfig'
 lsp.bashls.setup {filetypes = {"sh", "zsh", "bash"}}
 lsp.clangd.setup {cmd = {
