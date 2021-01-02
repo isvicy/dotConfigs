@@ -9,6 +9,7 @@ local paq = require('paq-nvim').paq
 paq {'savq/paq-nvim', opt = true}    -- paq-nvim manages itself
 
 
+
 -- PLugins
 paq {'tpope/vim-commentary'}        -- https://github.com/tpope/vim-commentary
 paq {'machakann/vim-sandwich'}      -- https://github.com/machakann/vim-sandwich
@@ -17,9 +18,7 @@ paq {'shougo/deoplete.nvim', hook = fn['remote#host#UpdateRemotePlugins']} -- ht
 paq {'nvim-treesitter/nvim-treesitter'} -- https://github.com/nvim-treesitter/nvim-treesitter
 paq {'tjdevries/nlua.nvim'}       -- https://github.com/neovim/nvim-lspconfig
 paq {'neovim/nvim-lspconfig'}       -- https://github.com/neovim/nvim-lspconfig
--- port colorscheme to lua with colorbuddy?
 paq {'Dualspc/spaceodyssey'}        -- https://github.com/Dualspc/spaceodyssey
-paq {'tjdevries/colorbuddy.nvim'}        -- https://github.com/Dualspc/spaceodyssey
 paq {'glepnir/galaxyline.nvim'}     -- https://github.com/glepnir/galaxyline.nvim
 paq {'kyazdani42/nvim-web-devicons'}-- https://github.com/kyazdani42/nvim-web-devicons
 paq {'rhysd/vim-clang-format'}      -- https://github.com/rhysd/vim-clang-format
@@ -38,5 +37,6 @@ paq {'nvim-telescope/telescope.nvim'} -- https://github.com/nvim-telescope/teles
 paq {'mbbill/undotree'}             -- https://github.com/mbbill/undotree
 paq {'rafcamlet/nvim-luapad'}       -- https://github.com/rafcamlet/nvim-luapad
 paq {'lewis6991/gitsigns.nvim'}     -- https://github.com/lewis6991/gitsigns.nvim
+paq {'arcticicestudio/nord-vim'}
 
 

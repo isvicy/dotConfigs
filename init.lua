@@ -26,3 +26,4 @@ require('plugins.galaxyline')
 
 -- Personal/Testing
 require('personal.nvim_func')
+-- require('spaceodyssey')

@@ -18,7 +18,7 @@ map('n', '<leader>l', '<C-W><C-L>')
 map('n', '<leader>k', '<C-W><C-K>')
 map('n', '<leader>j', '<C-W><C-J>')
 map('n', 'J', '<C-d>')
-map('n', 'K', '<C-u>')
+map('n', '<S-k>', '<C-u>')
 map('n', 'H', '^')
 map('n', 'L', '$')
 map('v', 'J', '<C-d>')
@@ -70,8 +70,9 @@ map('n', '<leader>r', '<cmd>Telescope reloader<cr>')
 map('n', '<leader>cc', "<cmd>lua require('personal.nvim_func').compile_run_cpp('sp', '20')<cr>")
 
 -- Neosnippet
-map('i', '<S-CR>', '<Plug>(neosnippet_expand_or_jump)')
+map('i', '<c-j>', '<Plug>(neosnippet_expand_or_jump)')
 map('s', '<S-CR>', '<Plug>(neosnippet_expand_or_jump)')
 map('x', '<S-CR>', '<Plug>(neosnippet_expand_target)')
+
 
 
