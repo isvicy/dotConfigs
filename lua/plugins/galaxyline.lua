@@ -15,7 +15,7 @@ local colors = {
   green = '#a3be8c',
   orange = '#ebcb8b',
   magenta = '#b48ead',
-  blue = '#96b5b4',
+  blue = '#81a1c1',
   red = '#bf616a'
 }
 
@@ -82,7 +82,7 @@ local get_current_file_path = function()
 
 local mode_color = function()
   local mode_colors = {
-    n = colors.cyan,
+    n = colors.blue,
     i = colors.red,
     c = colors.orange,
     V = colors.magenta,

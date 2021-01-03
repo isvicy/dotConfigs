@@ -18,12 +18,13 @@ require('plugins.deoplete')
 require('plugins.lsp')
 require('plugins.treesitter')
 require('plugins.colorizer')
-require('plugins.gitsigns')
 require('plugins.indentline')
 require('plugins.telescope')
 require('plugins.vista')
 require('plugins.galaxyline')
+require('plugins.gitsigns')
 
 -- Personal/Testing
 require('personal.nvim_func')
 -- require('spaceodyssey')
+
