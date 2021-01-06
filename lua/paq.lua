@@ -14,7 +14,7 @@ paq {'savq/paq-nvim', opt = true}    -- paq-nvim manages itself
 paq {'tpope/vim-commentary'}        -- https://github.com/tpope/vim-commentary
 paq {'machakann/vim-sandwich'}      -- https://github.com/machakann/vim-sandwich
 paq {'shougo/deoplete-lsp'}         -- https://github.com/Shougo/deoplete-lsp
-paq {'shougo/deoplete.nvim', hook = fn['remote#host#UpdateRemotePlugins']} -- https://github.com/neovim/nvim-lspconfig
+paq {'shougo/deoplete.nvim', hook = fn['remote#host#UpdateRemotePlugins']}
 paq {'nvim-treesitter/nvim-treesitter'} -- https://github.com/nvim-treesitter/nvim-treesitter
 paq {'tjdevries/nlua.nvim'}       -- https://github.com/neovim/nvim-lspconfig
 paq {'neovim/nvim-lspconfig'}       -- https://github.com/neovim/nvim-lspconfig
@@ -28,8 +28,6 @@ paq {'ludovicchabant/vim-gutentags'}-- https://github.com/ludovicchabant/vim-gut
 paq {'liuchengxu/vista.vim'}        -- https://github.com/liuchengxu/vista.vim
 paq {'kyazdani42/nvim-tree.lua'}    -- https://github.com/kyazdani42/nvim-tree.lua
 paq {'norcalli/nvim-colorizer.lua'} -- https://github.com/norcalli/nvim-colorizer.lua
-paq {'Shougo/neosnippet.vim'}       -- https://github.com/Shougo/neosnippet.vim
-paq {'Shougo/neosnippet-snippets'}  -- https://github.com/Shougo/neosnippet-snippets
 paq {'jiangmiao/auto-pairs'}        -- https://github.com/jiangmiao/auto-pairs
 paq {'nvim-lua/popup.nvim'}         -- https://github.com/nvim-lua/popup.nvim
 paq {'nvim-lua/plenary.nvim'}       -- https://github.com/nvim-lua/plenary.nvim
@@ -37,6 +35,7 @@ paq {'nvim-telescope/telescope.nvim'} -- https://github.com/nvim-telescope/teles
 paq {'mbbill/undotree'}             -- https://github.com/mbbill/undotree
 paq {'rafcamlet/nvim-luapad'}       -- https://github.com/rafcamlet/nvim-luapad
 paq {'lewis6991/gitsigns.nvim'}     -- https://github.com/lewis6991/gitsigns.nvim
-paq {'arcticicestudio/nord-vim'}
+paq {'SirVer/ultisnips'}
+paq {'honza/vim-snippets'}
 
 

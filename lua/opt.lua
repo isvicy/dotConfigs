@@ -38,4 +38,4 @@ cmd 'set noshowmode'
 
 -- Set
 set('mouse', 'niv')
-set('cmdheight', 2)
+set('cmdheight', 1)

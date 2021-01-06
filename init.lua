@@ -23,8 +23,8 @@ require('plugins.telescope')
 require('plugins.vista')
 require('plugins.galaxyline')
 require('plugins.gitsigns')
+require('plugins.ultisnips')
 
 -- Personal/Testing
 require('personal.nvim_func')
--- require('spaceodyssey')
 

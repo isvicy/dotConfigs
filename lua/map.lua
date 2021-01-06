@@ -69,10 +69,3 @@ map('n', '<leader>gb', '<cmd>Telescope git_branches<cr>')
 map('n', '<leader>r', '<cmd>Telescope reloader<cr>')
 map('n', '<leader>cc', "<cmd>lua require('personal.nvim_func').compile_run_cpp('sp', '20')<cr>")
 
--- Neosnippet
-map('i', '<S-CR>', '<Plug>(neosnippet_expand_or_jump)')
-map('s', '<S-CR>', '<Plug>(neosnippet_expand_or_jump)')
-map('x', '<S-CR>', '<Plug>(neosnippet_expand_target)')
-
-
-
