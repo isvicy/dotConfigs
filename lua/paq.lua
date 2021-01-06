@@ -38,3 +38,4 @@ paq {'lewis6991/gitsigns.nvim'}     -- https://github.com/lewis6991/gitsigns.nvi
 paq {'SirVer/ultisnips'}            -- https://github.com/SirVer/ultisnips
 paq {'honza/vim-snippets'}          -- https://github.com/honza/vim-snippets
 paq {'tpope/vim-fugitive'}          -- https://github.com/tpope/vim-fugitive
+paq {'glacambre/firenvim', hook = fn['firenvim#install(0)']} -- https://github.com/glacambre/firenvim
