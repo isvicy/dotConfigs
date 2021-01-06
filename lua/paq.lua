@@ -14,9 +14,9 @@ paq {'savq/paq-nvim', opt = true}    -- paq-nvim manages itself
 paq {'tpope/vim-commentary'}        -- https://github.com/tpope/vim-commentary
 paq {'machakann/vim-sandwich'}      -- https://github.com/machakann/vim-sandwich
 paq {'shougo/deoplete-lsp'}         -- https://github.com/Shougo/deoplete-lsp
-paq {'shougo/deoplete.nvim', hook = fn['remote#host#UpdateRemotePlugins']}
+paq {'shougo/deoplete.nvim', hook = fn['remote#host#UpdateRemotePlugins']} -- https://github.com/Shougo/deoplete.nvim
 paq {'nvim-treesitter/nvim-treesitter'} -- https://github.com/nvim-treesitter/nvim-treesitter
-paq {'tjdevries/nlua.nvim'}       -- https://github.com/neovim/nvim-lspconfig
+paq {'tjdevries/nlua.nvim'}         -- https://github.com/tjdevries/nlua.nvim
 paq {'neovim/nvim-lspconfig'}       -- https://github.com/neovim/nvim-lspconfig
 paq {'Dualspc/spaceodyssey'}        -- https://github.com/Dualspc/spaceodyssey
 paq {'glepnir/galaxyline.nvim'}     -- https://github.com/glepnir/galaxyline.nvim
@@ -35,7 +35,6 @@ paq {'nvim-telescope/telescope.nvim'} -- https://github.com/nvim-telescope/teles
 paq {'mbbill/undotree'}             -- https://github.com/mbbill/undotree
 paq {'rafcamlet/nvim-luapad'}       -- https://github.com/rafcamlet/nvim-luapad
 paq {'lewis6991/gitsigns.nvim'}     -- https://github.com/lewis6991/gitsigns.nvim
-paq {'SirVer/ultisnips'}
-paq {'honza/vim-snippets'}
-
-
+paq {'SirVer/ultisnips'}            -- https://github.com/SirVer/ultisnips
+paq {'honza/vim-snippets'}          -- https://github.com/honza/vim-snippets
+paq {'tpope/vim-fugitive'}          -- https://github.com/tpope/vim-fugitive
