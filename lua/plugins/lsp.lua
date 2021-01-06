@@ -72,6 +72,9 @@ lsp.tsserver.setup{}
 -- Pyls
 lsp.pyls.setup {root_dir = lsp.util.root_pattern('.git', fn.getcwd())}
 
+-- texlab
+lsp.texlab.setup{}
+
 -- Design
 cmd 'sign define LspDiagnosticsSignError text='
 cmd 'sign define LspDiagnosticsSignWarning text=ﰣ'
