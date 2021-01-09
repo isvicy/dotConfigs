@@ -66,6 +66,6 @@ map('n', '<leader>c', '<cmd>Telescope commands<cr>')
 map('n', '<leader>g', '<cmd>Telescope git_commits<cr>')
 map('n', '<leader>gs', '<cmd>Telescope git_status<cr>')
 map('n', '<leader>gb', '<cmd>Telescope git_branches<cr>')
-map('n', '<leader>r', '<cmd>Telescope reloader<cr>')
+map('n', '<leader>rl', '<cmd>Telescope reloader<cr>')
 map('n', '<leader>cc', "<cmd>lua require('personal.nvim_func').compile_run_cpp('sp', '20')<cr>")
 
