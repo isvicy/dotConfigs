@@ -69,3 +69,9 @@ map('n', '<leader>gb', '<cmd>Telescope git_branches<cr>')
 map('n', '<leader>rl', '<cmd>Telescope reloader<cr>')
 map('n', '<leader>cc', "<cmd>lua require('personal.nvim_func').compile_run_cpp('sp', '20')<cr>")
 
+-- Nvim-Tree
+map('n', '<leader>e', '<cmd>NvimTreeToggle<cr>')
+
+-- Undotree
+map('n', '<leader>u', '<cmd>UndotreeToggle<cr>')
+
