@@ -1,4 +1,4 @@
--- ███╗   ██╗██╗   ██╗██╗███╗   ███╗   ██╗     ██╗   ██╗ █████╗ 
+-- ███╗   ██╗██╗   ██╗██╗███╗   ███╗   ██╗     ██╗   ██╗ █████╗
 -- ████╗  ██║██║   ██║██║████╗ ████║   ██║     ██║   ██║██╔══██╗
 -- ██╔██╗ ██║██║   ██║██║██╔████╔██║   ██║     ██║   ██║███████║
 -- ██║╚██╗██║╚██╗ ██╔╝██║██║╚██╔╝██║   ██║     ██║   ██║██╔══██║
@@ -24,6 +24,7 @@ require('plugins.vista')
 require('plugins.galaxyline')
 require('plugins.gitsigns')
 require('plugins.ultisnips')
+require('plugins.nvim-tree')
 
 -- Personal/Testing
 require('personal.nvim_func')
