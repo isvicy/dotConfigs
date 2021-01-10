@@ -1,5 +1,4 @@
 local gl = require('galaxyline')
-package.path = "/Users/dennys/.config/nvim/nightly/utils.lua"
 local utils = require('personal.utils')
 
 local gls = gl.section

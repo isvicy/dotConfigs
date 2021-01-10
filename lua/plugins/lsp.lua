@@ -4,7 +4,7 @@ local fn = vim.fn
 local cmd = vim.cmd
 
 local lsp = require 'lspconfig'
-local nlua = require 'nlua.lsp.nvim'
+local completion = require 'completion'
 
 -- Bash-Language-Server
 lsp.bashls.setup {filetypes = {"sh", "zsh", "bash"}}
@@ -33,7 +33,7 @@ end
 local sumneko_root_path = vim.fn.stdpath('cache')..'/lspconfig/sumneko_lua/lua-language-server'
 local sumneko_binary = sumneko_root_path.."/bin/"..system_name.."/lua-language-server"
 
-require'lspconfig'.sumneko_lua.setup {
+lsp.sumneko_lua.setup {
   cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
   settings = {
     Lua = {
@@ -56,6 +56,7 @@ require'lspconfig'.sumneko_lua.setup {
       },
     },
   },
+  on_attach=completion.on_attach,
 }
 
 -- wait for solution by nlua
@@ -67,13 +68,48 @@ require'lspconfig'.sumneko_lua.setup {
 
 
 -- Typescript Language Server
-lsp.tsserver.setup{}
+lsp.tsserver.setup{
+  on_attach=completion.on_attach,
+}
 
 -- Pyls
-lsp.pyls.setup {root_dir = lsp.util.root_pattern('.git', fn.getcwd())}
+lsp.pyls.setup({
+    enable = true,
+    root_dir = lsp.util.root_pattern('.git', fn.getcwd()),
+    plugins = {
+    pyls_mypy = {
+        enabled = true,
+        live_mode = false
+        }
+    },
+    on_attach=completion.on_attach,
+})
+
+-- Enable rust_analyzer
+lsp.rust_analyzer.setup{
+    on_attach=completion.on_attach,
+}
+
+lsp.gopls.setup {
+    cmd = {"gopls", "serve"},
+    settings = {
+        gopls = {
+            analyses = {
+                unusedparams = true,
+                nonewvars = true,
+            },
+            staticcheck = true,
+            usePlaceholders = false,
+            completeUnimported= true
+        },
+    },
+    on_attach=completion.on_attach,
+}
 
 -- texlab
-lsp.texlab.setup{}
+lsp.texlab.setup{
+  on_attach=completion.on_attach,
+}
 
 -- Design
 cmd 'sign define LspDiagnosticsSignError text='

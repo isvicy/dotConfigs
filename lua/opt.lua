@@ -28,6 +28,7 @@ opt('o', 'splitbelow', true)
 opt('o', 'splitright', true)
 opt('o', 'wildmode', 'longest:full,full')
 opt('w', 'wrap', false)
+opt('o', 'completeopt', 'menuone,noinsert,noselect')
 
 
 -- Cmd
@@ -37,5 +38,5 @@ cmd 'set noshowmode'
 
 
 -- Set
-set('mouse', 'niv')
-set('cmdheight', 1)
+set('mouse', '')
+set('cmdheight', 2)
