@@ -35,6 +35,7 @@ opt('o', 'completeopt', 'menuone,noinsert,noselect')
 cmd 'set noswapfile'
 cmd 'colorscheme spaceodyssey'
 cmd 'set noshowmode'
+cmd 'set list listchars=tab:\\|\\ ,trail:▫ '
 
 
 -- Set
