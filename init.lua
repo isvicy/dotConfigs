@@ -14,7 +14,7 @@ require('opt')
 require('map')
 
 -- Plugins Settings
-require('plugins.deoplete')
+-- require('plugins.deoplete')
 require('plugins.lsp')
 require('plugins.treesitter')
 require('plugins.colorizer')

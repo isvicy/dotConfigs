@@ -13,8 +13,8 @@ paq {'savq/paq-nvim', opt = true}    -- paq-nvim manages itself
 -- PLugins
 paq {'tpope/vim-commentary'}        -- https://github.com/tpope/vim-commentary
 paq {'machakann/vim-sandwich'}      -- https://github.com/machakann/vim-sandwich
-paq {'shougo/deoplete-lsp'}         -- https://github.com/Shougo/deoplete-lsp
-paq {'shougo/deoplete.nvim', hook = fn['remote#host#UpdateRemotePlugins']} -- https://github.com/Shougo/deoplete.nvim
+-- paq {'shougo/deoplete-lsp'}         -- https://github.com/Shougo/deoplete-lsp
+-- paq {'shougo/deoplete.nvim', hook = fn['remote#host#UpdateRemotePlugins']} -- https://github.com/Shougo/deoplete.nvim
 paq {'nvim-treesitter/nvim-treesitter'} -- https://github.com/nvim-treesitter/nvim-treesitter
 paq {'tjdevries/nlua.nvim'}         -- https://github.com/tjdevries/nlua.nvim
 paq {'neovim/nvim-lspconfig'}       -- https://github.com/neovim/nvim-lspconfig
@@ -39,3 +39,4 @@ paq {'SirVer/ultisnips'}            -- https://github.com/SirVer/ultisnips
 paq {'honza/vim-snippets'}          -- https://github.com/honza/vim-snippets
 paq {'tpope/vim-fugitive'}          -- https://github.com/tpope/vim-fugitive
 paq {'glacambre/firenvim', hook = fn['firenvim#install(0)']} -- https://github.com/glacambre/firenvim
+paq {'nvim-lua/completion-nvim'}    -- https://github.com/nvim-lua/completion-nvim
