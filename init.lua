@@ -7,7 +7,7 @@
 
 
 -- Plugin Manager
-require('paq')
+require('plugins')
 
 -- General
 require('opt')
