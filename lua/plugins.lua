@@ -17,11 +17,14 @@ return require('packer').startup(function()
   -- use 'shougo/deoplete-lsp'        -- https://github.com/Shougo/deoplete-lsp
   -- use {'shougo/deoplete.nvim', run = function() fn['remote#host#UpdateRemotePlugins'] end} -- https://github.com/Shougo/deoplete.nvim
   use 'nvim-treesitter/nvim-treesitter' -- https://github.com/nvim-treesitter/nvim-treesitter
-  use 'tjdevries/nlua.nvim'           -- https://github.com/tjdevries/nlua.nvim
+  -- use 'tjdevries/nlua.nvim'           -- https://github.com/tjdevries/nlua.nvim
   use 'neovim/nvim-lspconfig'         -- https://github.com/neovim/nvim-lspconfig
   use 'Dualspc/spaceodyssey'          -- https://github.com/Dualspc/spaceodyssey
-  use 'glepnir/galaxyline.nvim'       -- https://github.com/glepnir/galaxyline.nvim
-  use 'kyazdani42/nvim-web-devicons'  -- https://github.com/kyazdani42/nvim-web-devicons
+  use {
+    'glepnir/galaxyline.nvim',  -- https://github.com/glepnir/galaxyline.nvim
+    branch = 'main',
+    requires = {'kyazdani42/nvim-web-devicons', opt = true} -- https://github.com/kyazdani42/nvim-web-devicons
+  }
   use 'rhysd/vim-clang-format'        -- https://github.com/rhysd/vim-clang-format
   use 'Yggdroot/indentLine'           -- https://github.com/Yggdroot/indentLine
   use 'psf/black'                     -- https://github.com/psf/black
