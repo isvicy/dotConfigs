@@ -42,10 +42,11 @@ return require('packer').startup(function()
   use 'honza/vim-snippets'            -- https://github.com/honza/vim-snippets
   use 'tpope/vim-fugitive'            -- https://github.com/tpope/vim-fugitive
   use {
-        'glacambre/firenvim', 
+        'glacambre/firenvim',
         run = function()
           fn['firenvim#install'](0)
         end
   }                                   -- https://github.com/glacambre/firenvim
   use 'nvim-lua/completion-nvim'      -- https://github.com/nvim-lua/completion-nvim
+  use 'voldikss/vim-floaterm'         -- https://github.com/voldikss/vim-floaterm
 end)

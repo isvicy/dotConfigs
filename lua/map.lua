@@ -46,9 +46,9 @@ map('n', 'g]', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
 map('n', 'ga', '<cmd>lua vim.lsp.buf.code_action()<CR>')
 map('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
 map('n', 'gf', '<cmd>lua vim.lsp.buf.formatting()<CR>')
-map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
+map('n', 'K',  '<cmd>lua vim.lsp.buf.hover()<CR>')
 map('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')
-map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
+-- map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
 map('n', 'gs', '<cmd>lua vim.lsp.buf.document_symbol()<CR>')
 
 -- Deoplete
@@ -56,7 +56,9 @@ map('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<Tab>"', {expr = true})
 map('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
 
 -- Telescope
-map('n', '<C-p>', '<cmd>Telescope fd<cr>')
+-- map('n', '<C-p>', '<cmd>Telescope fd<cr>')
+map('n', '<C-p>', "<cmd>lua require'telescope.builtin'.find_files()<cr>")
+map('n', 'gr', "<cmd>lua require'telescope.builtin'.lsp_references()<cr>")
 map('n', '<leader>t', '<cmd>Telescope tags<cr>')
 map('n', '<leader>b', '<cmd>Telescope buffers<cr>')
 map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>')
@@ -74,3 +76,11 @@ map('n', '<leader>e', '<cmd>NvimTreeToggle<cr>')
 -- Undotree
 map('n', '<leader>u', '<cmd>UndotreeToggle<cr>')
 
+-- fugitive
+map('n', '<leader>gs', '<cmd>G<cr>')
+map('n', '<leader>gj', '<cmd>diffget //3<cr>')
+map('n', '<leader>gf', '<cmd>diffget //2<cr>')
+
+
+-- floatTerm
+map('n', '<leader>nt', '<cmd>FloatermNew<cr>')
