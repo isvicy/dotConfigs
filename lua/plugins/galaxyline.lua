@@ -50,44 +50,14 @@ function string:split(delimiter)
   return result
 end
 
-local get_current_file_path = function()
-
-  local file = vim.fn.expand('%:t')
-  local path = vim.fn.expand('%:p:h')
-  local git_dir = require('galaxyline.provider_vcs').get_git_dir(path)
-  local home = os.getenv( "HOME" )
-
-  if git_dir == nil and string.match(path, home) then path = "~" .. string.gsub(path, home, "") end
-  if git_dir ~= nil then
-      local del_table = string.split(git_dir, "/")
-      local len = table.maxn(del_table)
-      del_table[len] = nil
-      del_table[len - 1] = nil
-      local del_str = table.concat(del_table, "/") .. "/"
-      path = string.gsub(path, del_str, "")
-  end
-
-  if vim.fn.empty(file) == 1 then return '' end
-  if string.len(file_readonly()) ~= 0 then
-    return path .. "/" .. file .. file_readonly()
-  end
-  if vim.bo.modifiable then
-    if vim.bo.modified then
-      return path .. "/" .. file .. '  '
-    end
-    end
-  return path .. "/" .. file .. ' '
-  end
-
 local mode_color = function()
   local mode_colors = {
     n = colors.blue,
     i = colors.red,
-    c = colors.orange,
-    V = colors.magenta,
-    vb = colors.magenta,
-    [''] = colors.magenta,
     v = colors.magenta,
+    V = colors.magenta,
+    [""] = colors.magenta,
+    c = colors.orange,
     R = colors.red,
     t = colors.yellow,
     no = colors.cyan,
@@ -98,12 +68,14 @@ local mode_color = function()
     Rv = colors.yellow,
     rm = colors.yellow,
     ['r?'] = colors.yellow,
-    ['!'] = colors.yellow
+    ['!'] = colors.yellow,
+    [""] = colors.yellow,
   }
 
   if mode_colors[vim.fn.mode()] == nil then
-      return colors.blue
+      return colors.megenta
   end
+
   return mode_colors[vim.fn.mode()]
 end
 
@@ -120,9 +92,10 @@ gls.left[2] = {
       local alias = {
         n = 'NORMAL',
         i = 'INSERT',
-        c = 'COMMAND',
         v ='VISUAL',
+        [""] = 'V-BLOCK',
         V = 'VISUAL',
+        c = 'COMMAND',
         R = 'REPLACE',
         t = 'TERMINAL',
         s = 'SELECT',
@@ -130,17 +103,12 @@ gls.left[2] = {
         ic = 'COMMAND-LINE',
         Rv = 'VIRTUAL',
         rm = '--MORE',
+        r  = 'HIT-ENTER',
         ['r?'] = ':CONFIRM',
         ['!']  = 'SHELL',
-        [''] = 'VISUAL',
-        ['r']  = 'HIT-ENTER',
-        [''] = 'SELECT',
+        [""] = "EMPTY",
       }
       vim.api.nvim_command('hi GalaxyViMode guifg='..mode_color())
-      print(vim.fn.mode())
-      if alias[vim.fn.mode()] == nil then
-              return 'VISUAL ' 
-      end
     return alias[vim.fn.mode()]..' '
     end,
     highlight = { colors.bg, colors.bg },
@@ -165,7 +133,9 @@ gls.left[4] = {
 }
 gls.left[5] = {
   FileName = {
-    provider = get_current_file_path,
+    provider = function()
+      return vim.fn.expand("%:F")
+    end,
     condition = buffer_not_empty,
     highlight = { colors.fg, colors.section_bg },
     separator = " ",
