@@ -9,15 +9,6 @@ local completion = require 'completion'
 -- Bash-Language-Server
 lsp.bashls.setup {filetypes = {"sh", "zsh", "bash"}}
 
--- Clangd
-lsp.clangd.setup {cmd = {
-    "clangd",
-    "--background-index",
-    "--suggest-missing-includes",
-    "--clang-tidy",
-    "--header-insertion=iwyu",
-  },}
-
 -- Json
 lsp.jsonls.setup {}
 
@@ -67,12 +58,12 @@ lsp.sumneko_lua.setup {
 -- })
 
 
--- Typescript Language Server
+-- Typescript
 lsp.tsserver.setup{
   on_attach=completion.on_attach,
 }
 
--- Pyls
+-- Python
 lsp.pyls.setup({
     enable = true,
     root_dir = lsp.util.root_pattern('.git', fn.getcwd()),
@@ -85,11 +76,12 @@ lsp.pyls.setup({
     on_attach=completion.on_attach,
 })
 
--- Enable rust_analyzer
+-- Rust
 lsp.rust_analyzer.setup{
     on_attach=completion.on_attach,
 }
 
+-- Golang
 lsp.gopls.setup {
     cmd = {"gopls", "serve"},
     settings = {
@@ -106,9 +98,25 @@ lsp.gopls.setup {
     on_attach=completion.on_attach,
 }
 
+--ccls
+lsp.ccls.setup{
+  on_attach=completion.on_attach,
+}
+
 -- texlab
 lsp.texlab.setup{
   on_attach=completion.on_attach,
+}
+
+-- json
+lsp.jsonls.setup {
+    commands = {
+      Format = {
+        function()
+          vim.lsp.buf.range_formatting({},{0,0},{vim.fn.line("$"),0})
+        end
+      }
+    }
 }
 
 -- Design
