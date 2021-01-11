@@ -85,6 +85,7 @@ local mode_color = function()
     i = colors.red,
     c = colors.orange,
     V = colors.magenta,
+    vb = colors.magenta,
     [''] = colors.magenta,
     v = colors.magenta,
     R = colors.red,
@@ -100,6 +101,9 @@ local mode_color = function()
     ['!'] = colors.yellow
   }
 
+  if mode_colors[vim.fn.mode()] == nil then
+      return colors.blue
+  end
   return mode_colors[vim.fn.mode()]
 end
 
@@ -117,22 +121,26 @@ gls.left[2] = {
         n = 'NORMAL',
         i = 'INSERT',
         c = 'COMMAND',
-        V = 'VISUAL',
-        [''] = 'VISUAL',
         v ='VISUAL',
-        ic  = 'COMMAND-LINE',
-        ['r?'] = ':CONFIRM',
-        rm = '--MORE',
-        R  = 'REPLACE',
+        V = 'VISUAL',
+        R = 'REPLACE',
+        t = 'TERMINAL',
+        s = 'SELECT',
+        S = 'SELECT',
+        ic = 'COMMAND-LINE',
         Rv = 'VIRTUAL',
-        s  = 'SELECT',
-        S  = 'SELECT',
+        rm = '--MORE',
+        ['r?'] = ':CONFIRM',
+        ['!']  = 'SHELL',
+        [''] = 'VISUAL',
         ['r']  = 'HIT-ENTER',
         [''] = 'SELECT',
-        t  = 'TERMINAL',
-        ['!']  = 'SHELL',
       }
       vim.api.nvim_command('hi GalaxyViMode guifg='..mode_color())
+      print(vim.fn.mode())
+      if alias[vim.fn.mode()] == nil then
+              return 'VISUAL ' 
+      end
     return alias[vim.fn.mode()]..' '
     end,
     highlight = { colors.bg, colors.bg },

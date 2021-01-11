@@ -36,8 +36,8 @@ map('n', '<leader>3', '<cmd>b3<CR>')
 map('n', '<leader>4', '<cmd>b4<CR>')
 map('n', '<leader>5', '<cmd>b5<CR>')
 map('n', '<leader>6', '<cmd>b6<CR>')
-map('n', 'ev', '<cmd>vsplit ~/.config/nvim/init.lua<cr>')
-map('n', 'ss', '<cmd>w<cr>')
+map('n', 'ev', '<cmd>vsplit ~/.config/nvim/init.lua<CR>')
+map('n', 'ss', '<cmd>w<CR>')
 map('n', '£', '%')
 
 -- lsp
@@ -48,39 +48,44 @@ map('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
 map('n', 'gf', '<cmd>lua vim.lsp.buf.formatting()<CR>')
 map('n', 'K',  '<cmd>lua vim.lsp.buf.hover()<CR>')
 map('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')
--- map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
+map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
 map('n', 'gs', '<cmd>lua vim.lsp.buf.document_symbol()<CR>')
 
 -- Deoplete
-map('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<Tab>"', {expr = true})
-map('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
+-- map('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<Tab>"', {expr = true})
+-- map('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
 
 -- Telescope
--- map('n', '<C-p>', '<cmd>Telescope fd<cr>')
-map('n', '<C-p>', "<cmd>lua require'telescope.builtin'.find_files()<cr>")
-map('n', 'gr', "<cmd>lua require'telescope.builtin'.lsp_references()<cr>")
-map('n', '<leader>t', '<cmd>Telescope tags<cr>')
-map('n', '<leader>b', '<cmd>Telescope buffers<cr>')
-map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>')
-map('n', '<leader>ch', '<cmd>Telescope command_history<cr>')
-map('n', '<leader>c', '<cmd>Telescope commands<cr>')
-map('n', '<leader>g', '<cmd>Telescope git_commits<cr>')
-map('n', '<leader>gs', '<cmd>Telescope git_status<cr>')
-map('n', '<leader>gb', '<cmd>Telescope git_branches<cr>')
-map('n', '<leader>rl', '<cmd>Telescope reloader<cr>')
-map('n', '<leader>cc', "<cmd>lua require('personal.nvim_func').compile_run_cpp('sp', '20')<cr>")
+-- map('n', '<C-p>', '<cmd>Telescope fd<CR>')
+-- map('n', '<C-p>', "<cmd>lua require'telescope.builtin'.find_files()<CR>")
+-- map('n', 'gr', "<cmd>lua require'telescope.builtin'.lsp_references()<CR>")
+-- map('n', '<Leader>f', "<cmd>lua require'telescope.builtin'.live_grep()<CR>")
+-- map('n', '<leader>t', '<cmd>Telescope tags<CR>')
+-- map('n', '<leader>b', '<cmd>Telescope buffers<CR>')
+-- map('n', '<leader>fh', '<cmd>Telescope help_tags<CR>')
+-- map('n', '<leader>ch', '<cmd>Telescope command_history<CR>')
+-- map('n', '<leader>c', '<cmd>Telescope commands<CR>')
+-- map('n', '<leader>g', '<cmd>Telescope git_commits<CR>')
+-- map('n', '<leader>gs', '<cmd>Telescope git_status<CR>')
+-- map('n', '<leader>gb', '<cmd>Telescope git_branches<CR>')
+-- map('n', '<leader>rl', '<cmd>Telescope reloader<CR>')
+-- map('n', '<leader>cc', "<cmd>lua require('personal.nvim_func').compile_run_cpp('sp', '20')<CR>")
 
 -- Nvim-Tree
-map('n', '<leader>e', '<cmd>NvimTreeToggle<cr>')
+map('n', '<leader>e', '<cmd>NvimTreeToggle<CR>')
 
 -- Undotree
-map('n', '<leader>u', '<cmd>UndotreeToggle<cr>')
+map('n', '<leader>u', '<cmd>UndotreeToggle<CR>')
 
 -- fugitive
-map('n', '<leader>gs', '<cmd>G<cr>')
-map('n', '<leader>gj', '<cmd>diffget //3<cr>')
-map('n', '<leader>gf', '<cmd>diffget //2<cr>')
+map('n', '<leader>gs', '<cmd>G<CR>')
+map('n', '<leader>gj', '<cmd>diffget //3<CR>')
+map('n', '<leader>gf', '<cmd>diffget //2<CR>')
 
 
 -- floatTerm
-map('n', '<leader>nt', '<cmd>FloatermNew<cr>')
+map('n', '<leader>nt', '<cmd>FloatermNew<CR>')
+
+-- fzf
+map('n', '<C-p>', '<cmd>Files<CR>')
+map('n', '<leader>fw', ':Rg <C-R><C-W><CR>')

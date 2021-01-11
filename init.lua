@@ -25,6 +25,9 @@ require('plugins.galaxyline')
 require('plugins.gitsigns')
 require('plugins.ultisnips')
 require('plugins.nvim-tree')
+require('plugins.fzf_lsp')
+
+require('fzf_lsp').setup()
 
 -- Personal/Testing
 require('personal.nvim_func')
