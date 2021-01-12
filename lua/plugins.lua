@@ -33,11 +33,11 @@ return require('packer').startup(function(use)
   use 'kyazdani42/nvim-tree.lua'      -- https://github.com/kyazdani42/nvim-tree.lua
   use 'norcalli/nvim-colorizer.lua'   -- https://github.com/norcalli/nvim-colorizer.lua
   use 'jiangmiao/auto-pairs'          -- https://github.com/jiangmiao/auto-pairs
-  -- use {
-  --       'nvim-telescope/telescope.nvim',
-  --       requires = {'nvim-lua/popup.nvim',    -- https://github.com/nvim-lua/popup.nvim
-  --                   'nvim-lua/plenary.nvim'}  -- https://github.com/nvim-lua/plenary.nvim
-  -- } -- https://github.com/nvim-telescope/telescope.nvim
+  use {
+        'nvim-telescope/telescope.nvim',
+        requires = {'nvim-lua/popup.nvim',    -- https://github.com/nvim-lua/popup.nvim
+                    'nvim-lua/plenary.nvim'}  -- https://github.com/nvim-lua/plenary.nvim
+  } -- https://github.com/nvim-telescope/telescope.nvim
   use 'mbbill/undotree'               -- https://github.com/mbbill/undotree
   use 'rafcamlet/nvim-luapad'         -- https://github.com/rafcamlet/nvim-luapad
   use 'lewis6991/gitsigns.nvim'       -- https://github.com/lewis6991/gitsigns.nvim

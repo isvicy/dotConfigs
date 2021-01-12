@@ -1,5 +1,4 @@
 -- Telescope
-local cmd = vim.cmd
 
 local telescope = require('telescope')
 telescope.setup{
@@ -19,17 +18,26 @@ telescope.setup{
     sorting_strategy = "ascending",
     layout_strategy = "flex",
     layout_defaults = {
-      -- TODO add builtin options.
+      horizontal = {
+        width_padding = 0.1,
+        height_padding = 0.1,
+        preview_width = 0.62,
+      },
+      vertical = {
+        width_padding = 0.05,
+        height_padding = 1,
+        preview_height = 0.62,
+      }
     },
     file_sorter =  require'telescope.sorters'.get_fuzzy_file,
     file_ignore_patterns = {},
     generic_sorter =  require'telescope.sorters'.get_generic_fuzzy_sorter,
     shorten_path = true,
     winblend = 0,
-    width = 0.75,
+    width = 1,
     preview_cutoff = 120,
     results_height = 1,
-    results_width = 0.8,
+    results_width = 1,
     border = {},
     borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰'},
     color_devicons = true,
@@ -40,6 +48,3 @@ telescope.setup{
     qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new, -- For buffer previewer use `require'telescope.previewers'.vim_buffer_qflist.new`
   }
 }
-
--- disable deoplete
-cmd"autocmd FileType TelescopePrompt call deoplete#custom#buffer_option('auto_complete', v:false)"
