@@ -38,6 +38,7 @@ return require('packer').startup(function(use)
         requires = {'nvim-lua/popup.nvim',    -- https://github.com/nvim-lua/popup.nvim
                     'nvim-lua/plenary.nvim'}  -- https://github.com/nvim-lua/plenary.nvim
   } -- https://github.com/nvim-telescope/telescope.nvim
+  use 'nvim-telescope/telescope-fzf-writer.nvim' -- https://github.com/nvim-telescope/telescope-fzf-writer.nvim
   use 'mbbill/undotree'               -- https://github.com/mbbill/undotree
   use 'rafcamlet/nvim-luapad'         -- https://github.com/rafcamlet/nvim-luapad
   use 'lewis6991/gitsigns.nvim'       -- https://github.com/lewis6991/gitsigns.nvim

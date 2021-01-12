@@ -56,9 +56,9 @@ map('n', 'gs', '<cmd>lua vim.lsp.buf.document_symbol()<CR>')
 -- map('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
 
 -- Telescope
-map('n', '<leader>p', "<cmd>lua require'telescope.builtin'.find_files()<CR>")
+map('n', '<leader>p', "<cmd>lua require'telescope'.extensions.fzf_writer.files()<CR>")
 map('n', '<leader>lr', "<cmd>lua require'telescope.builtin'.lsp_references()<CR>")
-map('n', '<Leader>f', "<cmd>lua require'telescope.builtin'.live_grep()<CR>")
+map('n', '<Leader>f', "<cmd>lua require'telescope'.extensions.fzf_writer.staged_grep()<CR>")
 map('n', '<leader>t', '<cmd>Telescope tags<CR>')
 map('n', '<leader>b', '<cmd>Telescope buffers<CR>')
 map('n', '<leader>fh', '<cmd>Telescope help_tags<CR>')
