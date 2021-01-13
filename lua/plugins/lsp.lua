@@ -2,6 +2,7 @@
 
 local fn = vim.fn
 local cmd = vim.cmd
+local g = vim.g
 
 local lsp = require 'lspconfig'
 local completion = require 'completion'
@@ -119,10 +120,30 @@ lsp.jsonls.setup {
     }
 }
 
+-- diagnostics
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    -- Disable underline, it's very annoying
+    underline = false,
+    -- Enable virtual text, override spacing to 4
+    virtual_text = {
+      spacing = 4,
+    },
+    -- Use a function to dynamically turn signs off
+    -- and on, using buffer local variables
+    signs = true,
+    update_in_insert = false,
+  }
+)
+
 -- Design
 cmd 'sign define LspDiagnosticsSignError text='
 cmd 'sign define LspDiagnosticsSignWarning text=ﰣ'
 cmd 'sign define LspDiagnosticsSignInformation text='
 cmd 'sign define LspDiagnosticsSignHint text='
 
+-- disable auto popup
+g['completion_enable_auto_popup'] = 0
 
+-- show line diagnostic
+vim.api.nvim_command('autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()')

@@ -51,10 +51,7 @@ map('n', 'K',  '<cmd>lua vim.lsp.buf.hover()<CR>')
 map('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')
 map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
 map('n', 'gs', '<cmd>lua vim.lsp.buf.document_symbol()<CR>')
-
--- Deoplete
--- map('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<Tab>"', {expr = true})
--- map('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
+map('i', '<tab>', '<C-o><Plug>(completion_smart_tab)')
 
 -- Telescope
 map('n', '<leader>p', "<cmd>lua require'telescope'.extensions.fzf_writer.files()<CR>")
