@@ -45,6 +45,7 @@ map('n', 'g[', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
 map('n', 'g]', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
 map('n', 'ga', '<cmd>lua vim.lsp.buf.code_action()<CR>')
 map('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
+map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
 map('n', 'gf', '<cmd>lua vim.lsp.buf.formatting()<CR>')
 map('n', 'K',  '<cmd>lua vim.lsp.buf.hover()<CR>')
 map('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')
@@ -83,7 +84,7 @@ map('n', '<leader>gf', '<cmd>diffget //2<CR>')
 
 
 -- floatTerm
-map('n', '<leader>nt', '<cmd>FloatermNew<CR>')
+map('n', '<leader>nt', ':FloatermNew --width=0.9<CR>')
 
 -- fzf
 map('n', '<C-p>', '<cmd>Files<CR>')

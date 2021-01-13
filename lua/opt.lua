@@ -41,3 +41,8 @@ cmd 'set list listchars=tab:\\|\\ ,trail:▫ '
 -- Set
 set('mouse', '')
 set('cmdheight', 2)
+set('foldmethod', 'expr')
+set('foldlevel', 5)
+set('foldlevelstart', 5)
+set('foldnestmax', 5)
+set('foldexpr', 'nvim_treesitter#foldexpr()')
