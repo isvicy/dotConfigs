@@ -27,7 +27,7 @@ telescope.setup{
     prompt_prefix = ">",
     selection_strategy = "reset",
     sorting_strategy = "ascending",
-    layout_strategy = "flex",
+    layout_strategy = "vertical",
     layout_defaults = {
       horizontal = {
         width_padding = 0.1,
