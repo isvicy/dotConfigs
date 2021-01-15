@@ -143,7 +143,7 @@ cmd 'sign define LspDiagnosticsSignInformation text='
 cmd 'sign define LspDiagnosticsSignHint text='
 
 -- disable auto popup
-g['completion_enable_auto_popup'] = 0
+-- g['completion_enable_auto_popup'] = 0
 
 -- show line diagnostic
 vim.api.nvim_command('autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()')
