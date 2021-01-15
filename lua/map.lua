@@ -86,3 +86,6 @@ map('n', '<leader>nt', ':FloatermNew --width=0.9<CR>')
 -- fzf
 map('n', '<C-p>', '<cmd>Files<CR>')
 map('n', '<leader>fw', ':Rg <C-R><C-W><CR>')
+
+-- maximizer
+map('n', '<leader>z', ':MaximizerToggle!<CR>')

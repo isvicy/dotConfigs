@@ -63,4 +63,5 @@ return require('packer').startup(function(use)
           end
       }
     }
+  use 'szw/vim-maximizer'             -- https://github.com/szw/vim-maximizer
 end)
