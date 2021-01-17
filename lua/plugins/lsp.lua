@@ -2,7 +2,7 @@
 
 local fn = vim.fn
 local cmd = vim.cmd
-local g = vim.g
+-- local g = vim.g
 
 local lsp = require 'lspconfig'
 local completion = require 'completion'

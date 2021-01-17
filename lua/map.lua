@@ -49,14 +49,14 @@ map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
 map('n', 'gf', '<cmd>lua vim.lsp.buf.formatting()<CR>')
 map('n', 'K',  '<cmd>lua vim.lsp.buf.hover()<CR>')
 map('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')
-map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
+map('n', '<leader>r', '<cmd>lua vim.lsp.buf.references()<CR>')
 map('n', 'gs', '<cmd>lua vim.lsp.buf.document_symbol()<CR>')
 map('i', '<tab>', '<C-o><Plug>(completion_smart_tab)')
 
 -- Telescope
-map('n', '<leader>p', "<cmd>lua require'telescope'.extensions.fzf_writer.files()<CR>")
-map('n', '<leader>lr', "<cmd>lua require'telescope.builtin'.lsp_references()<CR>")
-map('n', '<Leader>f', "<cmd>lua require'telescope'.extensions.fzf_writer.staged_grep()<CR>")
+map('n', '<C-p>', "<cmd>lua require'telescope'.extensions.fzf_writer.files()<CR>")
+map('n', 'gr', "<cmd>lua require'telescope.builtin'.lsp_references()<CR>")
+map('n', '<Leader>gw', "<cmd>lua require'telescope'.extensions.fzf_writer.staged_grep()<CR>")
 map('n', '<leader>t', '<cmd>Telescope tags<CR>')
 map('n', '<leader>b', '<cmd>Telescope buffers<CR>')
 map('n', '<leader>fh', '<cmd>Telescope help_tags<CR>')
@@ -84,7 +84,7 @@ map('n', '<leader>gf', '<cmd>diffget //2<CR>')
 map('n', '<leader>nt', ':FloatermNew --width=0.9<CR>')
 
 -- fzf
-map('n', '<C-p>', '<cmd>Files<CR>')
+map('n', '<leader>p', '<cmd>Files<CR>')
 map('n', '<leader>fw', ':Rg <C-R><C-W><CR>')
 
 -- maximizer
