@@ -32,14 +32,11 @@ utils.map('n', '<leader>rl', '<cmd>Telescope reloader<CR>')
 utils.map('n', '<leader>cc',
           "<cmd>lua require('personal.nvim_func').compile_run_cpp('sp', '20')<CR>")
 
--- Nvim-Tree
-utils.map('n', '<leader>e', '<cmd>NvimTreeToggle<CR>')
-
--- Undotree
-utils.map('n', '<leader>u', '<cmd>UndotreeToggle<CR>')
+-- CHAD-Tree
+utils.map('n', '<leader>e', '<cmd>CHADopen<CR>')
 
 -- fugitive
-utils.map('n', '<leader>gs', '<cmd>G status<CR>')
+utils.map('n', '<leader>gs', '<cmd>G<CR>')
 utils.map('n', '<leader>gj', '<cmd>diffget //3<CR>')
 utils.map('n', '<leader>gf', '<cmd>diffget //2<CR>')
 
