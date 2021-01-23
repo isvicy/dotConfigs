@@ -4,8 +4,8 @@ local telescope = require('telescope')
 telescope.setup{
   extensions = {
         fzf_writer = {
-            minimum_grep_characters = 2,
-            minimum_files_characters = 2,
+            -- minimum_grep_characters = 2,
+            -- minimum_files_characters = 2,
 
             -- Disabled by default.
             -- Will probably slow down some aspects of the sorter, but can make color highlights.
@@ -47,7 +47,7 @@ telescope.setup{
     winblend = 0,
     width = 1,
     preview_cutoff = 120,
-    results_height = 1,
+    results_height = 0.62,
     results_width = 1,
     border = {},
     borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰'},

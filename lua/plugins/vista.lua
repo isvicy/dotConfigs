@@ -2,4 +2,4 @@
 
 local g = vim.g
 
-g['vista_default_executive'] = 'ctags'
+g['vista_default_executive'] = 'nvim-lsp'

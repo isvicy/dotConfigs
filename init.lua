@@ -5,29 +5,24 @@
 -- ██║ ╚████║ ╚████╔╝ ██║██║ ╚═╝ ██║██╗███████╗╚██████╔╝██║  ██║
 -- ╚═╝  ╚═══╝  ╚═══╝  ╚═╝╚═╝     ╚═╝╚═╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝
 
-
--- Plugin Manager
-require('plugins')
-
 -- General
 require('opt')
 require('map')
 
+-- Plugin Manager
+require('plugins')
+
 -- Plugins Settings
--- require('plugins.deoplete')
+require('plugins.map')
 require('plugins.lsp')
-require('plugins.treesitter')
-require('plugins.colorizer')
-require('plugins.indentline')
 require('plugins.telescope')
-require('plugins.vista')
 require('plugins.galaxyline')
 require('plugins.gitsigns')
-require('plugins.ultisnips')
-require('plugins.nvim-tree')
-require('plugins.fzf_lsp')
+require('plugins.configs')
 
-require('fzf_lsp').setup()
+-- Disable for stablity for now
+-- require('plugins.treesitter')
+
 
 -- Personal/Testing
 require('personal.nvim_func')

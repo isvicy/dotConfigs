@@ -33,6 +33,8 @@ opt('o', 'completeopt', 'menuone,noinsert,noselect')
 
 -- Cmd
 cmd 'set noswapfile'
+cmd 'set nobackup'
+cmd 'set nowritebackup'
 cmd 'colorscheme spaceodyssey'
 cmd 'set noshowmode'
 cmd 'set list listchars=tab:\\|\\ ,trail:▫ '
@@ -45,5 +47,4 @@ set('foldmethod', 'expr')
 set('foldlevel', 5)
 set('foldlevelstart', 5)
 set('foldnestmax', 5)
-set('foldexpr', 'nvim_treesitter#foldexpr()')
 set('updatetime', 100)
