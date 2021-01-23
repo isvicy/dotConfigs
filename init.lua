@@ -4,7 +4,6 @@
 -- ██║╚██╗██║╚██╗ ██╔╝██║██║╚██╔╝██║   ██║     ██║   ██║██╔══██║
 -- ██║ ╚████║ ╚████╔╝ ██║██║ ╚═╝ ██║██╗███████╗╚██████╔╝██║  ██║
 -- ╚═╝  ╚═══╝  ╚═══╝  ╚═╝╚═╝     ╚═╝╚═╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝
-
 -- General
 require('opt')
 require('map')
@@ -22,7 +21,6 @@ require('plugins.configs')
 
 -- Disable for stablity for now
 -- require('plugins.treesitter')
-
 
 -- Personal/Testing
 require('personal.nvim_func')

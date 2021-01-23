@@ -1,8 +1,6 @@
 -- Mappings
-
 local g = vim.g
 local utils = require("personal.utils")
-
 
 -- Leader
 g['mapleader'] = ' '

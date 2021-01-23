@@ -1,15 +1,13 @@
 -- Neovim Options
-
 local cmd = vim.cmd
 local scopes = {o = vim.o, b = vim.bo, w = vim.wo}
 local set = vim.api.nvim_set_option
 
 -- Helper Functions
 local function opt(scope, key, value)
-  scopes[scope][key] = value
-  if scope ~= 'o' then scopes['o'][key] = value end
+    scopes[scope][key] = value
+    if scope ~= 'o' then scopes['o'][key] = value end
 end
-
 
 -- Settings
 local indent = 4
@@ -30,7 +28,6 @@ opt('o', 'wildmode', 'longest:full,full')
 opt('w', 'wrap', false)
 opt('o', 'completeopt', 'menuone,noinsert,noselect')
 
-
 -- Cmd
 cmd 'set noswapfile'
 cmd 'set nobackup'
@@ -38,7 +35,6 @@ cmd 'set nowritebackup'
 cmd 'colorscheme spaceodyssey'
 cmd 'set noshowmode'
 cmd 'set list listchars=tab:\\|\\ ,trail:▫ '
-
 
 -- Set
 set('mouse', '')

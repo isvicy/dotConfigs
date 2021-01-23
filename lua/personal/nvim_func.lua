@@ -7,7 +7,9 @@ function nvim_func.compile_run_cpp(orientation, size)
         fn.execute(string.format("%s%s|:terminal", size, orientation))
         local terminal_id = vim.b.terminal_job_id
         fn.chansend(terminal_id, string.format("g++ %s && ./a.out\n", file_path))
-    else error("Invalid filetype") end
+    else
+        error("Invalid filetype")
+    end
 end
 
 return nvim_func
