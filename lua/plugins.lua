@@ -20,7 +20,7 @@ return require('packer').startup(function(use)
         } -- https://github.com/nvim-lua/plenary.nvim
     } -- https://github.com/nvim-telescope/telescope.nvim
     use 'nvim-telescope/telescope-fzf-writer.nvim' -- https://github.com/nvim-telescope/telescope-fzf-writer.nvim
-    -- use 'nvim-treesitter/nvim-treesitter' -- https://github.com/nvim-treesitter/nvim-treesitter
+    use 'nvim-treesitter/nvim-treesitter' -- https://github.com/nvim-treesitter/nvim-treesitter
 
     -- Enhance
     use 'szw/vim-maximizer' -- https://github.com/szw/vim-maximizer
