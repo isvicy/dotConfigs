@@ -12,7 +12,6 @@ utils.map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
 utils.map('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')
 utils.map('n', '<leader>r', '<cmd>lua vim.lsp.buf.references()<CR>')
 utils.map('n', 'gs', '<cmd>lua vim.lsp.buf.document_symbol()<CR>')
-utils.map('i', '<tab>', '<C-o><Plug>(completion_smart_tab)')
 
 -- Telescope
 utils.map('n', '<C-p>',
@@ -26,7 +25,7 @@ utils.map('n', '<leader>fh', '<cmd>Telescope help_tags<CR>')
 utils.map('n', '<leader>ch', '<cmd>Telescope command_history<CR>')
 utils.map('n', '<leader>c', '<cmd>Telescope commands<CR>')
 utils.map('n', '<leader>g', '<cmd>Telescope git_commits<CR>')
-utils.map('n', '<leader>gs', '<cmd>Telescope git_status<CR>')
+utils.map('n', '<leader>ts', '<cmd>Telescope git_status<CR>')
 utils.map('n', '<leader>gb', '<cmd>Telescope git_branches<CR>')
 utils.map('n', '<leader>rl', '<cmd>Telescope reloader<CR>')
 utils.map('n', '<leader>cc',
