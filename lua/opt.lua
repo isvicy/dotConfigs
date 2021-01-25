@@ -29,6 +29,7 @@ opt('w', 'wrap', false)
 opt('o', 'completeopt', 'menuone,noinsert,noselect')
 
 -- Cmd
+cmd 'set nocompatible'
 cmd 'set noswapfile'
 cmd 'set nobackup'
 cmd 'set nowritebackup'

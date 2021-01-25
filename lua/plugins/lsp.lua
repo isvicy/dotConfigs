@@ -62,6 +62,9 @@ lsp.sumneko_lua.setup {
 -- Typescript
 lsp.tsserver.setup {on_attach = completion.on_attach}
 
+-- Vue
+lsp.vuels.setup {on_attach = completion.on_attach}
+
 -- Python
 lsp.pyls.setup({
     enable = true,
