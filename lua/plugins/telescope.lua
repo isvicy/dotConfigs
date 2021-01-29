@@ -29,8 +29,8 @@ telescope.setup {
                 preview_width = 0.62
             },
             vertical = {
-                width_padding = 0.05,
-                height_padding = 1,
+                width_padding = 0.08,
+                height_padding = 0.12,
                 preview_height = 0.62
             }
         },
