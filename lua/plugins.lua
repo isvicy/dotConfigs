@@ -9,9 +9,9 @@ cmd [[packadd packer.nvim]] -- load the package manager
 return require('packer').startup(function(use)
     -- Packer can manage itself as an optional plugin
     use {'wbthomason/packer.nvim', opt = true}
+
     -- nvim specified stuff
     use 'neovim/nvim-lspconfig' -- https://github.com/neovim/nvim-lspconfig
-    use 'nvim-lua/completion-nvim' -- https://github.com/nvim-lua/completion-nvim
     use {
         'nvim-telescope/telescope.nvim',
         requires = {
@@ -21,10 +21,12 @@ return require('packer').startup(function(use)
     } -- https://github.com/nvim-telescope/telescope.nvim
     use 'nvim-telescope/telescope-fzf-writer.nvim' -- https://github.com/nvim-telescope/telescope-fzf-writer.nvim
     use 'nvim-treesitter/nvim-treesitter' -- https://github.com/nvim-treesitter/nvim-treesitter
+    -- auto completion
+    use 'hrsh7th/nvim-compe' -- https://github.com/hrsh7th/nvim-compe
 
     -- Enhance
     use 'szw/vim-maximizer' -- https://github.com/szw/vim-maximizer
-    use 'windwp/nvim-autopairs' -- https://github.com/windwp/nvim-autopairs
+    use 'cohama/lexima.vim' -- https://github.com/cohama/lexima.vim
     use 'voldikss/vim-floaterm' -- https://github.com/voldikss/vim-floaterm
     use 'machakann/vim-sandwich' -- https://github.com/machakann/vim-sandwich
     use 'norcalli/nvim-colorizer.lua' -- https://github.com/norcalli/nvim-colorizer.lua
@@ -47,8 +49,9 @@ return require('packer').startup(function(use)
     use 'tpope/vim-fugitive' -- https://github.com/tpope/vim-fugitive
     use 'lewis6991/gitsigns.nvim' -- https://github.com/lewis6991/gitsigns.nvim
 
-    -- theme && status line
+    -- Theme && status line
     use 'Dualspc/spaceodyssey' -- https://github.com/Dualspc/spaceodyssey
+    use 'sainnhe/gruvbox-material' -- https://github.com/sainnhe/gruvbox-material
     use {
         'glepnir/galaxyline.nvim', -- https://github.com/glepnir/galaxyline.nvim
         branch = 'main',

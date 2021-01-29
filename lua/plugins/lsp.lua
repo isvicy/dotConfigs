@@ -4,7 +4,6 @@ local cmd = vim.cmd
 -- local g = vim.g
 
 local lsp = require 'lspconfig'
-local completion = require 'completion'
 
 -- Bash-Language-Server
 lsp.bashls.setup {filetypes = {"sh", "zsh", "bash"}}
@@ -48,8 +47,7 @@ lsp.sumneko_lua.setup {
                 }
             }
         }
-    },
-    on_attach = completion.on_attach
+    }
 }
 
 -- wait for solution by nlua
@@ -60,21 +58,20 @@ lsp.sumneko_lua.setup {
 -- })
 
 -- Typescript
-lsp.tsserver.setup {on_attach = completion.on_attach}
+lsp.tsserver.setup {}
 
 -- Vue
-lsp.vuels.setup {on_attach = completion.on_attach}
+lsp.vuels.setup {}
 
 -- Python
 lsp.pyls.setup({
     enable = true,
     root_dir = lsp.util.root_pattern('.git', fn.getcwd()),
-    plugins = {pyls_mypy = {enabled = true, live_mode = false}},
-    on_attach = completion.on_attach
+    plugins = {pyls_mypy = {enabled = true, live_mode = false}}
 })
 
 -- Rust
-lsp.rust_analyzer.setup {on_attach = completion.on_attach}
+lsp.rust_analyzer.setup {}
 
 -- Golang
 lsp.gopls.setup {
@@ -86,15 +83,14 @@ lsp.gopls.setup {
             usePlaceholders = false,
             completeUnimported = true
         }
-    },
-    on_attach = completion.on_attach
+    }
 }
 
 -- ccls
-lsp.ccls.setup {on_attach = completion.on_attach}
+lsp.ccls.setup {}
 
 -- texlab
-lsp.texlab.setup {on_attach = completion.on_attach}
+lsp.texlab.setup {}
 
 -- json
 lsp.jsonls.setup {

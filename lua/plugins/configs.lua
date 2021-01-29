@@ -1,6 +1,7 @@
 -- Configs for Plugins
 --
 local g = vim.g
+local o = vim.o
 
 -- Colorizer
 require'colorizer'.setup()
@@ -15,3 +16,25 @@ g['fzf_preview_window'] = {'up:62%', 'ctrl-/'}
 
 -- Autopair
 require('nvim-autopairs').setup()
+
+-- Nvim-compe
+o.completeopt = "menu,menuone,noselect"
+require'compe'.setup {
+    enabled = true,
+    autocomplete = true,
+    debug = false,
+    min_length = 1,
+    preselect = 'enable',
+    throttle_time = 80,
+    source_timeout = 200,
+    incomplete_delay = 400,
+    allow_prefix_unmatch = false,
+
+    source = {
+        path = true,
+        buffer = true,
+        vsnip = true,
+        nvim_lsp = true,
+        nvim_lua = true
+    }
+}

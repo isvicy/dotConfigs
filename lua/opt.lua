@@ -12,10 +12,10 @@ end
 -- Settings
 local indent = 4
 
-opt('b', 'expandtab', true)
 opt('b', 'shiftwidth', indent)
-opt('b', 'smartindent', true)
 opt('b', 'tabstop', indent)
+opt('b', 'expandtab', true)
+opt('b', 'smartindent', true)
 opt('o', 'termguicolors', true)
 opt('w', 'relativenumber', true)
 opt('w', 'number', true)
@@ -24,18 +24,18 @@ opt('o', 'ignorecase', true)
 opt('o', 'smartcase', true)
 opt('o', 'splitbelow', true)
 opt('o', 'splitright', true)
+opt('o', 'wildmenu', true)
 opt('o', 'wildmode', 'longest:full,full')
 opt('w', 'wrap', false)
-opt('o', 'completeopt', 'menuone,noinsert,noselect')
 
 -- Cmd
 cmd 'set nocompatible'
 cmd 'set noswapfile'
 cmd 'set nobackup'
 cmd 'set nowritebackup'
-cmd 'colorscheme spaceodyssey'
 cmd 'set noshowmode'
 cmd 'set list listchars=tab:\\|\\ ,trail:▫ '
+cmd 'colorscheme spaceodyssey'
 
 -- Set
 set('mouse', '')
