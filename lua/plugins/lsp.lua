@@ -89,9 +89,6 @@ lsp.gopls.setup {
 -- ccls
 lsp.ccls.setup {}
 
--- texlab
-lsp.texlab.setup {}
-
 -- json
 lsp.jsonls.setup {
     commands = {
