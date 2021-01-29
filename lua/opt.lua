@@ -36,6 +36,7 @@ cmd 'set nowritebackup'
 cmd 'set noshowmode'
 cmd 'set list listchars=tab:\\|\\ ,trail:▫ '
 cmd 'colorscheme spaceodyssey'
+cmd 'abbr rg Rg'
 
 -- Set
 set('mouse', '')
