@@ -10,6 +10,8 @@ function nvim_func.compile_run_cpp(orientation, size)
         fn.chansend(terminal_id, string.format("g++ %s && ./a.out\n", file_path))
     elseif file_type == 'go' then
         fn.chansend(terminal_id, string.format("go run %s\n", file_path))
+    elseif file_type == 'rust' then
+        fn.chansend(terminal_id, "cargo run\n")
     else
         error("Unsupported filetype")
     end
