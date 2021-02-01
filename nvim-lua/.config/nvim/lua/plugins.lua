@@ -58,4 +58,5 @@ return require('packer').startup(function(use)
         requires = {'kyazdani42/nvim-web-devicons', opt = true} -- https://github.com/kyazdani42/nvim-web-devicons
     }
     use 'skywind3000/asyncrun.vim' -- https://github.com/skywind3000/asyncrun.vim
+    use 'hotoo/pangu.vim' -- https://github.com/hotoo/pangu.vim
 end)
