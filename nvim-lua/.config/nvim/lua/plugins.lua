@@ -12,6 +12,7 @@ return require('packer').startup(function(use)
 
     -- nvim specified stuff
     use 'neovim/nvim-lspconfig' -- https://github.com/neovim/nvim-lspconfig
+    use 'kosayoda/nvim-lightbulb' -- https://github.com/kosayoda/nvim-lightbulb
     use {
         'nvim-telescope/telescope.nvim',
         requires = {

@@ -4,12 +4,12 @@
 -- ██║╚██╗██║╚██╗ ██╔╝██║██║╚██╔╝██║   ██║     ██║   ██║██╔══██║
 -- ██║ ╚████║ ╚████╔╝ ██║██║ ╚═╝ ██║██╗███████╗╚██████╔╝██║  ██║
 -- ╚═╝  ╚═══╝  ╚═══╝  ╚═╝╚═╝     ╚═╝╚═╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝
+-- Plugin Manager
+require('plugins')
+
 -- General
 require('opt')
 require('map')
-
--- Plugin Manager
-require('plugins')
 
 -- Plugins Settings
 require('plugins.map')

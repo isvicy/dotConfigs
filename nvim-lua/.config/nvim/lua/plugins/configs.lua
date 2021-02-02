@@ -2,6 +2,7 @@
 --
 local g = vim.g
 local o = vim.o
+local cmd = vim.cmd
 
 -- Colorizer
 require'colorizer'.setup()
@@ -35,3 +36,6 @@ require'compe'.setup {
         nvim_lua = true
     }
 }
+
+-- Nvim-lightbulb
+cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
