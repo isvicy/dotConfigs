@@ -1,5 +1,12 @@
 # dotConfigs
+
 self collection of dot configs for nvim and tmux
+
+## deps
+
+* ripgrep
+* fzf
+* ctags
 
 ## nvim-config-lua
 
