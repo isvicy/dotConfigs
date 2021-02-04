@@ -54,7 +54,7 @@ return require('packer').startup(function(use)
     use 'lewis6991/gitsigns.nvim' -- https://github.com/lewis6991/gitsigns.nvim
 
     -- Theme && status line
-    use 'Dualspc/spaceodyssey' -- https://github.com/Dualspc/spaceodyssey
+    use 'bryceyang/spaceodyssey' -- https://github.com/bryceyang/spaceodyssey
     use 'sainnhe/gruvbox-material' -- https://github.com/sainnhe/gruvbox-material
     use {
         'glepnir/galaxyline.nvim', -- https://github.com/glepnir/galaxyline.nvim
