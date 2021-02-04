@@ -27,6 +27,7 @@ opt('o', 'splitright', true)
 opt('o', 'wildmenu', true)
 opt('o', 'wildmode', 'longest:full,full')
 opt('w', 'wrap', false)
+opt('w', 'colorcolumn', '80')
 
 -- Cmd
 cmd 'set nocompatible'

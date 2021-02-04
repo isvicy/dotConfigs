@@ -39,3 +39,13 @@ require'compe'.setup {
 
 -- Nvim-lightbulb
 cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
+
+-- Toggleterm
+require"toggleterm".setup {
+    size = 20,
+    open_mapping = [[<c-\>]],
+    shade_filetypes = {},
+    shade_terminals = true,
+    persist_size = true,
+    direction = 'horizontal'
+}
