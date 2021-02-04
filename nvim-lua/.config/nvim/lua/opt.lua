@@ -40,6 +40,7 @@ cmd 'colorscheme spaceodyssey'
 cmd 'abbr rg Rg'
 
 -- Set
+set('clipboard', 'unnamedplus')
 set('mouse', '')
 set('cmdheight', 2)
 set('foldmethod', 'expr')
