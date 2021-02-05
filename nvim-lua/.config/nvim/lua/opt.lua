@@ -41,6 +41,7 @@ cmd 'abbr rg Rg'
 
 -- Set
 set('clipboard', 'unnamedplus')
+set('signcolumn', 'yes')
 set('mouse', '')
 set('cmdheight', 2)
 set('foldmethod', 'expr')
