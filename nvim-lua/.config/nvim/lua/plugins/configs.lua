@@ -71,3 +71,7 @@ require'bufferline'.setup {
         show_buffer_close_icons = false
     }
 }
+
+-- CtrlSF
+g['ctrlsf_auto_focus'] = {at = "start"}
+g['ctrlsf_position'] = 'right'
