@@ -52,3 +52,22 @@ require"toggleterm".setup {
 
 -- Vim-wiki
 g['vimwiki_list'] = {{path = '~/vimwiki/', syntax = 'markdown', ext = '.md'}}
+
+-- LSP saga
+require'lspsaga'.init_lsp_saga {
+    use_saga_diagnostic_sign = false,
+    max_diag_msg_width = 80
+}
+
+-- BufferLine
+require'bufferline'.setup {
+    options = {
+        numbers = "buffer_id",
+        diagnostic = "nvim_lsp",
+        diagnostics_indicator = function(count, level)
+            local icon = level:match("error") and " " or ""
+            return " " .. icon .. count
+        end,
+        show_buffer_close_icons = false
+    }
+}

@@ -13,6 +13,7 @@ return require('packer').startup(function(use)
     -- nvim specified stuff
     use 'neovim/nvim-lspconfig' -- https://github.com/neovim/nvim-lspconfig
     use 'kosayoda/nvim-lightbulb' -- https://github.com/kosayoda/nvim-lightbulb
+    use 'glepnir/lspsaga.nvim' -- https://github.com/glepnir/lspsaga.nvim
     use {
         'nvim-telescope/telescope.nvim',
         requires = {
@@ -20,7 +21,6 @@ return require('packer').startup(function(use)
             'nvim-lua/plenary.nvim'
         } -- https://github.com/nvim-lua/plenary.nvim
     } -- https://github.com/nvim-telescope/telescope.nvim
-    use 'nvim-telescope/telescope-fzf-writer.nvim' -- https://github.com/nvim-telescope/telescope-fzf-writer.nvim
     use 'nvim-treesitter/nvim-treesitter' -- https://github.com/nvim-treesitter/nvim-treesitter
     use 'nvim-treesitter/nvim-treesitter-textobjects' -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
     -- auto completion
@@ -30,14 +30,12 @@ return require('packer').startup(function(use)
     use 'szw/vim-maximizer' -- https://github.com/szw/vim-maximizer
     -- Auto pair
     use 'cohama/lexima.vim' -- https://github.com/cohama/lexima.vim
+    -- Term
     use 'voldikss/vim-floaterm' -- https://github.com/voldikss/vim-floaterm
     use 'akinsho/nvim-toggleterm.lua' -- https://github.com/akinsho/nvim-toggleterm.lua
+    -- Surround
     use 'machakann/vim-sandwich' -- https://github.com/machakann/vim-sandwich
     use 'norcalli/nvim-colorizer.lua' -- https://github.com/norcalli/nvim-colorizer.lua
-    use {
-        'junegunn/fzf.vim', -- https://github.com/junegunn/fzf.vim
-        requires = {'junegunn/fzf', run = function() fn['fzf#install']() end}
-    }
     use {
         'ms-jpq/chadtree', -- https://github.com/ms-jpq/chadtree
         branch = 'chad',
@@ -47,12 +45,12 @@ return require('packer').startup(function(use)
         'iamcco/markdown-preview.nvim', -- https://github.com/iamcco/markdown-preview.nvim
         run = 'cd app && yarn install'
     }
-    use {
-        'vimwiki/vimwiki' -- https://github.com/vimwiki/vimwiki
-    }
+    use 'vimwiki/vimwiki' -- https://github.com/vimwiki/vimwiki
+    use 'akinsho/nvim-bufferline.lua' -- https://github.com/akinsho/nvim-bufferline.lua
+    -- CocSearch alternative
+    use 'dyng/ctrlsf.vim'
 
     -- Programming related
-    use 'gfanto/fzf-lsp.nvim' -- https://github.com/gfanto/fzf-lsp.nvim
     use 'b3nj5m1n/kommentary' -- https://github.com/b3nj5m1n/kommentary
     use 'liuchengxu/vista.vim' -- https://github.com/liuchengxu/vista.vim
     use 'ludovicchabant/vim-gutentags' -- https://github.com/ludovicchabant/vim-gutentags
