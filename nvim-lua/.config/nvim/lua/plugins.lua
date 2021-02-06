@@ -1,6 +1,5 @@
 -- Package manager
 local cmd = vim.cmd
-local fn = vim.fn
 
 -- Package Manager
 cmd [[packadd packer.nvim]] -- load the package manager

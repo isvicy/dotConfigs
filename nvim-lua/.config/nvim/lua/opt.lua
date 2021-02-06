@@ -22,8 +22,6 @@ opt('w', 'number', true)
 opt('o', 'hidden', true)
 opt('o', 'ignorecase', true)
 opt('o', 'smartcase', true)
-opt('o', 'splitbelow', true)
-opt('o', 'splitright', true)
 opt('o', 'wildmenu', true)
 opt('o', 'wildmode', 'longest:full,full')
 opt('w', 'wrap', false)
@@ -35,6 +33,8 @@ cmd 'set noswapfile'
 cmd 'set nobackup'
 cmd 'set nowritebackup'
 cmd 'set noshowmode'
+cmd 'set splitbelow'
+cmd 'set splitright'
 cmd 'set list listchars=tab:\\|\\ ,trail:▫ '
 cmd 'colorscheme spaceodyssey'
 cmd 'abbr rg Rg'

@@ -62,3 +62,6 @@ utils.map('n', '<leader>z', ':MaximizerToggle!<CR>')
 -- Nvim-compe
 utils.map('i', '<CR>', "compe#confirm(lexima#expand('<LT>CR>', 'i'))",
           {expr = true})
+
+-- CtrlSF
+utils.map('n', '<leader>rw', ':CtrlSF <C-R><C-W><CR>')
