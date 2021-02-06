@@ -43,6 +43,13 @@ return require('packer').startup(function(use)
         branch = 'chad',
         run = 'python3 -m chadtree deps'
     }
+    use {
+        'iamcco/markdown-preview.nvim', -- https://github.com/iamcco/markdown-preview.nvim
+        run = 'cd app && yarn install'
+    }
+    use {
+        'vimwiki/vimwiki' -- https://github.com/vimwiki/vimwiki
+    }
 
     -- Programming related
     use 'gfanto/fzf-lsp.nvim' -- https://github.com/gfanto/fzf-lsp.nvim

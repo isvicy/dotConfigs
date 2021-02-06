@@ -49,3 +49,6 @@ require"toggleterm".setup {
     persist_size = true,
     direction = 'horizontal'
 }
+
+-- Vim-wiki
+g['vimwiki_list'] = {{path = '~/vimwiki/', syntax = 'markdown', ext = '.md'}}
