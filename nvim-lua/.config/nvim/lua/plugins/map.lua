@@ -11,6 +11,7 @@ utils.map('n', 'g[', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
 utils.map('n', 'g]', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
 utils.map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
 utils.map('n', 'gf', '<cmd>lua vim.lsp.buf.formatting()<CR>')
+utils.map('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
 -- Telescope
 utils.map('n', '<C-p>',
           "<cmd>lua require'telescope.builtin'.find_files({hidden=true})<CR>")
@@ -18,8 +19,8 @@ utils.map('n', 'gtr', "<cmd>lua require'telescope.builtin'.lsp_references()<CR>"
 utils.map('n', '<Leader>gw',
           "<cmd>lua require'telescope.builtin'.live_grep()<CR>")
 -- lsp saga
-utils.map('n', 'gh', "<cmd>lua require'lspsaga.provider'.lsp_finder()<CR>")
-utils.map('n', 'gd',
+utils.map('n', 'gr', "<cmd>lua require'lspsaga.provider'.lsp_finder()<CR>")
+utils.map('n', 'gp',
           "<cmd>lua require'lspsaga.provider'.preview_definition()<CR>")
 utils.map('n', '<leader>rn', "<cmd>lua require('lspsaga.rename').rename()<CR>")
 utils.map('n', 'gs',
