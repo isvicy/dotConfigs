@@ -30,18 +30,18 @@ ts.setup {
         move = {
             enable = true,
             goto_next_start = {
-                ["nf"] = "@function.outer",
-                ["ns"] = "@class.outer",
-                ["nc"] = "@conditional.outer",
-                ["nl"] = "@loop.outer",
-                ["nb"] = "@block.outer"
+                ["tf"] = "@function.outer",
+                ["ts"] = "@class.outer",
+                ["tc"] = "@conditional.outer",
+                ["tl"] = "@loop.outer",
+                ["tb"] = "@block.outer"
             },
             goto_previous_start = {
-                ["Nf"] = "@function.outer",
-                ["Ns"] = "@class.outer",
-                ["Nc"] = "@conditional.outer",
-                ["Nl"] = "@loop.outer",
-                ["Nb"] = "@block.outer"
+                ["tf"] = "@function.outer",
+                ["ts"] = "@class.outer",
+                ["tc"] = "@conditional.outer",
+                ["tl"] = "@loop.outer",
+                ["tb"] = "@block.outer"
             }
         },
         lsp_interop = {
