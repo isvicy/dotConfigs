@@ -8,7 +8,7 @@ local cmd = vim.cmd
 require'colorizer'.setup()
 
 -- Vista
-g['vista_default_executive'] = 'nvim-lsp'
+g['vista_default_executive'] = 'nvim_lsp'
 
 -- Nvim-compe
 o.completeopt = "menu,menuone,noselect"
