@@ -49,10 +49,7 @@ require"toggleterm".setup {
 g['vimwiki_list'] = {{path = '~/vimwiki/', syntax = 'markdown', ext = '.md'}}
 
 -- LSP saga
-require'lspsaga'.init_lsp_saga {
-    use_saga_diagnostic_sign = false,
-    max_diag_msg_width = 80
-}
+require'lspsaga'.init_lsp_saga {use_saga_diagnostic_sign = false}
 
 -- BufferLine
 require'bufferline'.setup {

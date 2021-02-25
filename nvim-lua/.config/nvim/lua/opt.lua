@@ -36,6 +36,8 @@ cmd 'set noshowmode'
 cmd 'set splitbelow'
 cmd 'set splitright'
 cmd 'set list listchars=tab:\\|\\ ,trail:▫ '
+cmd 'filetype plugin on'
+cmd 'syntax on'
 cmd 'colorscheme spaceodyssey'
 cmd 'abbr rg Rg'
 
