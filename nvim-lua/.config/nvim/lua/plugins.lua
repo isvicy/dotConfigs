@@ -47,7 +47,11 @@ return require('packer').startup(function(use)
     use 'vimwiki/vimwiki' -- https://github.com/vimwiki/vimwiki
     use 'akinsho/nvim-bufferline.lua' -- https://github.com/akinsho/nvim-bufferline.lua
     -- CocSearch alternative
-    use 'dyng/ctrlsf.vim'
+    use 'dyng/ctrlsf.vim' -- https://github.com/dyng/ctrlsf.vim
+    -- Snippets
+    use 'SirVer/ultisnips' -- https://github.com/SirVer/ultisnips
+    use 'honza/vim-snippets' -- https://github.com/honza/vim-snippets
+    use 'epilande/vim-react-snippets' -- https://github.com/epilande/vim-react-snippets
 
     -- Programming related
     use 'b3nj5m1n/kommentary' -- https://github.com/b3nj5m1n/kommentary
