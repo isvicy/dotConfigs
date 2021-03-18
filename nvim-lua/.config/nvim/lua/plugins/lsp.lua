@@ -1,8 +1,6 @@
 -- LSP Setup
 local fn = vim.fn
 local cmd = vim.cmd
--- local g = vim.g
-
 local lsp = require 'lspconfig'
 
 -- Bash-Language-Server
@@ -49,13 +47,6 @@ lsp.sumneko_lua.setup {
         }
     }
 }
-
--- wait for solution by nlua
-
--- local custom_nvim_lspconfig_attach = function(...) end
--- require('nlua.lsp.nvim').setup(require('lspconfig'), {
---     on_attach = custom_nvim_lspconfig_attach
--- })
 
 -- Typescript
 lsp.tsserver.setup {}
@@ -118,9 +109,6 @@ cmd 'sign define LspDiagnosticsSignError text='
 cmd 'sign define LspDiagnosticsSignWarning text=ﰣ'
 cmd 'sign define LspDiagnosticsSignInformation text='
 cmd 'sign define LspDiagnosticsSignHint text='
-
--- disable auto popup
--- g['completion_enable_auto_popup'] = 0
 
 -- show line diagnostic
 vim.api.nvim_command(

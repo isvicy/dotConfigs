@@ -2,7 +2,6 @@
 --
 local g = vim.g
 local o = vim.o
-local cmd = vim.cmd
 
 -- Colorizer
 require'colorizer'.setup()
