@@ -1,4 +1,4 @@
-HISTFILE=~/.zsh_history
+HISTFILE=$HOME/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 ## History command configuration from ZSH
@@ -14,12 +14,13 @@ export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$HOME/.local/bin
 
-source $HOME/antigen.zsh
+source $HOME/.antigen.zsh
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
 antigen apply
 
 alias rc="nvim $HOME/.zshrc"
+alias history="history 0"
 
 eval "$(starship init zsh)"
 
@@ -27,3 +28,4 @@ eval "$(starship init zsh)"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+

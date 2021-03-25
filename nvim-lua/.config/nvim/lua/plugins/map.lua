@@ -11,7 +11,6 @@ utils.map('n', 'g[', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
 utils.map('n', 'g]', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
 utils.map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
 utils.map('n', 'gf', '<cmd>lua vim.lsp.buf.formatting()<CR>')
-utils.map('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
 -- Telescope
 utils.map('n', '<C-p>',
           "<cmd>lua require'telescope.builtin'.find_files({hidden=true})<CR>")
@@ -44,6 +43,7 @@ utils.map('n', '<leader>g', '<cmd>Telescope git_commits<CR>')
 utils.map('n', '<leader>ts', '<cmd>Telescope git_status<CR>')
 utils.map('n', '<leader>gb', '<cmd>Telescope git_branches<CR>')
 utils.map('n', '<leader>rl', '<cmd>Telescope reloader<CR>')
+utils.map('n', 'gd', '<cmd>Telescope lsp_definitions<CR>')
 
 -- CHAD-Tree
 utils.map('n', '<leader>e', '<cmd>CHADopen<CR>')
