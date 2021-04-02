@@ -44,6 +44,7 @@ return require('packer').startup(function(use)
         run = 'cd app && yarn install'
     }
     use 'vimwiki/vimwiki' -- https://github.com/vimwiki/vimwiki
+    use 'michal-h21/vimwiki-sync' -- https://github.com/michal-h21/vimwiki-sync
     use 'akinsho/nvim-bufferline.lua' -- https://github.com/akinsho/nvim-bufferline.lua
     -- CocSearch alternative
     use 'dyng/ctrlsf.vim' -- https://github.com/dyng/ctrlsf.vim
