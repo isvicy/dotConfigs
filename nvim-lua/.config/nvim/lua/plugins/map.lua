@@ -45,8 +45,8 @@ utils.map('n', '<leader>gb', '<cmd>Telescope git_branches<CR>')
 utils.map('n', '<leader>rl', '<cmd>Telescope reloader<CR>')
 utils.map('n', 'gd', '<cmd>Telescope lsp_definitions<CR>')
 
--- CHAD-Tree
-utils.map('n', '<leader>e', '<cmd>CHADopen<CR>')
+-- Nvim-tree
+utils.map('n', '<leader>e', '<cmd>NvimTreeToggle<CR>')
 
 -- fugitive
 utils.map('n', '<leader>gs', '<cmd>G<CR>')

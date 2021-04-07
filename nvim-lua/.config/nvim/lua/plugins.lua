@@ -21,11 +21,16 @@ return require('packer').startup(function(use)
     } -- https://github.com/nvim-telescope/telescope.nvim
     use 'nvim-treesitter/nvim-treesitter' -- https://github.com/nvim-treesitter/nvim-treesitter
     use 'nvim-treesitter/nvim-treesitter-textobjects' -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+    use 'romgrk/nvim-treesitter-context' -- https://github.com/romgrk/nvim-treesitter-context
     -- auto completion
     use 'hrsh7th/nvim-compe' -- https://github.com/hrsh7th/nvim-compe
 
     -- Enhance
     use 'szw/vim-maximizer' -- https://github.com/szw/vim-maximizer
+    use {
+        'kyazdani42/nvim-tree.lua', -- https://github.com/kyazdani42/nvim-tree.lua
+        requires = {'kyazdani42/nvim-web-devicons', opt = true} -- https://github.com/kyazdani42/nvim-web-devicons
+    }
     -- Auto pair
     use 'cohama/lexima.vim' -- https://github.com/cohama/lexima.vim
     -- Term
@@ -34,15 +39,6 @@ return require('packer').startup(function(use)
     -- Surround
     use 'machakann/vim-sandwich' -- https://github.com/machakann/vim-sandwich
     use 'norcalli/nvim-colorizer.lua' -- https://github.com/norcalli/nvim-colorizer.lua
-    use {
-        'ms-jpq/chadtree', -- https://github.com/ms-jpq/chadtree
-        branch = 'chad',
-        run = 'python3 -m chadtree deps'
-    }
-    use {
-        'iamcco/markdown-preview.nvim', -- https://github.com/iamcco/markdown-preview.nvim
-        run = 'cd app && yarn install'
-    }
     use 'vimwiki/vimwiki' -- https://github.com/vimwiki/vimwiki
     use 'michal-h21/vimwiki-sync' -- https://github.com/michal-h21/vimwiki-sync
     use 'akinsho/nvim-bufferline.lua' -- https://github.com/akinsho/nvim-bufferline.lua

@@ -72,3 +72,8 @@ require'bufferline'.setup {
 -- CtrlSF
 g['ctrlsf_auto_focus'] = {at = "start"}
 g['ctrlsf_position'] = 'right'
+
+-- Nvim-tree
+g['nvim_tree_ignore'] = {'.git', 'node_modules', '.cache'}
+g['nvim_tree_auto_close'] = 1
+g['nvim_tree_follow'] = 1
