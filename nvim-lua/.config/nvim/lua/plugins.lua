@@ -60,6 +60,7 @@ return require('packer').startup(function(use)
     -- Theme && status line
     use 'bryceyang/spaceodyssey' -- https://github.com/bryceyang/spaceodyssey
     use 'sainnhe/gruvbox-material' -- https://github.com/sainnhe/gruvbox-material
+    use "kdav5758/TrueZen.nvim" -- https://github.com/kdav5758/TrueZen.nvim
     use {
         'glepnir/galaxyline.nvim', -- https://github.com/glepnir/galaxyline.nvim
         branch = 'main',
