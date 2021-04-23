@@ -24,6 +24,10 @@ return require('packer').startup(function(use)
     use 'romgrk/nvim-treesitter-context' -- https://github.com/romgrk/nvim-treesitter-context
     -- auto completion
     use 'hrsh7th/nvim-compe' -- https://github.com/hrsh7th/nvim-compe
+    use {
+        "folke/lsp-trouble.nvim", -- https://github.com/folke/lsp-trouble.nvim
+        requires = {'kyazdani42/nvim-web-devicons', opt = true} -- https://github.com/kyazdani42/nvim-web-devicons
+    }
 
     -- Enhance
     use 'szw/vim-maximizer' -- https://github.com/szw/vim-maximizer

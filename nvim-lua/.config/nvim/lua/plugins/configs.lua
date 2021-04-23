@@ -69,6 +69,9 @@ require'bufferline'.setup {
     }
 }
 
+-- LSP trouble
+require("trouble").setup()
+
 -- CtrlSF
 g['ctrlsf_auto_focus'] = {at = "start"}
 g['ctrlsf_position'] = 'right'
