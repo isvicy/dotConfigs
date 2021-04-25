@@ -22,6 +22,7 @@ return require('packer').startup(function(use)
     use 'nvim-treesitter/nvim-treesitter' -- https://github.com/nvim-treesitter/nvim-treesitter
     use 'nvim-treesitter/nvim-treesitter-textobjects' -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
     use 'romgrk/nvim-treesitter-context' -- https://github.com/romgrk/nvim-treesitter-context
+    use 'haringsrob/nvim_context_vt' -- https://github.com/haringsrob/nvim_context_vt
     -- auto completion
     use 'hrsh7th/nvim-compe' -- https://github.com/hrsh7th/nvim-compe
     use {
