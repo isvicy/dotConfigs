@@ -65,3 +65,6 @@ utils.map('i', '<CR>', "compe#confirm(lexima#expand('<LT>CR>', 'i'))",
 
 -- CtrlSF
 utils.map('n', '<leader>rw', ':CtrlSF <C-R><C-W><CR>')
+
+-- Vista
+utils.map('n', '<C-l>', ':Vista!!<CR>')
