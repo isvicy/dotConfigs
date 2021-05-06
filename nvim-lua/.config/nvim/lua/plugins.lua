@@ -61,6 +61,7 @@ return require('packer').startup(function(use)
     -- Git
     use 'tpope/vim-fugitive' -- https://github.com/tpope/vim-fugitive
     use 'lewis6991/gitsigns.nvim' -- https://github.com/lewis6991/gitsigns.nvim
+    use 'sindrets/diffview.nvim' -- https://github.com/sindrets/diffview.nvim
 
     -- Theme && status line
     use 'bryceyang/spaceodyssey' -- https://github.com/bryceyang/spaceodyssey
