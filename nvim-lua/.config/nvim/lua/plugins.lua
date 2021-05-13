@@ -57,7 +57,6 @@ return require('packer').startup(function(use)
     -- Programming related
     use 'b3nj5m1n/kommentary' -- https://github.com/b3nj5m1n/kommentary
     use 'liuchengxu/vista.vim' -- https://github.com/liuchengxu/vista.vim
-    use 'ludovicchabant/vim-gutentags' -- https://github.com/ludovicchabant/vim-gutentags
     -- Git
     use 'tpope/vim-fugitive' -- https://github.com/tpope/vim-fugitive
     use 'lewis6991/gitsigns.nvim' -- https://github.com/lewis6991/gitsigns.nvim
