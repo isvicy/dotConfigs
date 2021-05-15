@@ -2,12 +2,21 @@
 local fn = vim.fn
 local cmd = vim.cmd
 local lsp = require 'lspconfig'
+local lsp_status = require('lsp-status')
+lsp_status.register_progress()
 
 -- Bash-Language-Server
-lsp.bashls.setup {filetypes = {"sh", "zsh", "bash"}}
+lsp.bashls.setup {
+    filetypes = {"sh", "zsh", "bash"},
+    on_attach = lsp_status.on_attach,
+    capabilities = lsp_status.capabilities
+}
 
 -- Json
-lsp.jsonls.setup {}
+lsp.jsonls.setup {
+    on_attach = lsp_status.on_attach,
+    capabilities = lsp_status.capabilities
+}
 
 -- Lua
 local system_name
@@ -25,6 +34,8 @@ local sumneko_binary = sumneko_root_path .. "/bin/" .. system_name ..
 
 lsp.sumneko_lua.setup {
     cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
+    on_attach = lsp_status.on_attach,
+    capabilities = lsp_status.capabilities,
     settings = {
         Lua = {
             runtime = {
@@ -49,24 +60,37 @@ lsp.sumneko_lua.setup {
 }
 
 -- Typescript
-lsp.tsserver.setup {}
+lsp.tsserver.setup {
+    on_attach = lsp_status.on_attach,
+    capabilities = lsp_status.capabilities
+}
 
 -- Vue
-lsp.vuels.setup {}
+lsp.vuels.setup {
+    on_attach = lsp_status.on_attach,
+    capabilities = lsp_status.capabilities
+}
 
 -- Python
 lsp.pyls.setup({
     enable = true,
     root_dir = lsp.util.root_pattern('.git', fn.getcwd()),
-    plugins = {pyls_mypy = {enabled = true, live_mode = false}}
+    plugins = {pyls_mypy = {enabled = true, live_mode = false}},
+    on_attach = lsp_status.on_attach,
+    capabilities = lsp_status.capabilities
 })
 
 -- Rust
-lsp.rust_analyzer.setup {}
+lsp.rust_analyzer.setup {
+    on_attach = lsp_status.on_attach,
+    capabilities = lsp_status.capabilities
+}
 
 -- Golang
 lsp.gopls.setup {
     cmd = {"gopls", "serve"},
+    on_attach = lsp_status.on_attach,
+    capabilities = lsp_status.capabilities,
     settings = {
         gopls = {
             analyses = {unusedparams = true, nonewvars = true},
@@ -78,7 +102,10 @@ lsp.gopls.setup {
 }
 
 -- ccls
-lsp.ccls.setup {}
+lsp.ccls.setup {
+    on_attach = lsp_status.on_attach,
+    capabilities = lsp_status.capabilities
+}
 
 -- json
 lsp.jsonls.setup {
@@ -88,7 +115,9 @@ lsp.jsonls.setup {
                 vim.lsp.buf.range_formatting({}, {0, 0}, {vim.fn.line("$"), 0})
             end
         }
-    }
+    },
+    on_attach = lsp_status.on_attach,
+    capabilities = lsp_status.capabilities
 }
 
 -- diagnostics

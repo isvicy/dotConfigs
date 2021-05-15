@@ -158,6 +158,10 @@ gls.left[8] = {
     }
 }
 
+gls.left[9] = {
+    LeftEnd = {provider = function() return require('lsp-status').status() end}
+}
+
 -- Right side
 gls.right[1] = {
     DiagnosticError = {

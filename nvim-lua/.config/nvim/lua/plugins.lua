@@ -12,6 +12,7 @@ return require('packer').startup(function(use)
     -- nvim specified stuff
     use 'neovim/nvim-lspconfig' -- https://github.com/neovim/nvim-lspconfig
     use 'glepnir/lspsaga.nvim' -- https://github.com/glepnir/lspsaga.nvim
+    use 'nvim-lua/lsp-status.nvim' -- https://github.com/nvim-lua/lsp-status.nvim
     use {
         'nvim-telescope/telescope.nvim',
         requires = {
