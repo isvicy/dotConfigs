@@ -27,8 +27,9 @@ return require('packer').startup(function(use)
     -- auto completion
     use 'hrsh7th/nvim-compe' -- https://github.com/hrsh7th/nvim-compe
     use {
-        "folke/lsp-trouble.nvim", -- https://github.com/folke/lsp-trouble.nvim
-        requires = {'kyazdani42/nvim-web-devicons', opt = true} -- https://github.com/kyazdani42/nvim-web-devicons
+        "folke/trouble.nvim", -- https://github.com/folke/trouble.nvim
+        requires = "kyazdani42/nvim-web-devicons",
+        config = function() require("trouble").setup {} end
     }
 
     -- Enhance
@@ -44,7 +45,11 @@ return require('packer').startup(function(use)
     use 'akinsho/nvim-toggleterm.lua' -- https://github.com/akinsho/nvim-toggleterm.lua
     -- Surround
     use 'machakann/vim-sandwich' -- https://github.com/machakann/vim-sandwich
-    use 'norcalli/nvim-colorizer.lua' -- https://github.com/norcalli/nvim-colorizer.lua
+    use {
+        'norcalli/nvim-colorizer.lua', -- https://github.com/norcalli/nvim-colorizer.lua
+        config = function() require'colorizer'.setup() end
+
+    }
     use 'vimwiki/vimwiki' -- https://github.com/vimwiki/vimwiki
     use 'michal-h21/vimwiki-sync' -- https://github.com/michal-h21/vimwiki-sync
     use 'akinsho/nvim-bufferline.lua' -- https://github.com/akinsho/nvim-bufferline.lua
@@ -58,6 +63,10 @@ return require('packer').startup(function(use)
     -- Programming related
     use 'b3nj5m1n/kommentary' -- https://github.com/b3nj5m1n/kommentary
     use 'liuchengxu/vista.vim' -- https://github.com/liuchengxu/vista.vim
+    use {
+        "folke/todo-comments.nvim", -- https://github.com/folke/todo-comments.nvim
+        config = function() require("todo-comments").setup {} end
+    }
     -- Git
     use 'tpope/vim-fugitive' -- https://github.com/tpope/vim-fugitive
     use 'lewis6991/gitsigns.nvim' -- https://github.com/lewis6991/gitsigns.nvim
@@ -69,7 +78,6 @@ return require('packer').startup(function(use)
     use "kdav5758/TrueZen.nvim" -- https://github.com/kdav5758/TrueZen.nvim
     use {
         'glepnir/galaxyline.nvim', -- https://github.com/glepnir/galaxyline.nvim
-        branch = 'main',
         requires = {'kyazdani42/nvim-web-devicons', opt = true} -- https://github.com/kyazdani42/nvim-web-devicons
     }
     use 'skywind3000/asyncrun.vim' -- https://github.com/skywind3000/asyncrun.vim

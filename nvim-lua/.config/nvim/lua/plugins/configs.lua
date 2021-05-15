@@ -3,9 +3,6 @@
 local g = vim.g
 local o = vim.o
 
--- Colorizer
-require'colorizer'.setup()
-
 -- Vista
 g['vista_default_executive'] = 'nvim_lsp'
 
@@ -68,9 +65,6 @@ require'bufferline'.setup {
         show_buffer_close_icons = false
     }
 }
-
--- LSP trouble
-require("trouble").setup()
 
 -- CtrlSF
 g['ctrlsf_auto_focus'] = {at = "start"}
