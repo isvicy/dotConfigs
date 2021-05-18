@@ -159,7 +159,10 @@ gls.left[8] = {
 }
 
 gls.left[9] = {
-    LeftEnd = {provider = function() return require('lsp-status').status() end}
+    LeftEnd = {
+        provider = function() return require('lsp-status').status() end,
+        icon = ' LSP:'
+    }
 }
 
 -- Right side

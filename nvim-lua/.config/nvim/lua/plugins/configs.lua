@@ -116,5 +116,5 @@ require'lsp-status'.config({
     indicator_info = 'i',
     indicator_hint = '?',
     indicator_ok = 'Ok',
-    status_symbol = 'V'
+    status_symbol = ''
 })

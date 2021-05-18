@@ -77,9 +77,13 @@ return require('packer').startup(function(use)
     use 'sainnhe/gruvbox-material' -- https://github.com/sainnhe/gruvbox-material
     use "kdav5758/TrueZen.nvim" -- https://github.com/kdav5758/TrueZen.nvim
     use {
+        'hoob3rt/lualine.nvim', -- https://github.com/hoob3rt/lualine.nvim
+        requires = {'kyazdani42/nvim-web-devicons', opt = true}
+    }
+    --[[ use {
         'glepnir/galaxyline.nvim', -- https://github.com/glepnir/galaxyline.nvim
         requires = {'kyazdani42/nvim-web-devicons', opt = true} -- https://github.com/kyazdani42/nvim-web-devicons
-    }
+    } ]]
     use 'skywind3000/asyncrun.vim' -- https://github.com/skywind3000/asyncrun.vim
     use 'hotoo/pangu.vim' -- https://github.com/hotoo/pangu.vim
 end)
