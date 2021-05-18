@@ -6,9 +6,8 @@
   "diagnostic.virtualText": true,
   "diagnostic.checkCurrentLine": false,
   "diagnostic.virtualTextCurrentLineOnly": false,
-  "diagnostic.refreshAfterSave": false,
   "diagnostic.refreshOnInsertMode": true,
-  "diagnostic.enableMessage": "never",
+  "diagnostic.enableMessage": "always",
   "go.goplsArgs": [
     "-remote",
     "auto",
@@ -25,22 +24,6 @@
     "staticcheck": true
   },
   "languageserver": {
-    "golangci-lint-languageserver": {
-      "command": "golangci-lint-langserver",
-      "filetypes": [
-        "go"
-      ],
-      "initializationOptions": {
-        "command": [
-          "golangci-lint",
-          "run",
-          "--config",
-          "~/.golangci.yml",
-          "--out-format",
-          "json"
-        ]
-      }
-    },
     "ccls": {
       "command": "ccls",
       "filetypes": [
