@@ -111,6 +111,7 @@ require'diffview'.setup {
 
 -- LSP status
 require'lsp-status'.config({
+    diagnostics = false,
     indicator_errors = 'E',
     indicator_warnings = 'W',
     indicator_info = 'i',

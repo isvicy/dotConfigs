@@ -135,38 +135,10 @@ ins_left {
 }
 
 ins_left {
-    'branch',
-    icon = '',
-    condition = conditions.check_git_workspace,
-    color = {fg = colors.violet, gui = 'bold'}
-}
-
-ins_left {
     'filename',
     condition = conditions.buffer_not_empty,
     path = 1,
     color = {fg = colors.magenta, gui = 'bold'}
-}
-
-ins_left {
-    -- filesize component
-    function()
-        local function format_file_size(file)
-            local size = vim.fn.getfsize(file)
-            if size <= 0 then return '' end
-            local sufixes = {'b', 'k', 'm', 'g'}
-            local i = 1
-            while size > 1024 do
-                size = size / 1024
-                i = i + 1
-            end
-            return string.format('%.1f%s', size, sufixes[i])
-        end
-        local file = vim.fn.expand('%:p')
-        if string.len(file) == 0 then return '' end
-        return format_file_size(file)
-    end,
-    condition = conditions.buffer_not_empty
 }
 
 ins_left {
@@ -210,11 +182,41 @@ ins_left {
     color = {fg = '#ffffff', gui = 'bold'}
 }
 
+ins_left {function() return require('lsp-status').status() end}
+
+ins_right {
+    'branch',
+    icon = '',
+    condition = conditions.check_git_workspace,
+    color = {fg = colors.violet, gui = 'bold'}
+}
+
 ins_right {'filetype', colored = true}
 
 ins_right {'location'}
 
 ins_right {'progress', color = {fg = colors.fg, gui = 'bold'}}
+
+ins_right {
+    -- filesize component
+    function()
+        local function format_file_size(file)
+            local size = vim.fn.getfsize(file)
+            if size <= 0 then return '' end
+            local sufixes = {'b', 'k', 'm', 'g'}
+            local i = 1
+            while size > 1024 do
+                size = size / 1024
+                i = i + 1
+            end
+            return string.format('%.1f%s', size, sufixes[i])
+        end
+        local file = vim.fn.expand('%:p')
+        if string.len(file) == 0 then return '' end
+        return format_file_size(file)
+    end,
+    condition = conditions.buffer_not_empty
+}
 
 ins_right {
     function() return '▊' end,
