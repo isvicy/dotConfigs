@@ -13,6 +13,7 @@ return require('packer').startup(function(use)
     use 'neovim/nvim-lspconfig' -- https://github.com/neovim/nvim-lspconfig
     use 'glepnir/lspsaga.nvim' -- https://github.com/glepnir/lspsaga.nvim
     use 'nvim-lua/lsp-status.nvim' -- https://github.com/nvim-lua/lsp-status.nvim
+    use 'ahmedkhalf/lsp-rooter.nvim' -- https://github.com/ahmedkhalf/lsp-rooter.nvim
     use {
         'nvim-telescope/telescope.nvim',
         requires = {
@@ -28,8 +29,8 @@ return require('packer').startup(function(use)
     use 'hrsh7th/nvim-compe' -- https://github.com/hrsh7th/nvim-compe
     use {
         "folke/trouble.nvim", -- https://github.com/folke/trouble.nvim
-        requires = "kyazdani42/nvim-web-devicons",
-        config = function() require("trouble").setup {} end
+        requires = 'kyazdani42/nvim-web-devicons',
+        config = function() require'trouble'.setup {} end
     }
 
     -- Enhance
@@ -47,7 +48,7 @@ return require('packer').startup(function(use)
     use 'machakann/vim-sandwich' -- https://github.com/machakann/vim-sandwich
     use {
         'norcalli/nvim-colorizer.lua', -- https://github.com/norcalli/nvim-colorizer.lua
-        config = function() require'colorizer'.setup() end
+        config = function() require'colorizer'.setup {} end
 
     }
     use 'vimwiki/vimwiki' -- https://github.com/vimwiki/vimwiki
@@ -64,8 +65,8 @@ return require('packer').startup(function(use)
     use 'b3nj5m1n/kommentary' -- https://github.com/b3nj5m1n/kommentary
     use 'liuchengxu/vista.vim' -- https://github.com/liuchengxu/vista.vim
     use {
-        "folke/todo-comments.nvim", -- https://github.com/folke/todo-comments.nvim
-        config = function() require("todo-comments").setup {} end
+        'folke/todo-comments.nvim', -- https://github.com/folke/todo-comments.nvim
+        config = function() require('todo-comments').setup {} end
     }
     -- Git
     use 'tpope/vim-fugitive' -- https://github.com/tpope/vim-fugitive
