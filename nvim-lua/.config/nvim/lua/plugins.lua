@@ -14,6 +14,7 @@ return require('packer').startup(function(use)
     use 'glepnir/lspsaga.nvim' -- https://github.com/glepnir/lspsaga.nvim
     use 'nvim-lua/lsp-status.nvim' -- https://github.com/nvim-lua/lsp-status.nvim
     use 'ahmedkhalf/lsp-rooter.nvim' -- https://github.com/ahmedkhalf/lsp-rooter.nvim
+    use 'ray-x/lsp_signature.nvim' -- https://github.com/ray-x/lsp_signature.nvim
     use {
         'nvim-telescope/telescope.nvim',
         requires = {
