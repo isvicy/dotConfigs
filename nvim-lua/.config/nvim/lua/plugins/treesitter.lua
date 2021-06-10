@@ -6,7 +6,7 @@ local ts = require 'nvim-treesitter.configs'
 ts.setup {
     ensure_installed = {
         'bash', 'rust', 'lua', 'c', 'cpp', 'css', 'go', 'html', 'javascript',
-        'json', 'python', 'typescript'
+        'json', 'python', 'typescript', 'ruby'
     },
     highlight = {enable = true},
     textobjects = {
