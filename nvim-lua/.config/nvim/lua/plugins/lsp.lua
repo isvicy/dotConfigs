@@ -120,6 +120,16 @@ lsp.jsonls.setup {
     capabilities = lsp_status.capabilities
 }
 
+-- ruby
+lsp.solargraph.setup {
+    cmd = {"solargraph", "stdio"},
+    filetypes = {"ruby"},
+    root_dir = lsp.util.root_pattern("Gemfile", ".git"),
+    settings = {solargraph = {diagnostics = true}},
+    on_attach = on_attach,
+    capabilities = lsp_status.capabilities
+}
+
 -- diagnostics
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
     vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
