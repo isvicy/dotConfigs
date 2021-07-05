@@ -6,12 +6,11 @@ telescope.setup {
             'rg', '--hidden', '--color=never', '--no-heading',
             '--with-filename', '--line-number', '--column', '--smart-case'
         },
-        prompt_position = "top",
         prompt_prefix = ">",
         selection_strategy = "reset",
         sorting_strategy = "ascending",
         layout_strategy = "vertical",
-        layout_defaults = {
+        layout_config = {
             horizontal = {
                 width_padding = 0.1,
                 height_padding = 0.1,
@@ -28,10 +27,6 @@ telescope.setup {
         generic_sorter = require'telescope.sorters'.get_generic_fuzzy_sorter,
         shorten_path = true,
         winblend = 0,
-        width = 1,
-        preview_cutoff = 120,
-        results_height = 0.62,
-        results_width = 1,
         border = {},
         borderchars = {'─', '│', '─', '│', '╭', '╮', '╯', '╰'},
         color_devicons = true,
