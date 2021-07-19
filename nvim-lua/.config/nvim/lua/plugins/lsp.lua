@@ -74,15 +74,6 @@ lsp.tsserver.setup {
 -- Vue
 lsp.vuels.setup {on_attach = on_attach, capabilities = lsp_status.capabilities}
 
--- Python
-lsp.pyls.setup({
-    enable = true,
-    root_dir = lsp.util.root_pattern('.git', fn.getcwd()),
-    plugins = {pyls_mypy = {enabled = true, live_mode = false}},
-    on_attach = on_attach,
-    capabilities = lsp_status.capabilities
-})
-
 -- Rust
 lsp.rust_analyzer.setup {
     on_attach = on_attach,
