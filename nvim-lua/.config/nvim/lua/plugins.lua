@@ -13,7 +13,6 @@ return require('packer').startup(function(use)
     use 'neovim/nvim-lspconfig' -- https://github.com/neovim/nvim-lspconfig
     use 'glepnir/lspsaga.nvim' -- https://github.com/glepnir/lspsaga.nvim
     use 'nvim-lua/lsp-status.nvim' -- https://github.com/nvim-lua/lsp-status.nvim
-    use 'ahmedkhalf/lsp-rooter.nvim' -- https://github.com/ahmedkhalf/lsp-rooter.nvim
     use 'ray-x/lsp_signature.nvim' -- https://github.com/ray-x/lsp_signature.nvim
     use {
         'nvim-telescope/telescope.nvim',
@@ -40,6 +39,7 @@ return require('packer').startup(function(use)
         'kyazdani42/nvim-tree.lua', -- https://github.com/kyazdani42/nvim-tree.lua
         requires = {'kyazdani42/nvim-web-devicons', opt = true} -- https://github.com/kyazdani42/nvim-web-devicons
     }
+    use 'camspiers/snap' -- https://github.com/camspiers/snap
     -- Auto pair
     use 'cohama/lexima.vim' -- https://github.com/cohama/lexima.vim
     -- Term
