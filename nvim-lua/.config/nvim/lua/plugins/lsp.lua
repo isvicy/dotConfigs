@@ -21,6 +21,12 @@ lsp.bashls.setup {
     capabilities = lsp_status.capabilities
 }
 
+-- Python pyright
+lsp.pyright.setup {
+    on_attach = on_attach,
+    capabilities = lsp_status.capabilities
+}
+
 -- Json
 lsp.jsonls.setup {on_attach = on_attach, capabilities = lsp_status.capabilities}
 

@@ -51,3 +51,6 @@ set('foldlevel', 5)
 set('foldlevelstart', 5)
 set('foldnestmax', 5)
 set('updatetime', 100)
+
+-- set filetype
+vim.api.nvim_command('autocmd BufNewFile,BufRead *.star set filetype=python')
