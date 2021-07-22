@@ -27,6 +27,9 @@ lsp.pyright.setup {
     capabilities = lsp_status.capabilities
 }
 
+-- efm
+lsp.efm.setup {on_attach = on_attach, capabilities = lsp_status.capabilities}
+
 -- Json
 lsp.jsonls.setup {on_attach = on_attach, capabilities = lsp_status.capabilities}
 
