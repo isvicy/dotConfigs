@@ -59,7 +59,7 @@ return require('packer').startup(function(use)
     -- Snippets
     use 'SirVer/ultisnips' -- https://github.com/SirVer/ultisnips
     use 'honza/vim-snippets' -- https://github.com/honza/vim-snippets
-    use 'epilande/vim-react-snippets' -- https://github.com/epilande/vim-react-snippets
+    use 'mlaursen/vim-react-snippets' -- https://github.com/mlaursen/vim-react-snippets
 
     -- Programming related
     use 'b3nj5m1n/kommentary' -- https://github.com/b3nj5m1n/kommentary
