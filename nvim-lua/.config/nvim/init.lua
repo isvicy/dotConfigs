@@ -20,7 +20,6 @@ require('plugins.telescope')
 require('plugins.lualine')
 require('plugins.gitsigns')
 require('plugins.configs')
-require('plugins.snap')
 
 -- Personal/Testing
 require('personal.nvim_func')

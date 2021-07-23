@@ -39,7 +39,6 @@ return require('packer').startup(function(use)
         'kyazdani42/nvim-tree.lua', -- https://github.com/kyazdani42/nvim-tree.lua
         requires = {'kyazdani42/nvim-web-devicons', opt = true} -- https://github.com/kyazdani42/nvim-web-devicons
     }
-    use 'camspiers/snap' -- https://github.com/camspiers/snap
     -- Auto pair
     use 'cohama/lexima.vim' -- https://github.com/cohama/lexima.vim
     -- Term
