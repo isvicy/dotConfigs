@@ -134,6 +134,5 @@ require'lsp-status'.config({
 })
 
 -- ultisnips
-g['UltiSnipsExpandTrigger'] = "<C-s>"
-g['UltiSnipsJumpForwardTrigger'] = "<C-j>"
-g['UltiSnipsJumpBackwardTrigger'] = "<C-k>"
+g['UltiSnipsJumpForwardTrigger'] = "<leader>j"
+g['UltiSnipsJumpBackwardTrigger'] = "<leader>k"
