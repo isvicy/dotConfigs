@@ -1,0 +1,14 @@
+version: 2
+root-markers:
+  - .git/
+tools:
+  python-isort: &python-isort
+    format-command: 'isort --stdout -'
+    format-stdin: true
+  python-autopep8: &python-autopep8
+    format-command: 'autopep8 -'
+    format-stdin: true
+languages:
+  python:
+    - <<: *python-autopep8
+    - <<: *python-isort

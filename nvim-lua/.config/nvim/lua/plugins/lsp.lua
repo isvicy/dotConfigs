@@ -28,7 +28,11 @@ lsp.pyright.setup {
 }
 
 -- efm
-lsp.efm.setup {on_attach = on_attach, capabilities = lsp_status.capabilities}
+lsp.efm.setup {
+    filetypes = {"python"},
+    on_attach = on_attach,
+    capabilities = lsp_status.capabilities
+}
 
 -- Json
 lsp.jsonls.setup {on_attach = on_attach, capabilities = lsp_status.capabilities}
