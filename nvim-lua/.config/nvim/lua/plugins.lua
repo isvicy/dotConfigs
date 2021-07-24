@@ -73,7 +73,7 @@ return require('packer').startup(function(use)
     use 'sindrets/diffview.nvim' -- https://github.com/sindrets/diffview.nvim
 
     -- Theme && status line
-    use 'bryceyang/spaceodyssey' -- https://github.com/bryceyang/spaceodyssey
+    use 'Dualspc/spaceodyssey.nvim' -- https://github.com/Dualspc/spaceodyssey.nvim
     use 'sainnhe/gruvbox-material' -- https://github.com/sainnhe/gruvbox-material
     use "kdav5758/TrueZen.nvim" -- https://github.com/kdav5758/TrueZen.nvim
     use {
