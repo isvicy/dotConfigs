@@ -1,14 +1,25 @@
 -- nvim-treesitter
 local set = vim.api.nvim_set_option
 
-local ts = require 'nvim-treesitter.configs'
+local ts = require("nvim-treesitter.configs")
 
-ts.setup {
+ts.setup({
     ensure_installed = {
-        'bash', 'rust', 'lua', 'c', 'cpp', 'css', 'go', 'html', 'javascript',
-        'json', 'python', 'typescript', 'ruby'
+        "bash",
+        "rust",
+        "lua",
+        "c",
+        "cpp",
+        "css",
+        "go",
+        "html",
+        "javascript",
+        "json",
+        "python",
+        "typescript",
+        "ruby",
     },
-    highlight = {enable = true},
+    highlight = { enable = true },
     textobjects = {
         select = {
             enable = true,
@@ -24,8 +35,8 @@ ts.setup {
                 ["ab"] = "@block.outer",
                 ["ib"] = "@block.inner",
                 ["cm"] = "@comment.outer",
-                ["ss"] = "@statement.outer"
-            }
+                ["ss"] = "@statement.outer",
+            },
         },
         move = {
             enable = true,
@@ -34,24 +45,24 @@ ts.setup {
                 ["ts"] = "@class.outer",
                 ["tc"] = "@conditional.outer",
                 ["tl"] = "@loop.outer",
-                ["tb"] = "@block.outer"
+                ["tb"] = "@block.outer",
             },
             goto_previous_start = {
                 ["tf"] = "@function.outer",
                 ["ts"] = "@class.outer",
                 ["tc"] = "@conditional.outer",
                 ["tl"] = "@loop.outer",
-                ["tb"] = "@block.outer"
-            }
+                ["tb"] = "@block.outer",
+            },
         },
         lsp_interop = {
             enable = true,
             peek_definition_code = {
                 ["df"] = "@function.outer",
-                ["dF"] = "@class.outer"
-            }
-        }
-    }
-}
+                ["dF"] = "@class.outer",
+            },
+        },
+    },
+})
 
-set('foldexpr', 'nvim_treesitter#foldexpr()')
+set("foldexpr", "nvim_treesitter#foldexpr()")
