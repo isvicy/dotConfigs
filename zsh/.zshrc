@@ -9,23 +9,17 @@ setopt hist_ignore_space      # ignore commands that start with space
 setopt hist_verify            # show command with history expansion to user before running it
 setopt share_history          # share command history data
 
-export PATH=$PATH:$HOME/.cargo/bin
+export PATH=$HOME/.cargo/bin:$PATH
 export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:$HOME/.local/bin
-
-source $HOME/.antigen.zsh
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-autosuggestions
-antigen apply
+export PATH=$GOPATH/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
 
 alias rc="nvim $HOME/.zshrc"
 alias history="history 0"
+alias config="nvim $HOME/.config/i3/config"
 
-eval "$(starship init zsh)"
-
-[[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-
+if [ -f ~/.zshrc_third ]; then
+    source ~/.zshrc_third
+else
+    print "404: ~/.zshrc_third not found"
+fi

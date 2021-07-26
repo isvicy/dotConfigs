@@ -1,0 +1,17 @@
+# https://github.com/zsh-users/antigen
+source $HOME/.antigen.zsh
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-autosuggestions
+antigen apply
+
+# cargo install starship
+eval "$(starship init zsh)"
+
+# https://github.com/wting/autojump
+[[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
+
+# https://github.com/nvm-sh/nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
