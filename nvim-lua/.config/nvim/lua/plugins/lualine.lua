@@ -192,7 +192,11 @@ ins_left({
 
 ins_left({
     function()
-        return require("lsp-status").status()
+        local status = require("lsp-status").status()
+        if string.find(status, "Error") and string.len(status) > 40 then
+            return status.sub(status, 0, 40)
+        end
+        return status
     end,
 })
 
