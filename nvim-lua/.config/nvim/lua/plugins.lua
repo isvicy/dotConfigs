@@ -21,8 +21,15 @@ return require("packer").startup(function(use)
             "nvim-lua/plenary.nvim", -- https://github.com/nvim-lua/plenary.nvim
         },
     }) -- https://github.com/nvim-telescope/telescope.nvim
-    use("nvim-treesitter/nvim-treesitter") -- https://github.com/nvim-treesitter/nvim-treesitter
-    use("nvim-treesitter/nvim-treesitter-textobjects") -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+    use({
+        "nvim-treesitter/nvim-treesitter", -- https://github.com/nvim-treesitter/nvim-treesitter
+        branch = "0.5-compat",
+        run = ":TSUpdate",
+    })
+    use({
+        "nvim-treesitter/nvim-treesitter-textobjects", -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+        branch = "0.5-compat",
+    })
     use("romgrk/nvim-treesitter-context") -- https://github.com/romgrk/nvim-treesitter-context
     use({
         "jose-elias-alvarez/null-ls.nvim",
