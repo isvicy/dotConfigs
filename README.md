@@ -14,6 +14,7 @@ This repo use stow to manage dotfiles. see: [Managing Dotfiles with GNU stow](ht
 ### for vim
     * fzf
     * ctags
+    * [stylua](https://github.com/JohnnyMorganz/StyLua): `cargo install stylua`, for lua formatting.
 
 ## config vim
 Note: need vim 8.0+
