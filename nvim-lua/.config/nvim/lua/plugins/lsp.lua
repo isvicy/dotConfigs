@@ -143,6 +143,7 @@ null_ls.config({
                 "-",
             },
         }),
+        null_ls.builtins.formatting.prettierd,
     },
 })
 lsp["null-ls"].setup({
