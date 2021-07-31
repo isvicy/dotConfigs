@@ -21,3 +21,18 @@ utils.map("t", "<esc>", "<C-\\><C-n>")
 utils.map("n", "ev", "<cmd>vsplit ~/.config/nvim/init.lua<CR>")
 utils.map("i", "<C-a>", "<C-o>0")
 utils.map("i", "<C-e>", "<C-o>$")
+utils.map("n", "Y", "y$")
+-- center search
+utils.map("n", "n", "nzzzv")
+utils.map("n", "N", "Nzzzv")
+utils.map("n", "J", "mzJ`z")
+-- breaking undo
+utils.map("i", ",", ",<c-g>u")
+utils.map("i", ".", ".<c-g>u")
+-- moving text
+utils.map("n", "<leader>j", ":m .+1<CR>==")
+utils.map("n", "<leader>k", ":m .-2<CR>==")
+utils.map("v", "J", ":m '>+1<CR>gv=gv")
+utils.map("v", "K", ":m '<-2<CR>gv=gv")
+utils.map("i", "<c-j>", "<esc>:m .+1<CR>==i")
+utils.map("i", "<c-k>", "<esc>:m .-2<CR>==i")
