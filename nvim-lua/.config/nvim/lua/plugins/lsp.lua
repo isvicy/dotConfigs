@@ -143,7 +143,21 @@ null_ls.config({
                 "-",
             },
         }),
-        null_ls.builtins.formatting.prettierd,
+        null_ls.builtins.formatting.prettierd.with({
+            filetypes = {
+                "javascript",
+                "javascriptreact",
+                "typescript",
+                "typescriptreact",
+                "vue",
+                "css",
+                "html",
+                "json",
+                "yaml",
+                "markdown",
+                "vimwiki",
+            },
+        }),
     },
 })
 lsp["null-ls"].setup({
