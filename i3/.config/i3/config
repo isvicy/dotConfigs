@@ -206,5 +206,6 @@ exec --no-startup-id /usr/lib/ndsc/3.3.12/bin/ndsc-gui.sh
 
 bindsym Ctrl+h exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 bindsym $mod+Escape exec $HOME/.local/bin/lock4
-bindsym --release $mod+Shift+a exec $HOME/.local/bin/screenshot
+bindsym --release $mod+Shift+a exec flameshot gui
+bindsym --release $mod+Shift+b exec $HOME/.local/bin/screenshot
 
