@@ -2,7 +2,7 @@ local lualine = require("lualine")
 
 -- Color table for highlights
 local colors = {
-    bg = "#1c2023",
+    bg = "#1f2525",
     fg = "#eaebed",
     section_bg = "#1c2023",
     yellow = "#ebcb8b",
@@ -13,6 +13,7 @@ local colors = {
     magenta = "#b48ead",
     blue = "#81a1c1",
     red = "#bf616a",
+    inactive_bg = "#1c2023",
 }
 
 local conditions = {
@@ -40,7 +41,7 @@ local config = {
             -- right section. Both are highlighted by c theme .  So we
             -- are just setting default looks o statusline
             normal = { c = { fg = colors.fg, bg = colors.bg } },
-            inactive = { c = { fg = colors.fg, bg = colors.bg } },
+            inactive = { c = { fg = colors.fg, bg = colors.inactive_bg } },
         },
     },
     sections = {
@@ -67,11 +68,13 @@ local config = {
 -- Inserts a component in lualine_c at left section
 local function ins_left(component)
     table.insert(config.sections.lualine_c, component)
+    table.insert(config.inactive_sections.lualine_c, component)
 end
 
 -- Inserts a component in lualine_x ot right section
 local function ins_right(component)
     table.insert(config.sections.lualine_x, component)
+    table.insert(config.inactive_sections.lualine_x, component)
 end
 
 ins_left({
