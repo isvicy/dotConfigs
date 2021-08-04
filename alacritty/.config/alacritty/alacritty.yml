@@ -102,18 +102,27 @@ window:
 # Font configuration
 font:
   # Normal (roman) font face
+  # normal:
+  #   family: Fira Code iCursive S12
+  #   style: Regular
   normal:
-    family: Fira Code iCursive S12
+    family: JetBrainsMono Nerd Font
     style: Regular
 
   # Bold font face
+  # bold:
+  #   family: Fira Code iCursive S12
+  #   style: Bold
   bold:
-    family: Fira Code iCursive S12
+    family: JetBrainsMono Nerd Font
     style: Bold
 
   # Italic font face
+  # italic:
+  #   family: Fira Code iCursive S12
+  #   style: Italic
   italic:
-    family: Fira Code iCursive S12
+    family: JetBrainsMono Nerd Font
     style: Italic
 
   # Point size
