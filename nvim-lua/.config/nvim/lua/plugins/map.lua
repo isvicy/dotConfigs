@@ -41,9 +41,9 @@ utils.map("n", "<Leader>gw", "<cmd>Telescope live_grep<CR>")
 utils.map("n", "<Leader>fw", "<cmd>Telescope grep_string<CR>")
 utils.map("n", "<Leader>re", "<cmd>Telescope registers<CR>")
 utils.map("n", "<Leader>wk", "<cmd>Telescope keymaps<CR>")
-utils.map("n", "<Leader>bd", "<cmd>Telescope lsp_document_diagnostics<CR>")
+utils.map("n", "<Leader>dd", "<cmd>Telescope lsp_document_diagnostics<CR>")
 utils.map("n", "<Leader>wd", "<cmd>Telescope lsp_workspace_diagnostics<CR>")
-utils.map("n", "<Leader>bp", "<cmd>Telescope lsp_document_symbols<CR>")
+utils.map("n", "<Leader>ds", "<cmd>Telescope lsp_document_symbols<CR>")
 
 -- Nvim-tree
 utils.map("n", "<leader>e", "<cmd>NvimTreeToggle<CR>")
