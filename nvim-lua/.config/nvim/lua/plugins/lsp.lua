@@ -99,7 +99,7 @@ lsp.gopls.setup({
     capabilities = lsp_status.capabilities,
     settings = {
         gopls = {
-            analyses = { unusedparams = true, nonewvars = true },
+            analyses = { unusedparams = true, fieldalignment = true, nilness = true, shadow = true, unusedwrite = true },
             staticcheck = true,
             usePlaceholders = false,
             completeUnimported = true,
