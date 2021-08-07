@@ -36,3 +36,8 @@ utils.map("v", "J", ":m '>+1<CR>gv=gv")
 utils.map("v", "K", ":m '<-2<CR>gv=gv")
 utils.map("i", "<c-j>", "<esc>:m .+1<CR>==i")
 utils.map("i", "<c-k>", "<esc>:m .-2<CR>==i")
+-- paste last ting yanked, not deleted
+utils.map("n", "<leader>P", '"0P')
+utils.map("n", "<leader>p", '"0p')
+-- write only if something is changed
+utils.map("n", "<leader>u", "<cmd>up<CR>")
