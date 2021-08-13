@@ -17,6 +17,9 @@ export PATH=$HOME/.local/bin:$PATH
 alias rc="nvim $HOME/.zshrc"
 alias history="history 0"
 alias config="nvim $HOME/.config/i3/config"
+if type "$kitty" > /dev/null; then
+    alias ssh="kitty +kitten ssh"
+fi
 
 if [ -f ~/.zshrc_third ]; then
     source ~/.zshrc_third
