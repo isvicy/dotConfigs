@@ -1,5 +1,6 @@
 # https://github.com/zsh-users/antigen
 source $HOME/.antigen.zsh
+antigen bundle git
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
 antigen apply
