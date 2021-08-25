@@ -14,6 +14,7 @@ return require("packer").startup(function(use)
     use("glepnir/lspsaga.nvim") -- https://github.com/glepnir/lspsaga.nvim
     use("nvim-lua/lsp-status.nvim") -- https://github.com/nvim-lua/lsp-status.nvim
     use("ray-x/lsp_signature.nvim") -- https://github.com/ray-x/lsp_signature.nvim
+    use({ "ray-x/navigator.lua", requires = { "ray-x/guihua.lua", run = "cd lua/fzy && make" } })
     use({
         "nvim-telescope/telescope.nvim",
         requires = {

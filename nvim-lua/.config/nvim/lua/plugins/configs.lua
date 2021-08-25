@@ -133,6 +133,9 @@ require("lsp-status").config({
     status_symbol = "",
 })
 
+-- Navigator.lua
+require'navigator'.setup()
+
 -- ultisnips
 g["UltiSnipsJumpForwardTrigger"] = "<leader>j"
 g["UltiSnipsJumpBackwardTrigger"] = "<leader>k"
