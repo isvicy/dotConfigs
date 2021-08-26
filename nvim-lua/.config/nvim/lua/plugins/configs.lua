@@ -55,17 +55,6 @@ require("toggleterm").setup({
 -- Vim-wiki
 g["vimwiki_list"] = { { path = "~/vimwiki/", syntax = "markdown", ext = ".md" } }
 
--- LSP saga
-require("lspsaga").init_lsp_saga({
-    use_saga_diagnostic_sign = false,
-    code_action_prompt = {
-        enable = false,
-        sign = false,
-        sign_priority = 20,
-        virtual_text = false,
-    },
-})
-
 -- BufferLine
 require("bufferline").setup({
     options = {

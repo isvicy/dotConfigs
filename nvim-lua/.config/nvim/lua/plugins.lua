@@ -11,7 +11,6 @@ return require("packer").startup(function(use)
 
     -- nvim specified stuff
     use("neovim/nvim-lspconfig") -- https://github.com/neovim/nvim-lspconfig
-    use("glepnir/lspsaga.nvim") -- https://github.com/glepnir/lspsaga.nvim
     use("nvim-lua/lsp-status.nvim") -- https://github.com/nvim-lua/lsp-status.nvim
     use("ray-x/lsp_signature.nvim") -- https://github.com/ray-x/lsp_signature.nvim
     use({
@@ -30,7 +29,6 @@ return require("packer").startup(function(use)
         "nvim-treesitter/nvim-treesitter-textobjects", -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
         branch = "0.5-compat",
     })
-    use("romgrk/nvim-treesitter-context") -- https://github.com/romgrk/nvim-treesitter-context
     use({
         "jose-elias-alvarez/null-ls.nvim",
         requires = {
