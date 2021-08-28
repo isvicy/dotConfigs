@@ -30,6 +30,14 @@ return require("packer").startup(function(use)
         branch = "0.5-compat",
     })
     use({
+        "ray-x/navigator.lua", -- https://github.com/ray-x/navigator.lua
+        requires = {
+            "ray-x/guihua.lua", -- https://github.com/ray-x/guihua.lua
+            run = "cd lua/fzy && make",
+        },
+    })
+    use({ "nvim-treesitter/nvim-treesitter-refactor" }) -- https://github.com/nvim-treesitter/nvim-treesitter-refactor
+    use({
         "jose-elias-alvarez/null-ls.nvim",
         requires = {
             "nvim-lua/plenary.nvim", -- https://github.com/nvim-lua/plenary.nvim
