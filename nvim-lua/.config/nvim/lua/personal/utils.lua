@@ -12,11 +12,15 @@ end
 
 -- Helper Function
 function M.map(mode, lhs, rhs, opts)
-    local options = { noremap = true, silent = true }
-    if opts then
-        options = vim.tbl_extend("force", options, opts)
-    end
+    local options = {noremap = true, silent = true}
+    if opts then options = vim.tbl_extend("force", options, opts) end
     vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+end
+
+function M.get_os_for_lua_lsp()
+    local uname = vim.loop.os_uname().sysname
+    if uname == "Darwin" then return "macOS" end
+    return uname
 end
 
 return M
