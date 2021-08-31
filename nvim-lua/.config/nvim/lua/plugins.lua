@@ -44,6 +44,7 @@ return require("packer").startup(function(use)
             "neovim/nvim-lspconfig", -- https://github.com/neovim/nvim-lspconfig
         },
     })
+    use("kabouzeid/nvim-lspinstall") -- https://github.com/kabouzeid/nvim-lspinstall
 
     -- auto completion
     use({
