@@ -40,7 +40,8 @@ cmd("set splitright")
 cmd("set list listchars=tab:\\|\\ ,trail:▫ ")
 cmd("filetype plugin on")
 cmd("syntax on")
-cmd("colorscheme spaceodyssey")
+-- cmd("colorscheme spaceodyssey")
+cmd("colorscheme aurora")
 cmd("abbr rg Rg")
 
 -- Set
