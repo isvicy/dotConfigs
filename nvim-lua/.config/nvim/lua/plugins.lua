@@ -21,6 +21,7 @@ return require("packer").startup(function(use)
             "nvim-lua/plenary.nvim" -- https://github.com/nvim-lua/plenary.nvim
         }
     }) -- https://github.com/nvim-telescope/telescope.nvim
+    use({'nvim-telescope/telescope-fzf-native.nvim', run = 'make' })
     use({
         "nvim-treesitter/nvim-treesitter", -- https://github.com/nvim-treesitter/nvim-treesitter
         branch = "0.5-compat",
@@ -76,10 +77,6 @@ return require("packer").startup(function(use)
         "kyazdani42/nvim-tree.lua", -- https://github.com/kyazdani42/nvim-tree.lua
         requires = {"kyazdani42/nvim-web-devicons", opt = true} -- https://github.com/kyazdani42/nvim-web-devicons
     })
-    use({
-        "liuchengxu/vim-clap",
-        run = ":Clap install-binary"
-    }) -- https://github.com/liuchengxu/vim-clap
     -- Auto pair
     use({
         "windwp/nvim-autopairs", -- https://github.com/windwp/nvim-autopairs
