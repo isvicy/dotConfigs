@@ -40,7 +40,16 @@ return require("packer").startup(function(use)
     })
 
     -- auto completion
-    use("hrsh7th/nvim-compe") -- https://github.com/hrsh7th/nvim-compe
+    use({
+        "hrsh7th/nvim-cmp", -- https://github.com/hrsh7th/nvim-cmp
+        requires = {
+            "hrsh7th/cmp-buffer", -- https://github.com/hrsh7th/cmp-buffer
+            "hrsh7th/cmp-nvim-lsp", -- https://github.com/hrsh7th/cmp-nvim-lsp
+            "hrsh7th/cmp-nvim-lua", -- https://github.com/hrsh7th/cmp-nvim-lua
+            "hrsh7th/cmp-calc", -- https://github.com/hrsh7th/cmp-calc
+            "onsails/lspkind-nvim", -- https://github.com/onsails/lspkind-nvim
+        },
+    })
     use({
         "folke/trouble.nvim", -- https://github.com/folke/trouble.nvim
         requires = "kyazdani42/nvim-web-devicons",
@@ -56,6 +65,12 @@ return require("packer").startup(function(use)
         requires = { "kyazdani42/nvim-web-devicons", opt = true }, -- https://github.com/kyazdani42/nvim-web-devicons
     })
     -- Auto pair
+    use({
+        "windwp/nvim-autopairs", -- https://github.com/windwp/nvim-autopairs
+        config = function()
+            require("nvim-autopairs").setup({})
+        end,
+    })
     -- Term
     use("akinsho/nvim-toggleterm.lua") -- https://github.com/akinsho/nvim-toggleterm.lua
     -- Surround

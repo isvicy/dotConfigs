@@ -19,6 +19,7 @@ require("plugins.telescope")
 -- require('plugins.galaxyline')
 require("plugins.lualine")
 require("plugins.gitsigns")
+require("plugins.cmp")
 require("plugins.configs")
 
 -- Personal/Testing
