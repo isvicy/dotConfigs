@@ -2,6 +2,7 @@ local lsp = require("lspconfig")
 local lsp_status = require("lsp-status")
 local null_ls = require("null-ls")
 local utils = require("personal.utils")
+local api = vim.api
 
 lsp_status.register_progress()
 
@@ -80,3 +81,7 @@ null_ls.config({
 lsp["null-ls"].setup({
     capabilities = lsp_status.capabilities,
 })
+
+api.nvim_command("hi default LspReferenceRead cterm=bold gui=Bold ctermbg=yellow guifg=none guibg=Black")
+api.nvim_command("hi default LspReferenceText cterm=bold gui=Bold ctermbg=yellow guifg=none guibg=Black")
+api.nvim_command("hi default LspReferenceWrite cterm=bold gui=Bold ctermbg=yellow guifg=none guibg=Black")

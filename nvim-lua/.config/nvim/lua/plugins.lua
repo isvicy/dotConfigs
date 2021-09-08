@@ -13,7 +13,6 @@ return require("packer").startup(function(use)
     use("neovim/nvim-lspconfig") -- https://github.com/neovim/nvim-lspconfig
     use("nvim-lua/lsp-status.nvim") -- https://github.com/nvim-lua/lsp-status.nvim
     use("ray-x/lsp_signature.nvim") -- https://github.com/ray-x/lsp_signature.nvim
-    use("ray-x/aurora") -- https://github.com/ray-x/aurora
     use({
         "nvim-telescope/telescope.nvim",
         requires = {
@@ -68,7 +67,9 @@ return require("packer").startup(function(use)
     use({
         "folke/trouble.nvim", -- https://github.com/folke/trouble.nvim
         requires = "kyazdani42/nvim-web-devicons",
-        config = function() require("trouble").setup({}) end
+        config = function()
+            require("trouble").setup({})
+        end,
     })
 
     -- Enhance
@@ -124,6 +125,7 @@ return require("packer").startup(function(use)
     -- Theme && status line
     use("Dualspc/spaceodyssey.nvim") -- https://github.com/Dualspc/spaceodyssey.nvim
     use("kdav5758/TrueZen.nvim") -- https://github.com/kdav5758/TrueZen.nvim
+    use("ray-x/aurora") -- https://github.com/ray-x/aurora
     use({
         "hoob3rt/lualine.nvim", -- https://github.com/hoob3rt/lualine.nvim
         requires = { "kyazdani42/nvim-web-devicons", opt = true },
