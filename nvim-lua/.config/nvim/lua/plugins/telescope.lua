@@ -22,7 +22,7 @@ telescope.setup({
         prompt_prefix = ">",
         selection_strategy = "reset",
         sorting_strategy = "ascending",
-        layout_strategy = "vertical",
+        layout_strategy = "horizontal",
         layout_config = {
             horizontal = {
                 width_padding = 0.1,
