@@ -1,4 +1,4 @@
-local lsp = require("lspconfig")
+local lspconfig = require("lspconfig")
 local lsp_status = require("lsp-status")
 local null_ls = require("null-ls")
 local utils = require("personal.utils")
@@ -78,7 +78,7 @@ null_ls.config({
         }),
     },
 })
-lsp["null-ls"].setup({
+lspconfig["null-ls"].setup({
     capabilities = lsp_status.capabilities,
 })
 
