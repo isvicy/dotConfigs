@@ -11,7 +11,11 @@ return require("packer").startup(function(use)
 
     -- nvim specified stuff
     use("neovim/nvim-lspconfig") -- https://github.com/neovim/nvim-lspconfig
-    use("glepnir/lspsaga.nvim") -- https://github.com/glepnir/lspsaga.nvim
+    -- use("glepnir/lspsaga.nvim") -- https://github.com/glepnir/lspsaga.nvim
+    use({
+        "jasonrhansen/lspsaga.nvim",
+        branch = "finder-preview-fixes",
+    })
     use("nvim-lua/lsp-status.nvim") -- https://github.com/nvim-lua/lsp-status.nvim
     use("ray-x/lsp_signature.nvim") -- https://github.com/ray-x/lsp_signature.nvim
     use({
