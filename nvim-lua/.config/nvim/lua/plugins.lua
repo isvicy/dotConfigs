@@ -56,7 +56,6 @@ return require("packer").startup(function(use)
         requires = { "kyazdani42/nvim-web-devicons", opt = true }, -- https://github.com/kyazdani42/nvim-web-devicons
     })
     -- Auto pair
-    use("cohama/lexima.vim") -- https://github.com/cohama/lexima.vim
     -- Term
     use("akinsho/nvim-toggleterm.lua") -- https://github.com/akinsho/nvim-toggleterm.lua
     -- Surround

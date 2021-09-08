@@ -56,15 +56,6 @@ utils.map("n", "<leader>gf", "<cmd>diffget //2<CR>")
 -- maximizer
 utils.map("n", "<leader>z", ":MaximizerToggle!<CR>")
 
--- Nvim-compe
-vim.g["lexima_no_default_rules"] = 1
-vim.call("lexima#set_default_rules")
-utils.map("i", "<c-space>", "compe#complete()", { expr = true })
-utils.map("i", "<CR>", "compe#confirm(lexima#expand('<LT>CR>', 'i'))", { expr = true })
-utils.map("i", "<c-e>", "compe#close('<c-e>')", { expr = true })
-utils.map("i", "<c-f>", "compe#scroll({ 'delta': +4 })", { expr = true })
-utils.map("i", "<c-d>", "compe#scroll({ 'delta': -4 })", { expr = true })
-
 -- CtrlSF
 utils.map("n", "<leader>rw", ":CtrlSF <C-R><C-W><CR>")
 
