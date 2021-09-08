@@ -53,9 +53,6 @@ utils.map("n", "<leader>gs", "<cmd>G<CR>")
 utils.map("n", "<leader>gj", "<cmd>diffget //3<CR>")
 utils.map("n", "<leader>gf", "<cmd>diffget //2<CR>")
 
--- floatTerm
-utils.map("n", "<leader>nt", ":FloatermNew --width=0.9<CR>")
-
 -- maximizer
 utils.map("n", "<leader>z", ":MaximizerToggle!<CR>")
 

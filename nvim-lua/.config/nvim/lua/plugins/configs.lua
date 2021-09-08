@@ -131,7 +131,3 @@ require("lsp-status").config({
     indicator_ok = "Ok",
     status_symbol = "",
 })
-
--- ultisnips
-g["UltiSnipsJumpForwardTrigger"] = "<leader>j"
-g["UltiSnipsJumpBackwardTrigger"] = "<leader>k"

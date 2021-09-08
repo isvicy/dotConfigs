@@ -58,7 +58,6 @@ return require("packer").startup(function(use)
     -- Auto pair
     use("cohama/lexima.vim") -- https://github.com/cohama/lexima.vim
     -- Term
-    use("voldikss/vim-floaterm") -- https://github.com/voldikss/vim-floaterm
     use("akinsho/nvim-toggleterm.lua") -- https://github.com/akinsho/nvim-toggleterm.lua
     -- Surround
     use("machakann/vim-sandwich") -- https://github.com/machakann/vim-sandwich
@@ -73,10 +72,6 @@ return require("packer").startup(function(use)
     use("akinsho/nvim-bufferline.lua") -- https://github.com/akinsho/nvim-bufferline.lua
     -- CocSearch alternative
     use("dyng/ctrlsf.vim") -- https://github.com/dyng/ctrlsf.vim
-    -- Snippets
-    use("SirVer/ultisnips") -- https://github.com/SirVer/ultisnips
-    use("honza/vim-snippets") -- https://github.com/honza/vim-snippets
-    use("mlaursen/vim-react-snippets") -- https://github.com/mlaursen/vim-react-snippets
 
     -- Programming related
     use("b3nj5m1n/kommentary") -- https://github.com/b3nj5m1n/kommentary
@@ -94,7 +89,6 @@ return require("packer").startup(function(use)
 
     -- Theme && status line
     use("Dualspc/spaceodyssey.nvim") -- https://github.com/Dualspc/spaceodyssey.nvim
-    use("sainnhe/gruvbox-material") -- https://github.com/sainnhe/gruvbox-material
     use("kdav5758/TrueZen.nvim") -- https://github.com/kdav5758/TrueZen.nvim
     use({
         "hoob3rt/lualine.nvim", -- https://github.com/hoob3rt/lualine.nvim
@@ -104,6 +98,4 @@ return require("packer").startup(function(use)
         'glepnir/galaxyline.nvim', -- https://github.com/glepnir/galaxyline.nvim
         requires = {'kyazdani42/nvim-web-devicons', opt = true} -- https://github.com/kyazdani42/nvim-web-devicons
     } ]]
-    use("skywind3000/asyncrun.vim") -- https://github.com/skywind3000/asyncrun.vim
-    use("hotoo/pangu.vim") -- https://github.com/hotoo/pangu.vim
 end)
