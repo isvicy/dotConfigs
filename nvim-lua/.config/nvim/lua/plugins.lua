@@ -47,9 +47,15 @@ return require("packer").startup(function(use)
             "hrsh7th/cmp-nvim-lsp", -- https://github.com/hrsh7th/cmp-nvim-lsp
             "hrsh7th/cmp-nvim-lua", -- https://github.com/hrsh7th/cmp-nvim-lua
             "hrsh7th/cmp-calc", -- https://github.com/hrsh7th/cmp-calc
+            "hrsh7th/cmp-path", -- https://github.com/hrsh7th/cmp-path
+            "f3fora/cmp-spell", -- https://github.com/f3fora/cmp-spell
+            "octaltree/cmp-look", -- https://github.com/octaltree/cmp-look
+            "saadparwaiz1/cmp_luasnip", -- https://github.com/saadparwaiz1/cmp_luasnip
+            -- ui enhance
             "onsails/lspkind-nvim", -- https://github.com/onsails/lspkind-nvim
         },
     })
+    use("L3MON4D3/LuaSnip") -- https://github.com/L3MON4D3/LuaSnip
     use({
         "folke/trouble.nvim", -- https://github.com/folke/trouble.nvim
         requires = "kyazdani42/nvim-web-devicons",
@@ -68,7 +74,9 @@ return require("packer").startup(function(use)
     use({
         "windwp/nvim-autopairs", -- https://github.com/windwp/nvim-autopairs
         config = function()
-            require("nvim-autopairs").setup({})
+            require("nvim-autopairs").setup({
+                disable_filetype = { "TelescopePrompt", "vim" },
+            })
         end,
     })
     -- Term
@@ -89,6 +97,7 @@ return require("packer").startup(function(use)
 
     -- Programming related
     use("b3nj5m1n/kommentary") -- https://github.com/b3nj5m1n/kommentary
+    use("JoosepAlviste/nvim-ts-context-commentstring") -- https://github.com/JoosepAlviste/nvim-ts-context-commentstring
     use("liuchengxu/vista.vim") -- https://github.com/liuchengxu/vista.vim
     use({
         "folke/todo-comments.nvim", -- https://github.com/folke/todo-comments.nvim

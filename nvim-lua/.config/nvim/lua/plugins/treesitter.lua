@@ -63,6 +63,10 @@ ts.setup({
             },
         },
     },
+    -- nvim-ts-context-commentstring
+    context_commentstring = {
+        enable = true,
+    },
 })
 
 set("foldexpr", "nvim_treesitter#foldexpr()")

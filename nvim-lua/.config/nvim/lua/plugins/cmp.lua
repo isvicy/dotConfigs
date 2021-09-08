@@ -18,8 +18,8 @@ cmp.setup({
     },
 
     snippet = {
-        expand = function()
-            error("snippet engine is not configured.")
+        expand = function(args)
+            require("luasnip").lsp_expand(args.body)
         end,
     },
 
@@ -81,12 +81,16 @@ cmp.setup({
         { name = "nvim_lsp" },
         { name = "nvim_lua" },
         { name = "calc" },
+        { name = "path" },
+        { name = "luasnip" },
+        { name = "spell" },
+        { name = "look" },
     },
 })
 
 -- auto pair
 require("nvim-autopairs.completion.cmp").setup({
-  map_cr = true, --  map <CR> on insert mode
-  map_complete = true, -- it will auto insert `(` after select function or method item
-  auto_select = true -- automatically select the first item
+    map_cr = true, --  map <CR> on insert mode
+    map_complete = true, -- it will auto insert `(` after select function or method item
+    auto_select = true, -- automatically select the first item
 })
