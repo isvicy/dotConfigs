@@ -18,6 +18,7 @@ return require("packer").startup(function(use)
     })
     use("nvim-lua/lsp-status.nvim") -- https://github.com/nvim-lua/lsp-status.nvim
     use("ray-x/lsp_signature.nvim") -- https://github.com/ray-x/lsp_signature.nvim
+    -- Telescope family
     use({
         "nvim-telescope/telescope.nvim",
         requires = {
@@ -25,6 +26,8 @@ return require("packer").startup(function(use)
             "nvim-lua/plenary.nvim", -- https://github.com/nvim-lua/plenary.nvim
         },
     }) -- https://github.com/nvim-telescope/telescope.nvim
+    use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }) -- https://github.com/nvim-telescope/telescope-fzf-native.nvim
+    use({'nvim-telescope/telescope-media-files.nvim'}) -- https://github.com/nvim-telescope/telescope-media-files.nvim
     use({
         "nvim-treesitter/nvim-treesitter", -- https://github.com/nvim-treesitter/nvim-treesitter
         branch = "0.5-compat",
