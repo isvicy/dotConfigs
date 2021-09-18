@@ -1,14 +1,12 @@
 -- Neovim Options
 local cmd = vim.cmd
-local scopes = { o = vim.o, b = vim.bo, w = vim.wo }
+local scopes = {o = vim.o, b = vim.bo, w = vim.wo}
 local set = vim.api.nvim_set_option
 
 -- Helper Functions
 local function opt(scope, key, value)
     scopes[scope][key] = value
-    if scope ~= "o" then
-        scopes["o"][key] = value
-    end
+    if scope ~= "o" then scopes["o"][key] = value end
 end
 
 -- Settings

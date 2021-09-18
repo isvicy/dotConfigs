@@ -1,5 +1,4 @@
 -- Configs for Plugins
---
 local g = vim.g
 
 -- Vista
@@ -12,21 +11,16 @@ require("toggleterm").setup({
     shade_filetypes = {},
     shade_terminals = true,
     persist_size = true,
-    direction = "horizontal",
+    direction = "horizontal"
 })
 
 -- Vim-wiki
-g["vimwiki_list"] = { { path = "~/vimwiki/", syntax = "markdown", ext = ".md" } }
+g["vimwiki_list"] = {{path = "~/vimwiki/", syntax = "markdown", ext = ".md"}}
 
 -- LSP saga
 require("lspsaga").init_lsp_saga({
     use_saga_diagnostic_sign = false,
-    code_action_prompt = {
-        enable = false,
-        sign = false,
-        sign_priority = 20,
-        virtual_text = false,
-    },
+    code_action_prompt = {enable = false, sign = false, sign_priority = 20, virtual_text = false}
 })
 
 -- BufferLine
@@ -38,16 +32,16 @@ require("bufferline").setup({
             local icon = level:match("error") and " " or ""
             return " " .. icon .. count
         end,
-        show_buffer_close_icons = false,
-    },
+        show_buffer_close_icons = false
+    }
 })
 
 -- CtrlSF
-g["ctrlsf_auto_focus"] = { at = "start" }
+g["ctrlsf_auto_focus"] = {at = "start"}
 g["ctrlsf_position"] = "right"
 
 -- Nvim-tree
-g["nvim_tree_ignore"] = { ".git", "node_modules", ".cache" }
+g["nvim_tree_ignore"] = {".git", "node_modules", ".cache"}
 g["nvim_tree_auto_close"] = 0
 g["nvim_tree_follow"] = 1
 
@@ -56,9 +50,7 @@ local cb = require("diffview.config").diffview_callback
 
 require("diffview").setup({
     diff_binaries = false, -- Show diffs for binaries
-    file_panel = {
-        width = 35,
-    },
+    file_panel = {width = 35},
     key_bindings = {
         -- The `view` bindings are active in the diff buffers, only when the current
         -- tabpage is a Diffview.
@@ -66,7 +58,7 @@ require("diffview").setup({
             ["<tab>"] = cb("select_next_entry"), -- Open the diff for the next file
             ["<s-tab>"] = cb("select_prev_entry"), -- Open the diff for the previous file
             ["<leader>e"] = cb("focus_files"), -- Bring focus to the files panel
-            ["<leader>b"] = cb("toggle_files"), -- Toggle the files panel.
+            ["<leader>b"] = cb("toggle_files") -- Toggle the files panel.
         },
         file_panel = {
             ["j"] = cb("next_entry"), -- Bring the cursor to the next file entry
@@ -79,9 +71,9 @@ require("diffview").setup({
             ["<tab>"] = cb("select_next_entry"),
             ["<s-tab>"] = cb("select_prev_entry"),
             ["<leader>e"] = cb("focus_files"),
-            ["<leader>b"] = cb("toggle_files"),
-        },
-    },
+            ["<leader>b"] = cb("toggle_files")
+        }
+    }
 })
 
 -- LSP status
@@ -92,5 +84,5 @@ require("lsp-status").config({
     indicator_info = "i",
     indicator_hint = "?",
     indicator_ok = "Ok",
-    status_symbol = "",
+    status_symbol = ""
 })

@@ -3,17 +3,13 @@ require("neorg").setup({
         ["core.defaults"] = {}, -- Load all the default modules
         ["core.norg.concealer"] = {}, -- Allows for use of icons
         ["core.norg.dirman"] = { -- Manage your directories with Neorg
-            config = {
-                workspaces = {
-                    my_workspace = "~/neorg",
-                },
-            },
+            config = {workspaces = {my_workspace = "~/neorg"}}
         },
         ["core.norg.completion"] = {
             config = {
-                engine = "nvim-cmp", -- We current support nvim-compe and nvim-cmp only
-            },
-        },
+                engine = "nvim-cmp" -- We current support nvim-compe and nvim-cmp only
+            }
+        }
     },
     hook = function()
         -- This sets the leader for all Neorg keybinds. It is separate from the regular <Leader>,
@@ -32,15 +28,12 @@ require("neorg").setup({
                 n = { -- Bind keys in normal mode
 
                     -- Keys for managing TODO items and setting their states
-                    { "gtd", "core.norg.qol.todo_items.todo.task_done" },
-                    { "gtu", "core.norg.qol.todo_items.todo.task_undone" },
-                    { "gtp", "core.norg.qol.todo_items.todo.task_pending" },
-                    { "<C-Space>", "core.norg.qol.todo_items.todo.task_cycle" },
-                },
-            }, {
-                silent = true,
-                noremap = true,
-            })
+                    {"gtd", "core.norg.qol.todo_items.todo.task_done"},
+                    {"gtu", "core.norg.qol.todo_items.todo.task_undone"},
+                    {"gtp", "core.norg.qol.todo_items.todo.task_pending"},
+                    {"<C-Space>", "core.norg.qol.todo_items.todo.task_cycle"}
+                }
+            }, {silent = true, noremap = true})
         end)
-    end,
+    end
 })

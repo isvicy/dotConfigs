@@ -7,36 +7,21 @@ local null_ls = require("null-ls")
 lsp_status.register_progress()
 
 local on_attach = function(client, bufnr)
-    require("lsp_signature").on_attach({
-        bind = true,
-        hint_enable = true,
-        handler_opts = { border = "shadow" },
-    })
+    require("lsp_signature").on_attach({bind = true, hint_enable = true, handler_opts = {border = "shadow"}})
     lsp_status.on_attach(client, bufnr)
 end
 
 -- Bash-Language-Server
-lsp.bashls.setup({
-    filetypes = { "sh", "zsh", "bash" },
-    on_attach = on_attach,
-    capabilities = lsp_status.capabilities,
-})
+lsp.bashls.setup({filetypes = {"sh", "zsh", "bash"}, on_attach = on_attach, capabilities = lsp_status.capabilities})
 
 -- Python pyright
-lsp.pyright.setup({
-    on_attach = on_attach,
-    capabilities = lsp_status.capabilities,
-})
+lsp.pyright.setup({on_attach = on_attach, capabilities = lsp_status.capabilities})
 
 -- efm
-lsp.efm.setup({
-    filetypes = { "python" },
-    on_attach = on_attach,
-    capabilities = lsp_status.capabilities,
-})
+lsp.efm.setup({filetypes = {"python"}, on_attach = on_attach, capabilities = lsp_status.capabilities})
 
 -- Json
-lsp.jsonls.setup({ on_attach = on_attach, capabilities = lsp_status.capabilities })
+lsp.jsonls.setup({on_attach = on_attach, capabilities = lsp_status.capabilities})
 
 -- Lua
 local system_name
@@ -51,7 +36,7 @@ local sumneko_root_path = vim.fn.stdpath("cache") .. "/lspconfig/sumneko_lua/lua
 local sumneko_binary = sumneko_root_path .. "/bin/" .. system_name .. "/lua-language-server"
 
 lsp.sumneko_lua.setup({
-    cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
+    cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
     on_attach = on_attach,
     capabilities = lsp_status.capabilities,
     settings = {
@@ -60,110 +45,77 @@ lsp.sumneko_lua.setup({
                 -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
                 version = "LuaJIT",
                 -- Setup your lua path
-                path = vim.split(package.path, ";"),
+                path = vim.split(package.path, ";")
             },
             diagnostics = {
                 -- Get the language server to recognize the `vim` global
-                globals = { "vim" },
+                globals = {"vim"}
             },
             workspace = {
                 -- Make the server aware of Neovim runtime files
-                library = {
-                    [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                    [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-                },
-            },
-        },
-    },
+                library = {[vim.fn.expand("$VIMRUNTIME/lua")] = true, [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true}
+            }
+        }
+    }
 })
 
 -- Typescript
-lsp.tsserver.setup({
-    on_attach = on_attach,
-    capabilities = lsp_status.capabilities,
-})
+lsp.tsserver.setup({on_attach = on_attach, capabilities = lsp_status.capabilities})
 
 -- Vue
-lsp.vuels.setup({ on_attach = on_attach, capabilities = lsp_status.capabilities })
+lsp.vuels.setup({on_attach = on_attach, capabilities = lsp_status.capabilities})
 
 -- Rust
-lsp.rust_analyzer.setup({
-    on_attach = on_attach,
-    capabilities = lsp_status.capabilities,
-})
+lsp.rust_analyzer.setup({on_attach = on_attach, capabilities = lsp_status.capabilities})
 
 -- Golang
 lsp.gopls.setup({
-    cmd = { "gopls", "serve" },
+    cmd = {"gopls", "serve"},
     on_attach = on_attach,
     capabilities = lsp_status.capabilities,
     settings = {
         gopls = {
-            analyses = { unusedparams = true, fieldalignment = true, nilness = true, shadow = true, unusedwrite = true },
+            analyses = {unusedparams = true, fieldalignment = true, nilness = true, shadow = true, unusedwrite = true},
             staticcheck = true,
             usePlaceholders = false,
-            completeUnimported = true,
-        },
-    },
+            completeUnimported = true
+        }
+    }
 })
 
 -- ccls
-lsp.ccls.setup({ on_attach = on_attach, capabilities = lsp_status.capabilities })
+lsp.ccls.setup({on_attach = on_attach, capabilities = lsp_status.capabilities})
 
 -- json
 lsp.jsonls.setup({
-    commands = {
-        Format = {
-            function()
-                vim.lsp.buf.range_formatting({}, { 0, 0 }, { vim.fn.line("$"), 0 })
-            end,
-        },
-    },
+    commands = {Format = {function() vim.lsp.buf.range_formatting({}, {0, 0}, {vim.fn.line("$"), 0}) end}},
     on_attach = on_attach,
-    capabilities = lsp_status.capabilities,
+    capabilities = lsp_status.capabilities
 })
 
 -- ruby
 lsp.solargraph.setup({
-    cmd = { "solargraph", "stdio" },
-    filetypes = { "ruby" },
+    cmd = {"solargraph", "stdio"},
+    filetypes = {"ruby"},
     root_dir = lsp.util.root_pattern("Gemfile", ".git"),
-    settings = { solargraph = { diagnostics = true } },
+    settings = {solargraph = {diagnostics = true}},
     on_attach = on_attach,
-    capabilities = lsp_status.capabilities,
+    capabilities = lsp_status.capabilities
 })
 
 -- Null ls
 null_ls.config({
     sources = {
-        null_ls.builtins.formatting.stylua.with({
-            args = {
-                "--indent-type",
-                "Spaces",
-                "-",
-            },
-        }),
+        null_ls.builtins.formatting.stylua.with({args = {"--indent-type", "Spaces", "-"}}),
         null_ls.builtins.formatting.prettierd.with({
             filetypes = {
-                "javascript",
-                "javascriptreact",
-                "typescript",
-                "typescriptreact",
-                "vue",
-                "css",
-                "html",
-                "json",
-                "yaml",
-                "markdown",
-                "vimwiki",
-            },
-        }),
-    },
+                "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "css", "html", "json", "yaml",
+                "markdown", "vimwiki"
+            }
+        })
+    }
 })
-lsp["null-ls"].setup({
-    on_attach = on_attach,
-    capabilities = lsp_status.capabilities,
-})
+lsp["null-ls"].setup({on_attach = on_attach, capabilities = lsp_status.capabilities})
 
 -- diagnostics
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -175,7 +127,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
     -- Use a function to dynamically turn signs off
     -- and on, using buffer local variables
     signs = true,
-    update_in_insert = false,
+    update_in_insert = false
 })
 
 -- Design
