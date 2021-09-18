@@ -1,6 +1,17 @@
 -- nvim-treesitter
 local set = vim.api.nvim_set_option
 
+-- neorg parser config, see https://github.com/nvim-neorg/neorg
+local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()
+
+parser_configs.norg = {
+    install_info = {
+        url = "https://github.com/nvim-neorg/tree-sitter-norg",
+        files = { "src/parser.c", "src/scanner.cc" },
+        branch = "main",
+    },
+}
+
 local ts = require("nvim-treesitter.configs")
 
 ts.setup({
@@ -18,6 +29,7 @@ ts.setup({
         "python",
         "typescript",
         "ruby",
+        "norg", -- https://github.com/nvim-neorg/neorg
     },
     highlight = { enable = true },
     textobjects = {

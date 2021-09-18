@@ -85,6 +85,7 @@ cmp.setup({
         { name = "luasnip" },
         { name = "spell" },
         { name = "look" },
+        { name = "neorg" }, -- https://github.com/nvim-neorg/neorg, see neorg.lua
     },
 })
 

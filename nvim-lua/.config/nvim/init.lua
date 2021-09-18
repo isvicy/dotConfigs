@@ -14,12 +14,11 @@ require("map")
 -- Plugins Settings
 require("plugins.map")
 require("plugins.lsp")
-require("plugins.treesitter")
 require("plugins.telescope")
 require("plugins.lualine")
 require("plugins.gitsigns")
+require("plugins.treesitter")
+require("plugins.neorg")
 require("plugins.cmp")
 require("plugins.configs")
-
--- Personal/Testing
-require("personal.nvim_func")
+require("plugins.lualine")

@@ -27,7 +27,7 @@ return require("packer").startup(function(use)
         },
     }) -- https://github.com/nvim-telescope/telescope.nvim
     use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }) -- https://github.com/nvim-telescope/telescope-fzf-native.nvim
-    use({'nvim-telescope/telescope-media-files.nvim'}) -- https://github.com/nvim-telescope/telescope-media-files.nvim
+    use({ "nvim-telescope/telescope-media-files.nvim" }) -- https://github.com/nvim-telescope/telescope-media-files.nvim
     use({
         "nvim-treesitter/nvim-treesitter", -- https://github.com/nvim-treesitter/nvim-treesitter
         branch = "0.5-compat",
@@ -65,7 +65,7 @@ return require("packer").startup(function(use)
     use("L3MON4D3/LuaSnip") -- https://github.com/L3MON4D3/LuaSnip
     use({
         "folke/trouble.nvim", -- https://github.com/folke/trouble.nvim
-        requires = "kyazdani42/nvim-web-devicons",
+        requires = "kyazdani42/nvim-web-devicons", -- https://github.com/kyazdani42/nvim-web-devicons
         config = function()
             require("trouble").setup({})
         end,
@@ -77,6 +77,7 @@ return require("packer").startup(function(use)
         "kyazdani42/nvim-tree.lua", -- https://github.com/kyazdani42/nvim-tree.lua
         requires = { "kyazdani42/nvim-web-devicons", opt = true }, -- https://github.com/kyazdani42/nvim-web-devicons
     })
+    use("akinsho/nvim-bufferline.lua") -- https://github.com/akinsho/nvim-bufferline.lua
     -- Auto pair
     use({
         "windwp/nvim-autopairs", -- https://github.com/windwp/nvim-autopairs
@@ -90,15 +91,23 @@ return require("packer").startup(function(use)
     use("akinsho/nvim-toggleterm.lua") -- https://github.com/akinsho/nvim-toggleterm.lua
     -- Surround
     use("machakann/vim-sandwich") -- https://github.com/machakann/vim-sandwich
+    -- Corlors
     use({
         "norcalli/nvim-colorizer.lua", -- https://github.com/norcalli/nvim-colorizer.lua
         config = function()
             require("colorizer").setup({})
         end,
     })
+    -- Notes
     use("vimwiki/vimwiki") -- https://github.com/vimwiki/vimwiki
     use("michal-h21/vimwiki-sync") -- https://github.com/michal-h21/vimwiki-sync
-    use("akinsho/nvim-bufferline.lua") -- https://github.com/akinsho/nvim-bufferline.lua
+    use({
+        "nvim-neorg/neorg", -- https://github.com/nvim-neorg/neorg
+        requires = {
+            "nvim-lua/plenary.nvim", -- https://github.com/nvim-lua/plenary.nvim
+            "vhyrro/neorg-telescope", -- https://github.com/nvim-neorg/neorg-telescope
+        },
+    })
     -- CocSearch alternative
     use("dyng/ctrlsf.vim") -- https://github.com/dyng/ctrlsf.vim
 
@@ -108,6 +117,7 @@ return require("packer").startup(function(use)
     use("liuchengxu/vista.vim") -- https://github.com/liuchengxu/vista.vim
     use({
         "folke/todo-comments.nvim", -- https://github.com/folke/todo-comments.nvim
+        requires = "nvim-lua/plenary.nvim", -- https://github.com/nvim-lua/plenary.nvim
         config = function()
             require("todo-comments").setup({})
         end,
@@ -122,6 +132,6 @@ return require("packer").startup(function(use)
     use("kdav5758/TrueZen.nvim") -- https://github.com/kdav5758/TrueZen.nvim
     use({
         "hoob3rt/lualine.nvim", -- https://github.com/hoob3rt/lualine.nvim
-        requires = { "kyazdani42/nvim-web-devicons", opt = true },
+        requires = { "kyazdani42/nvim-web-devicons", opt = true }, -- https://github.com/kyazdani42/nvim-web-devicons
     })
 end)
