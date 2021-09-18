@@ -124,8 +124,4 @@ return require("packer").startup(function(use)
         "hoob3rt/lualine.nvim", -- https://github.com/hoob3rt/lualine.nvim
         requires = { "kyazdani42/nvim-web-devicons", opt = true },
     })
-    --[[ use {
-        'glepnir/galaxyline.nvim', -- https://github.com/glepnir/galaxyline.nvim
-        requires = {'kyazdani42/nvim-web-devicons', opt = true} -- https://github.com/kyazdani42/nvim-web-devicons
-    } ]]
 end)
