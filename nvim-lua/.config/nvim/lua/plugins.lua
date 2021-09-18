@@ -18,6 +18,7 @@ return require("packer").startup(function(use)
     })
     use("nvim-lua/lsp-status.nvim") -- https://github.com/nvim-lua/lsp-status.nvim
     use("ray-x/lsp_signature.nvim") -- https://github.com/ray-x/lsp_signature.nvim
+    use("kabouzeid/nvim-lspinstall") -- https://github.com/kabouzeid/nvim-lspinstall
     -- Telescope family
     use({
         "nvim-telescope/telescope.nvim",

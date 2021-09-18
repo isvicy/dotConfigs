@@ -13,7 +13,7 @@ require("map")
 
 -- Plugins Settings
 require("plugins.map")
-require("plugins.lsp")
+require("plugins.lspinstall")
 require("plugins.telescope")
 require("plugins.lualine")
 require("plugins.gitsigns")

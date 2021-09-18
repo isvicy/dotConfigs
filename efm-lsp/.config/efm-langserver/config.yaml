@@ -8,7 +8,12 @@ tools:
   python-autopep8: &python-autopep8
     format-command: 'autopep8 -'
     format-stdin: true
+  lua-lua-format: &lua-lua-format
+    format-command: 'lua-format -i --column-limit=120'
+    format-stdin: true
 languages:
   python:
     - <<: *python-autopep8
     - <<: *python-isort
+  lua:
+    - <<: *lua-lua-format

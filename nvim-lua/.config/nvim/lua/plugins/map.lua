@@ -5,11 +5,6 @@ local utils = require("personal.utils")
 utils.map("n", "<leader>cc", "<cmd>lua require('personal.nvim_func').compile_run_cpp('sp', '20')<CR>")
 
 -- Programming related map related with lsp or telescope
--- lsp
-utils.map("n", "g[", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>")
-utils.map("n", "g]", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>")
-utils.map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
-utils.map("n", "gf", "<cmd>lua vim.lsp.buf.formatting()<CR>")
 -- Telescope
 utils.map("n", "<C-p>", "<cmd>lua require'telescope.builtin'.find_files({hidden=true})<CR>")
 -- lsp saga
