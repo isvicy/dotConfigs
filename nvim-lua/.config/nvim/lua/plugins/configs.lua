@@ -76,7 +76,8 @@ require("diffview").setup({
 })
 
 -- LSP status
-require("lsp-status").config({
+local lsp_status = require("lsp-status")
+lsp_status.config({
     diagnostics = false,
     indicator_errors = "E",
     indicator_warnings = "W",
@@ -85,3 +86,4 @@ require("lsp-status").config({
     indicator_ok = "Ok",
     status_symbol = ""
 })
+lsp_status.register_progress()

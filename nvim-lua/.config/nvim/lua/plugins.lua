@@ -15,7 +15,8 @@ return require("packer").startup(function(use)
     use({"jasonrhansen/lspsaga.nvim", branch = "finder-preview-fixes"})
     use("nvim-lua/lsp-status.nvim") -- https://github.com/nvim-lua/lsp-status.nvim
     use("ray-x/lsp_signature.nvim") -- https://github.com/ray-x/lsp_signature.nvim
-    use("kabouzeid/nvim-lspinstall") -- https://github.com/kabouzeid/nvim-lspinstall
+    use {'ray-x/navigator.lua', requires = {'ray-x/guihua.lua', run = 'cd lua/fzy && make'}}
+    use("folke/lua-dev.nvim") -- https://github.com/folke/lua-dev.nvim
     -- Telescope family
     use({
         "nvim-telescope/telescope.nvim",
