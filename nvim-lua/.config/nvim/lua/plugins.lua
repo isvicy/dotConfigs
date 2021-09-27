@@ -11,12 +11,9 @@ return require("packer").startup(function(use)
 
     -- nvim specified stuff
     use("neovim/nvim-lspconfig") -- https://github.com/neovim/nvim-lspconfig
-    -- use("glepnir/lspsaga.nvim") -- https://github.com/glepnir/lspsaga.nvim
-    use({"jasonrhansen/lspsaga.nvim", branch = "finder-preview-fixes"})
     use("nvim-lua/lsp-status.nvim") -- https://github.com/nvim-lua/lsp-status.nvim
     use("ray-x/lsp_signature.nvim") -- https://github.com/ray-x/lsp_signature.nvim
     use {'ray-x/navigator.lua', requires = {'ray-x/guihua.lua', run = 'cd lua/fzy && make'}}
-    use("folke/lua-dev.nvim") -- https://github.com/folke/lua-dev.nvim
     -- Telescope family
     use({
         "nvim-telescope/telescope.nvim",
@@ -37,13 +34,6 @@ return require("packer").startup(function(use)
         branch = "0.5-compat"
     })
     use("romgrk/nvim-treesitter-context") -- https://github.com/romgrk/nvim-treesitter-context
-    use({
-        "jose-elias-alvarez/null-ls.nvim",
-        requires = {
-            "nvim-lua/plenary.nvim", -- https://github.com/nvim-lua/plenary.nvim
-            "neovim/nvim-lspconfig" -- https://github.com/neovim/nvim-lspconfig
-        }
-    })
 
     -- auto completion
     use({
@@ -62,11 +52,6 @@ return require("packer").startup(function(use)
         }
     })
     use("L3MON4D3/LuaSnip") -- https://github.com/L3MON4D3/LuaSnip
-    use({
-        "folke/trouble.nvim", -- https://github.com/folke/trouble.nvim
-        requires = "kyazdani42/nvim-web-devicons", -- https://github.com/kyazdani42/nvim-web-devicons
-        config = function() require("trouble").setup({}) end
-    })
 
     -- Enhance
     use("szw/vim-maximizer") -- https://github.com/szw/vim-maximizer
