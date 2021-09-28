@@ -14,7 +14,7 @@ local sumneko_binary = sumneko_root_path .. "/bin/" .. system_name .. "/lua-lang
 
 require'navigator'.setup({
     on_attach = function(client, bufnr)
-        require("lsp_signature").on_attach({bind = true, hint_enable = true, handler_opts = {border = "shadow"}})
+        require("lsp_signature").on_attach({bind = true, hint_enable = true, handler_opts = {border = "shadow"}, floating_window = false})
     end,
     lsp = {
         gopls = {
