@@ -42,8 +42,7 @@ g["ctrlsf_position"] = "right"
 
 -- Nvim-tree
 g["nvim_tree_ignore"] = {".git", "node_modules", ".cache"}
-g["nvim_tree_auto_close"] = 0
-g["nvim_tree_follow"] = 1
+require('nvim-tree').setup {auto_close = false, update_focused_file = {enable = true}}
 
 -- Diffview
 local cb = require("diffview.config").diffview_callback
