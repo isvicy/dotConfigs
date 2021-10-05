@@ -31,7 +31,10 @@ local prettier = {
     formatStdin = true
 }
 
-local luaformatter = {formatCommand = 'lua-format -i', formatStdin = true}
+local luaformatter = {
+    formatCommand = 'lua-format -i --tab-width=3 --indent-width=3 --column-limit=120',
+    formatStdin = true
+}
 
 require'navigator'.setup({
     treesitter_analysis = true, -- treesitter variable context
@@ -44,6 +47,36 @@ require'navigator'.setup({
                 floating_window = false
             })
     end,
+    default_mapping = false,
+    keymaps = {
+        {key = "gd", func = "definition()"},
+        {key = "gr", func = "references()"},
+        {key = "ga", func = "require('navigator.codeAction').code_action()"},
+        {key = "<Leader>rn", func = "require('navigator.rename').rename()"},
+        {key = "<Leader>gi", func = "incoming_calls()"},
+        {key = "<Leader>go", func = "outgoing_calls()"},
+        {key = "gi", func = "implementation()"},
+        {
+            key = "gL",
+            func = "require('navigator.diagnostics').show_line_diagnostics()"
+        },
+        {
+            key = "gG",
+            func = "require('navigator.diagnostics').show_diagnostic()"
+        }, {
+            key = "]d",
+            func = "diagnostic.goto_next({ border = 'rounded', max_width = 80})"
+        }, {
+            key = "[d",
+            func = "diagnostic.goto_prev({ border = 'rounded', max_width = 80})"
+        },
+        {key = "]r", func = "require('navigator.treesitter').goto_next_usage()"},
+        {
+            key = "[r",
+            func = "require('navigator.treesitter').goto_previous_usage()"
+        }, {key = '<Leader>ff', func = 'formatting()', mode = 'n'},
+        {key = '<Leader>ff', func = 'range_formatting()', mode = 'v'}
+    },
     lsp = {
         gopls = {usePlaceholders = false},
         sumneko_lua = {
