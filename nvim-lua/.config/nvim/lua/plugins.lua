@@ -77,13 +77,6 @@ return require("packer").startup(function(use)
     -- Notes
     use("vimwiki/vimwiki") -- https://github.com/vimwiki/vimwiki
     use("michal-h21/vimwiki-sync") -- https://github.com/michal-h21/vimwiki-sync
-    use({
-        "nvim-neorg/neorg", -- https://github.com/nvim-neorg/neorg
-        requires = {
-            "nvim-lua/plenary.nvim", -- https://github.com/nvim-lua/plenary.nvim
-            "vhyrro/neorg-telescope" -- https://github.com/nvim-neorg/neorg-telescope
-        }
-    })
     -- CocSearch alternative
     use("dyng/ctrlsf.vim") -- https://github.com/dyng/ctrlsf.vim
 
