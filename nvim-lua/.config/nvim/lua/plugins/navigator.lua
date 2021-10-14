@@ -1,3 +1,5 @@
+local utils = require("personal/utils")
+
 local lspinstall_dir = vim.fn.stdpath('data') .. '/lsp_servers'
 
 local luadev = {}
@@ -6,12 +8,26 @@ if ok and l then
     local sumneko_dir = lspinstall_dir .. '/sumneko_lua/extension/server'
     luadev = l.setup({library = {vimruntime = true, types = true, plugins = true}})
     luadev.sumneko_root_path = sumneko_dir
-    luadev.sumneko_binary = sumneko_dir .. '/bin/Linux/lua-language-server'
+    luadev.sumneko_binary = sumneko_dir .. '/bin/' .. utils.get_system_name() .. '/lua-language-server'
 end
 
 require('navigator').setup({
-    default_mapping = true, -- set to false if you will remap every key
-    keymaps = {{key = "gd", func = "definition()"}}, -- a list of key maps
+    default_mapping = true,
+    keymaps = {{key = "gd", func = "definition()"}, {key = "gr", func = "references()"}},
+    on_attach = function(_, bufnr)
+        require("lsp_signature").on_attach({
+            bind = true,
+            hint_enable = true,
+            handler_opts = {border = "shadow"},
+            floating_window = false
+        })
+
+        local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+        local opts = {noremap = true, silent = true}
+
+        buf_set_keymap("n", "gf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+        buf_set_keymap("v", "<Leader>rf", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+    end,
     lsp = {
         sumneko_lua = luadev,
         gopls = {cmd = {lspinstall_dir .. "/go/gopls", "--remote=auto"}},

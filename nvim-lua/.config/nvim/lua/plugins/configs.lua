@@ -81,7 +81,8 @@ require("diffview").setup({
 })
 
 -- LSP status
-require("lsp-status").config({
+local lsp_status = require("lsp-status")
+lsp_status.config({
     diagnostics = false,
     indicator_errors = "E",
     indicator_warnings = "W",
@@ -90,11 +91,12 @@ require("lsp-status").config({
     indicator_ok = "Ok",
     status_symbol = ""
 })
+lsp_status.register_progress()
 
 -- Theme
 g["zenbones_dim_noncurrent_window"] = true
 g["zenbones_lightness"] = "dim"
-vim.cmd [[colorscheme zenbones-lush]]
+vim.cmd [[colorscheme zenbones]]
 -- g["zenflesh"] = "warm"
 -- g["zenflesh_lighten_noncurrent_window"] = true
--- vim.cmd[[colorscheme zenflesh-lush]]
+-- vim.cmd[[colorscheme zenflesh]]

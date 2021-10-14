@@ -17,4 +17,14 @@ function M.map(mode, lhs, rhs, opts)
     vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
+function M.get_system_name()
+    local system_name
+    if vim.fn.has("mac") == 1 then
+        system_name = "macOS"
+    elseif vim.fn.has("unix") == 1 then
+        system_name = "Linux"
+    end
+    return system_name
+end
+
 return M
