@@ -91,4 +91,10 @@ require("lsp-status").config({
     status_symbol = ""
 })
 
-require('spaceodyssey')
+-- Theme
+g["zenbones_dim_noncurrent_window"] = true
+g["zenbones_lightness"] = "dim"
+vim.cmd [[colorscheme zenbones-lush]]
+-- g["zenflesh"] = "warm"
+-- g["zenflesh_lighten_noncurrent_window"] = true
+-- vim.cmd[[colorscheme zenflesh-lush]]
