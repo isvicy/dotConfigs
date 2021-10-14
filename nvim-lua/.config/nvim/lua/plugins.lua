@@ -111,8 +111,6 @@ return require("packer").startup(function(use)
     -- Theme && status line
     use("Dualspc/spaceodyssey.nvim") -- https://github.com/Dualspc/spaceodyssey.nvim
     use("kdav5758/TrueZen.nvim") -- https://github.com/kdav5758/TrueZen.nvim
-    use({
-        "hoob3rt/lualine.nvim", -- https://github.com/hoob3rt/lualine.nvim
-        requires = {"kyazdani42/nvim-web-devicons", opt = true} -- https://github.com/kyazdani42/nvim-web-devicons
-    })
+    use {'shadmansaleh/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons', opt = true}}
+
 end)
