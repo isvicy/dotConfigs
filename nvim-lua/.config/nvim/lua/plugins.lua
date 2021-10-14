@@ -53,7 +53,6 @@ return require("packer").startup(function(use)
             "hrsh7th/cmp-nvim-lua", -- https://github.com/hrsh7th/cmp-nvim-lua
             "hrsh7th/cmp-calc", -- https://github.com/hrsh7th/cmp-calc
             "hrsh7th/cmp-path", -- https://github.com/hrsh7th/cmp-path
-            "f3fora/cmp-spell", -- https://github.com/f3fora/cmp-spell
             "octaltree/cmp-look", -- https://github.com/octaltree/cmp-look
             "saadparwaiz1/cmp_luasnip", -- https://github.com/saadparwaiz1/cmp_luasnip
             -- ui enhance

@@ -56,7 +56,7 @@ cmp.setup({
 
     sources = {
         {name = "buffer"}, {name = "nvim_lsp"}, {name = "nvim_lua"}, {name = "calc"}, {name = "path"},
-        {name = "luasnip"}, {name = "spell"}, {name = "look"}, {name = "neorg"} -- https://github.com/nvim-neorg/neorg, see neorg.lua
+        {name = "luasnip"}, {name = 'look', keyword_length = 4}
     }
 })
 
