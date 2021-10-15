@@ -36,3 +36,5 @@ require('navigator').setup({
         tsserver = {cmd = {lspinstall_dir .. "/tsserver/node_modules/.bin/typescript-language-server", "--stdio"}}
     }
 })
+
+vim.api.nvim_command("hi GHListDark guifg=#333333")
