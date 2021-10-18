@@ -13,7 +13,11 @@ end
 
 require('navigator').setup({
     default_mapping = true,
-    keymaps = {{key = "gd", func = "definition()"}, {key = "gr", func = "references()"}},
+    keymaps = {
+        {key = "gd", func = "definition()"}, {key = "gr", func = "references()"},
+        {key = "gh", func = "require('navigator.dochighlight').hi_symbol()"},
+        {key = "<Leader>ra", mode = "n", func = "require('navigator.codelens').run_action()"}
+    },
     on_attach = function(_, bufnr)
         require("lsp_signature").on_attach({
             bind = true,
