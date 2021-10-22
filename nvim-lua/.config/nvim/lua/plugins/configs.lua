@@ -91,7 +91,11 @@ lsp_status.register_progress()
 g["zenbones_darken_noncurrent_window"] = true
 -- g["zenbones_lightness"] = "dim"
 vim.cmd [[set background=light]]
-vim.cmd [[colorscheme zenbones]]
+vim.cmd [[colorscheme zenwritten]]
+vim.api.nvim_command("hi GHListDark guifg=#333333")
+vim.api.nvim_command("hi GHTextViewDark guifg=#333333")
+-- vim.cmd [[set background=dark]]
+-- vim.cmd [[colorscheme forestbones]]
 -- g["zenflesh"] = "warm"
 -- g["zenflesh_lighten_noncurrent_window"] = true
 -- vim.cmd[[colorscheme zenflesh]]

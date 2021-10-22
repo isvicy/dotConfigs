@@ -41,4 +41,3 @@ require('navigator').setup({
     }
 })
 
-vim.api.nvim_command("hi GHListDark guifg=#333333")
