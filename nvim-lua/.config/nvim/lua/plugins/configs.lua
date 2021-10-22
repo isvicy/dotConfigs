@@ -89,7 +89,8 @@ lsp_status.register_progress()
 
 -- Theme
 g["zenbones_darken_noncurrent_window"] = true
-g["zenbones_lightness"] = "dim"
+-- g["zenbones_lightness"] = "dim"
+vim.cmd [[set background=light]]
 vim.cmd [[colorscheme zenbones]]
 -- g["zenflesh"] = "warm"
 -- g["zenflesh_lighten_noncurrent_window"] = true
