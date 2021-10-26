@@ -16,7 +16,8 @@ require('navigator').setup({
     keymaps = {
         {key = "gd", func = "definition()"}, {key = "gr", func = "references()"},
         {key = "gh", func = "require('navigator.dochighlight').hi_symbol()"},
-        {key = "<Leader>ra", mode = "n", func = "require('navigator.codelens').run_action()"}
+        {key = "<Leader>ra", mode = "n", func = "require('navigator.codelens').run_action()"},
+        {key = "ga", mode = "n", func = "code_action()"}, {key = "ga", mode = "v", func = "range_code_action()"}
     },
     on_attach = function(_, bufnr)
         require("lsp_signature").on_attach({
@@ -33,8 +34,9 @@ require('navigator').setup({
         buf_set_keymap("v", "<Leader>rf", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
     end,
     lsp = {
+        format_on_save = false,
         sumneko_lua = luadev,
-        gopls = {cmd = {lspinstall_dir .. "/go/gopls", "--remote=auto"}},
+        gopls = {cmd = {lspinstall_dir .. "/go/gopls", "--remote=auto"}, usePlaceholders = false},
         efm = {cmd = {lspinstall_dir .. "/efm/efm-langserver"}, filetypes = {"python", "lua"}},
         pyright = {cmd = {lspinstall_dir .. "/python/node_modules/.bin/pyright-langserver", "--stdio"}},
         tsserver = {cmd = {lspinstall_dir .. "/tsserver/node_modules/.bin/typescript-language-server", "--stdio"}}
