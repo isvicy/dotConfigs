@@ -1,5 +1,5 @@
 local config = {
-    options = {section_separators = {'', ''}, component_separators = {'', ''}, theme = 'zenbones'},
+    options = {section_separators = {'', ''}, component_separators = {'', ''}, theme = 'auto'},
     sections = {lualine_c = {'filename'}}
 }
 

@@ -114,6 +114,8 @@ return require("packer").startup(function(use)
         "mcchrish/zenbones.nvim", -- https://github.com/mcchrish/zenbones.nvim
         requires = "rktjmp/lush.nvim" -- https://github.com/rktjmp/lush.nvim
     })
-    use {'shadmansaleh/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons', opt = true}}
+    use { 'nvim-lualine/lualine.nvim',
+      requires = {'kyazdani42/nvim-web-devicons', opt = true}
+    }
 
 end)
