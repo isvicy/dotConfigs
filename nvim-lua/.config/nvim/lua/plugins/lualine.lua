@@ -1,6 +1,6 @@
 local config = {
     options = {section_separators = {'', ''}, component_separators = {'', ''}, theme = 'auto'},
-    sections = {lualine_c = {'filename'}}
+    sections = {lualine_c = {{'filename', file_status = true, path = 1}}}
 }
 
 local function ins_left(component) table.insert(config.sections.lualine_c, component) end
