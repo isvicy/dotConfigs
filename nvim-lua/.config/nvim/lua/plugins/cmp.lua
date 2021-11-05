@@ -38,7 +38,9 @@ cmp.setup({
 
     event = {},
 
-    mapping = {},
+    mapping = {
+        ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    },
 
     formatting = {
         format = function(entry, vim_item)
@@ -55,14 +57,7 @@ cmp.setup({
     experimental = {ghost_text = false},
 
     sources = {
-        {name = "buffer"}, {name = "nvim_lsp"}, {name = "nvim_lua"}, {name = "calc"}, {name = "path"},
-        {name = "luasnip"}, {name = 'look', keyword_length = 4}
+        {name = "buffer", keyword_length = 4, max_item_count = 4}, {name = "nvim_lsp"}, {name = "nvim_lua"}, {name = "calc"}, {name = "path"},
+        {name = "luasnip"}, {name = 'look', keyword_length = 4, max_item_count = 4}
     }
-})
-
--- auto pair
-require("nvim-autopairs.completion.cmp").setup({
-    map_cr = true, --  map <CR> on insert mode
-    map_complete = true, -- it will auto insert `(` after select function or method item
-    auto_select = true -- automatically select the first item
 })

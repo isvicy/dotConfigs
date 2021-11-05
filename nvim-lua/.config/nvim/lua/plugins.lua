@@ -68,6 +68,7 @@ return packer.startup(function(use)
         requires = {"kyazdani42/nvim-web-devicons", opt = true} -- https://github.com/kyazdani42/nvim-web-devicons
     })
     use("akinsho/nvim-bufferline.lua") -- https://github.com/akinsho/nvim-bufferline.lua
+    use("ellisonleao/glow.nvim") -- https://github.com/ellisonleao/glow.nvim
     -- Auto pair
     use({
         "windwp/nvim-autopairs", -- https://github.com/windwp/nvim-autopairs
