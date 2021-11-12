@@ -35,12 +35,12 @@ g["ctrlsf_auto_focus"] = {at = "start"}
 g["ctrlsf_position"] = "right"
 
 -- Nvim-tree
-g["nvim_tree_ignore"] = {".git", "node_modules", ".cache"}
 require('nvim-tree').setup {
     auto_close = true,
     hijack_netrw = false,
     update_focused_file = {enable = true},
-    view = {width = 30, height = 30, side = 'left', auto_resize = true}
+    view = {width = 30, height = 30, side = 'left', auto_resize = true},
+    filters = {custom = {".git", "node_modules", ".cache"}}
 }
 
 -- Diffview
