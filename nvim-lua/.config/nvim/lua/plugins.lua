@@ -35,12 +35,10 @@ return packer.startup(function(use)
     use({"nvim-telescope/telescope-media-files.nvim"}) -- https://github.com/nvim-telescope/telescope-media-files.nvim
     use({
         "nvim-treesitter/nvim-treesitter", -- https://github.com/nvim-treesitter/nvim-treesitter
-        branch = "0.5-compat",
         run = ":TSUpdate"
     })
     use({
         "nvim-treesitter/nvim-treesitter-textobjects", -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
-        branch = "0.5-compat"
     })
     use("romgrk/nvim-treesitter-context") -- https://github.com/romgrk/nvim-treesitter-context
 
@@ -60,6 +58,7 @@ return packer.startup(function(use)
         }
     })
     use("L3MON4D3/LuaSnip") -- https://github.com/L3MON4D3/LuaSnip
+    use("rafamadriz/friendly-snippets") -- https://github.com/rafamadriz/friendly-snippets
 
     -- Enhance
     use("szw/vim-maximizer") -- https://github.com/szw/vim-maximizer
