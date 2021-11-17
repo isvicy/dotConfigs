@@ -22,10 +22,6 @@ return packer.startup(function(use)
         'ray-x/navigator.lua', -- https://github.com/ray-x/navigator.lua
         requires = {'ray-x/guihua.lua', run = 'cd lua/fzy && make'} -- https://github.com/ray-x/guihua.lua
     })
-    use({
-        "ray-x/go.nvim", -- https://github.com/ray-x/go.nvim
-        config = function() require('go').setup() end
-    })
     use("folke/lua-dev.nvim") -- https://github.com/folke/lua-dev.nvim
     -- Telescope family
     use({
@@ -42,7 +38,7 @@ return packer.startup(function(use)
         run = ":TSUpdate"
     })
     use({
-        "nvim-treesitter/nvim-treesitter-textobjects" -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+        "nvim-treesitter/nvim-treesitter-textobjects", -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
     })
     use("romgrk/nvim-treesitter-context") -- https://github.com/romgrk/nvim-treesitter-context
 
