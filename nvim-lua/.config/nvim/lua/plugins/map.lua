@@ -4,6 +4,9 @@ local utils = require("personal.utils")
 -- Personal
 utils.map("n", "<leader>cc", "<cmd>lua require('personal.nvim_func').compile_run_cpp('sp', '20')<CR>")
 
+-- Lsp
+utils.map("n", "gf", "<cmd>lua vim.lsp.buf.formatting()<CR>")
+
 -- Telescope
 utils.map("n", "<C-p>", "<cmd>lua require'telescope.builtin'.find_files({hidden=true})<CR>")
 
