@@ -100,6 +100,17 @@ return packer.startup(function(use)
     use("Dualspc/spaceodyssey.nvim") -- https://github.com/Dualspc/spaceodyssey.nvim
     use("kdav5758/TrueZen.nvim") -- https://github.com/kdav5758/TrueZen.nvim
     use({
+        'rose-pine/neovim',
+        as = 'rose-pine',
+        --[[ config = function()
+            -- Options (see available options below)
+            vim.g.rose_pine_variant = 'dawn'
+
+            -- Load colorscheme after options
+            vim.cmd('colorscheme rose-pine')
+        end ]]
+    })
+    use({
         "mcchrish/zenbones.nvim", -- https://github.com/mcchrish/zenbones.nvim
         requires = "rktjmp/lush.nvim" -- https://github.com/rktjmp/lush.nvim
     })
