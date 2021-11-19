@@ -12,7 +12,6 @@ if ok and l then
     luadev.sumneko_binary = sumneko_dir .. '/bin/' .. utils.get_system_name() .. '/lua-language-server'
 end
 
-
 -- Register a handler that will be called for all installed servers.
 -- Alternatively, you may also register handlers on specific server instances instead (see example below).
 lsp_installer.on_server_ready(function(server)

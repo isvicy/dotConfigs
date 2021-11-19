@@ -2,6 +2,7 @@
 local utils = require("personal/utils")
 
 utils.map("n", "gr", "<cmd>Lspsaga lsp_finder<cr>")
+utils.map("n", "gd", "<cmd>lua require'lspsaga.provider'.preview_definition()<CR>")
 utils.map("n", "<leader>rn", "<cmd>Lspsaga rename<cr>")
 utils.map("n", "ga", "<cmd>Lspsaga code_action<cr>")
 utils.map("x", "<leader>ga", ":<c-u>Lspsaga range_code_action<cr>")
