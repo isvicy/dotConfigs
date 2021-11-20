@@ -20,6 +20,8 @@ return packer.startup(function(use)
     use('tami5/lspsaga.nvim') -- https://github.com/tami5/lspsaga.nvim
     use("williamboman/nvim-lsp-installer") -- https://github.com/williamboman/nvim-lsp-installer
     use("folke/lua-dev.nvim") -- https://github.com/folke/lua-dev.nvim
+    use({'weilbith/nvim-code-action-menu', cmd = 'CodeActionMenu'})
+    use {'rmagatti/goto-preview', config = function() require('goto-preview').setup {} end}
     -- Telescope family
     use({
         "nvim-telescope/telescope.nvim",
@@ -101,7 +103,7 @@ return packer.startup(function(use)
     use("kdav5758/TrueZen.nvim") -- https://github.com/kdav5758/TrueZen.nvim
     use({
         'rose-pine/neovim',
-        as = 'rose-pine',
+        as = 'rose-pine'
         --[[ config = function()
             -- Options (see available options below)
             vim.g.rose_pine_variant = 'dawn'
