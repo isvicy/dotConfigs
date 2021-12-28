@@ -37,6 +37,7 @@ return packer.startup(function(use)
         run = ":TSUpdate"
     })
     use("romgrk/nvim-treesitter-context") -- https://github.com/romgrk/nvim-treesitter-context
+    use('nvim-treesitter/nvim-treesitter-textobjects') -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 
     -- auto completion
     use({
