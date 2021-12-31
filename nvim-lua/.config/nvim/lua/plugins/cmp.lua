@@ -1,9 +1,8 @@
 local cmp = require("cmp")
-local compare = require("cmp.config.compare")
-local types = require("cmp.types")
 local luasnip = require("luasnip")
 
-local WIDE_HEIGHT = 40
+-- snippet
+require("luasnip/loaders/from_vscode").lazy_load()
 
 local has_words_before = function()
     local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -11,44 +10,44 @@ local has_words_before = function()
 end
 
 cmp.setup({
-    completion = {
-        autocomplete = {types.cmp.TriggerEvent.TextChanged},
-        completeopt = "menu,menuone,noselect",
-        keyword_pattern = [[\%(-\?\d\+\%(\.\d\+\)\?\|\h\w*\%(-\w*\)*\)]],
-        keyword_length = 1,
-        get_trigger_characters = function(trigger_characters) return trigger_characters end
+    snippet = {
+        expand = function(args)
+            luasnip.lsp_expand(args.body) -- For `luasnip` users.
+        end
     },
-
-    snippet = {expand = function(args) require("luasnip").lsp_expand(args.body) end},
-
-    preselect = types.cmp.PreselectMode.Item,
-
-    documentation = {
-        border = {"", "", "", " ", "", "", "", " "},
-        winhighlight = "NormalFloat:CmpDocumentation,FloatBorder:CmpDocumentationBorder",
-        maxwidth = math.floor((WIDE_HEIGHT * 2) * (vim.o.columns / (WIDE_HEIGHT * 2 * 16 / 9))),
-        maxheight = math.floor(WIDE_HEIGHT * (WIDE_HEIGHT / vim.o.lines))
-    },
-
-    confirmation = {
-        default_behavior = types.cmp.ConfirmBehavior.Insert,
-        get_commit_characters = function(commit_characters) return commit_characters end
-    },
-
-    sorting = {
-        priority_weight = 2,
-        comparators = {
-            compare.offset, compare.exact, compare.score, compare.kind, compare.sort_text, compare.length, compare.order
-        }
-    },
-
-    event = {},
 
     mapping = {
-        ['<CR>'] = cmp.mapping.confirm({select = true}),
+        ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), {'i', 'c'}),
+        ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), {'i', 'c'}),
+        ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), {'i', 'c'}),
+        ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+        ['<C-e>'] = cmp.mapping({i = cmp.mapping.abort(), c = cmp.mapping.close()}),
+        ['<CR>'] = cmp.mapping.confirm({select = true}), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+        ["<Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                cmp.select_next_item()
+            elseif luasnip.expand_or_jumpable() then
+                luasnip.expand_or_jump()
+            elseif has_words_before() then
+                cmp.complete()
+            else
+                fallback()
+            end
+        end, {"i", "s"}),
+
+        ["<S-Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                cmp.select_prev_item()
+            elseif luasnip.jumpable(-1) then
+                luasnip.jump(-1)
+            else
+                fallback()
+            end
+        end, {"i", "s"})
     },
 
     formatting = {
+        fields = {"kind", "abbr", "menu"},
         format = function(entry, vim_item)
             -- fancy icons and a name of kind
             vim_item.kind = require("lspkind").presets.default[vim_item.kind] .. " " .. vim_item.kind
@@ -68,10 +67,3 @@ cmp.setup({
         {name = 'look', keyword_length = 4, max_item_count = 4}
     }
 })
-
--- snippet
-require("luasnip/loaders/from_vscode").lazy_load()
-vim.api.nvim_set_keymap('i', '<C-j>', '<CMD>lua require("luasnip").jump(1)<CR>', {})
-vim.api.nvim_set_keymap('i', '<C-k>', '<CMD>lua require("luasnip").jump(-1)<CR>', {})
-vim.api.nvim_set_keymap('s', '<C-j>', '<CMD>lua require("luasnip").jump(1)<CR>', {})
-vim.api.nvim_set_keymap('s', '<C-k>', '<CMD>lua require("luasnip").jump(-1)<CR>', {})
