@@ -34,6 +34,7 @@ return packer.startup(function(use)
     use({"nvim-telescope/telescope-media-files.nvim"}) -- https://github.com/nvim-telescope/telescope-media-files.nvim
     use({
         "nvim-treesitter/nvim-treesitter", -- https://github.com/nvim-treesitter/nvim-treesitter
+        commit = "8179a26f-5dd8-4c39-bb66-d951df89e7f1",
         run = ":TSUpdate"
     })
     use("romgrk/nvim-treesitter-context") -- https://github.com/romgrk/nvim-treesitter-context

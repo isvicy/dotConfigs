@@ -36,8 +36,8 @@ g["ctrlsf_position"] = "right"
 
 -- Nvim-tree
 require('nvim-tree').setup {
-    auto_close = true,
-    hijack_netrw = false,
+    auto_close = false,
+    hijack_netrw = true,
     update_focused_file = {enable = true},
     view = {width = 30, height = 30, side = 'left', auto_resize = true},
     filters = {custom = {".git", "node_modules", ".cache"}}
