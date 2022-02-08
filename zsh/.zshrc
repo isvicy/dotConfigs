@@ -13,6 +13,7 @@ export PATH=$HOME/.cargo/bin:$PATH
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/.local/go/bin:$PATH
 
 alias rc="nvim $HOME/.zshrc"
 alias history="history 0"

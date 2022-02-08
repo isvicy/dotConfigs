@@ -34,7 +34,6 @@ return packer.startup(function(use)
     use({"nvim-telescope/telescope-media-files.nvim"}) -- https://github.com/nvim-telescope/telescope-media-files.nvim
     use({
         "nvim-treesitter/nvim-treesitter", -- https://github.com/nvim-treesitter/nvim-treesitter
-        commit = "8179a26f-5dd8-4c39-bb66-d951df89e7f1",
         run = ":TSUpdate"
     })
     use("romgrk/nvim-treesitter-context") -- https://github.com/romgrk/nvim-treesitter-context
@@ -95,6 +94,7 @@ return packer.startup(function(use)
         requires = "nvim-lua/plenary.nvim", -- https://github.com/nvim-lua/plenary.nvim
         config = function() require("todo-comments").setup({}) end
     })
+    use("github/copilot.vim") -- https://github.com/github/copilot.vim
     -- Git
     use("tpope/vim-fugitive") -- https://github.com/tpope/vim-fugitive
     use("lewis6991/gitsigns.nvim") -- https://github.com/lewis6991/gitsigns.nvim
