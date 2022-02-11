@@ -18,6 +18,7 @@ export PATH=$HOME/.local/go/bin:$PATH
 alias rc="nvim $HOME/.zshrc"
 alias history="history 0"
 alias config="nvim $HOME/.config/i3/config"
+alias ls='ls --color=auto'
 if type "$kitty" > /dev/null; then
     alias ssh="kitty +kitten ssh"
 fi
