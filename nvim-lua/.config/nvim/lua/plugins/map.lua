@@ -23,7 +23,7 @@ utils.map("n", "<leader>gf", "<cmd>diffget //2<CR>")
 utils.map("n", "<leader>z", ":MaximizerToggle!<CR>")
 
 -- CtrlSF
-utils.map("n", "<leader>rw", ":CtrlSF <C-R><C-W><CR>")
+utils.map("n", "<leader>rw", ":CtrlSF -hidden <C-R><C-W><CR>")
 
 -- Vista
 utils.map("n", "<C-l>", ":Vista!!<CR>")
@@ -36,3 +36,5 @@ utils.map("n", "gP", "<cmd>lua require('goto-preview').close_all_win()<CR>")
 -- action-menu
 utils.map("n", "ga", "<cmd>CodeActionMenu<CR>")
 
+-- OSCYank
+utils.map("v", "<leader>c", ":OSCYank<CR>")

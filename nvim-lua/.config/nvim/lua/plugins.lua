@@ -65,6 +65,7 @@ return packer.startup(function(use)
     })
     use("akinsho/nvim-bufferline.lua") -- https://github.com/akinsho/nvim-bufferline.lua
     use("ellisonleao/glow.nvim") -- https://github.com/ellisonleao/glow.nvim
+    use("lukas-reineke/indent-blankline.nvim")
     -- Auto pair
     use({
         "windwp/nvim-autopairs", -- https://github.com/windwp/nvim-autopairs
@@ -119,5 +120,6 @@ return packer.startup(function(use)
         requires = "rktjmp/lush.nvim" -- https://github.com/rktjmp/lush.nvim
     })
     use {'nvim-lualine/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons', opt = true}}
+    use("ojroques/vim-oscyank")
 
 end)
