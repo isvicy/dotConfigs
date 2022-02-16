@@ -28,13 +28,5 @@ utils.map("n", "<leader>rw", ":CtrlSF -hidden <C-R><C-W><CR>")
 -- Vista
 utils.map("n", "<C-l>", ":Vista!!<CR>")
 
--- goto-preview
-utils.map("n", "gpd", "<cmd>lua require('goto-preview').goto_preview_definition()<CR>")
-utils.map("n", "gpi", "<cmd>lua require('goto-preview').goto_preview_implementation()<CR>")
-utils.map("n", "gP", "<cmd>lua require('goto-preview').close_all_win()<CR>")
-
--- action-menu
-utils.map("n", "ga", "<cmd>CodeActionMenu<CR>")
-
 -- OSCYank
 utils.map("v", "<leader>c", ":OSCYank<CR>")

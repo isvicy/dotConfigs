@@ -1,18 +1,18 @@
-local utils = require("personal/utils")
-
-local lspinstall_dir = vim.fn.stdpath('data') .. '/lsp_servers'
+local path = require'nvim-lsp-installer.path'
+local install_root_dir = path.concat {vim.fn.stdpath 'data', 'lsp_servers'}
 
 local luadev = {}
 local ok, l = pcall(require, "lua-dev")
 if ok and l then
-    local sumneko_dir = lspinstall_dir .. '/sumneko_lua/extension/server'
+    local sumneko_dir = install_root_dir .. '/sumneko_lua/extension/server'
     luadev = l.setup({library = {vimruntime = true, types = true, plugins = true}})
     luadev.sumneko_root_path = sumneko_dir
-    luadev.sumneko_binary = sumneko_dir .. '/bin/' .. utils.get_system_name() .. '/lua-language-server'
+    luadev.sumneko_binary = sumneko_dir .. '/bin/lua-language-server'
 end
 
 require('navigator').setup({
     default_mapping = true,
+    lsp_installer = true,
     keymaps = {
         {key = "gd", func = "definition()"}, {key = "gr", func = "references()"},
         {key = "gh", func = "require('navigator.dochighlight').hi_symbol()"},
@@ -36,10 +36,11 @@ require('navigator').setup({
     lsp = {
         format_on_save = false,
         sumneko_lua = luadev,
-        gopls = {cmd = {lspinstall_dir .. "/go/gopls", "--remote=auto"}, usePlaceholders = false},
-        efm = {cmd = {lspinstall_dir .. "/efm/efm-langserver"}, filetypes = {"python", "lua"}},
-        pyright = {cmd = {lspinstall_dir .. "/python/node_modules/.bin/pyright-langserver", "--stdio"}},
-        tsserver = {cmd = {lspinstall_dir .. "/tsserver/node_modules/.bin/typescript-language-server", "--stdio"}}
+        gopls = {cmd = {install_root_dir .. "/go/gopls", "--remote=auto"}, usePlaceholders = false},
+        efm = {cmd = {install_root_dir .. "/efm/efm-langserver"}, filetypes = {"python", "lua"}},
+        pyright = {cmd = {install_root_dir .. "/python/node_modules/.bin/pyright-langserver", "--stdio"}},
+        tsserver = {cmd = {install_root_dir .. "/tsserver/node_modules/.bin/typescript-language-server", "--stdio"}},
+        rust_analyzer = {cmd = {install_root_dir .. "/rust/rust-analyzer"}}
     }
 })
 

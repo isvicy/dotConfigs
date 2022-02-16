@@ -17,11 +17,15 @@ return packer.startup(function(use)
     use("neovim/nvim-lspconfig") -- https://github.com/neovim/nvim-lspconfig
     use("nvim-lua/lsp-status.nvim") -- https://github.com/nvim-lua/lsp-status.nvim
     use("ray-x/lsp_signature.nvim") -- https://github.com/ray-x/lsp_signature.nvim
-    use('tami5/lspsaga.nvim') -- https://github.com/tami5/lspsaga.nvim
     use("williamboman/nvim-lsp-installer") -- https://github.com/williamboman/nvim-lsp-installer
     use("folke/lua-dev.nvim") -- https://github.com/folke/lua-dev.nvim
-    use({'weilbith/nvim-code-action-menu', cmd = 'CodeActionMenu'})
-    use {'rmagatti/goto-preview', config = function() require('goto-preview').setup {} end}
+    use({
+        'ray-x/navigator.lua',
+        requires = {
+            'ray-x/guihua.lua',
+            run = 'cd lua/fzy && make'
+        }
+    })
     -- Telescope family
     use({
         "nvim-telescope/telescope.nvim",
