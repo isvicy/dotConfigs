@@ -74,8 +74,8 @@ require("diffview").setup({
     }
 })
 
-vim.cmd [[highlight IndentBlanklineIndent1 guibg=#1f1f1f gui=nocombine]]
-vim.cmd [[highlight IndentBlanklineIndent2 guibg=#1a1a1a gui=nocombine]]
+vim.cmd [[highlight IndentBlanklineIndent1 guibg=#0f191f gui=nocombine]]
+vim.cmd [[highlight IndentBlanklineIndent2 guibg=#080e11 gui=nocombine]]
 require("indent_blankline").setup {
     char = "",
     char_highlight_list = {
@@ -103,12 +103,12 @@ lsp_status.config({
 lsp_status.register_progress()
 
 -- Theme
-g["zenbones_darken_noncurrent_window"] = true
+-- g["zenbones_darken_noncurrent_window"] = true
 -- g["zenbones_lightness"] = "dim"
 vim.cmd [[set background=dark]]
-vim.cmd [[colorscheme zenbones]]
-vim.api.nvim_command("hi GHListDark guifg=#333333")
-vim.api.nvim_command("hi GHTextViewDark guifg=#333333")
+vim.cmd [[colorscheme neobones]]
+--[[ vim.api.nvim_command("hi GHListDark guifg=#333333")
+vim.api.nvim_command("hi GHTextViewDark guifg=#333333") ]]
 
 -- vim.cmd [[set background=dark]]
 -- vim.cmd [[colorscheme forestbones]]
