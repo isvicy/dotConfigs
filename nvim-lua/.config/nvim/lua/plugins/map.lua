@@ -30,3 +30,6 @@ utils.map("n", "<C-l>", ":Vista!!<CR>")
 
 -- OSCYank
 utils.map("v", "<leader>c", ":OSCYank<CR>")
+
+-- Copilot
+vim.api.nvim_set_keymap("i", "<C-i>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
