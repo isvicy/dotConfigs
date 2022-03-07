@@ -61,7 +61,7 @@ cmp.setup({
     experimental = {ghost_text = false},
 
     sources = {
-        {name = "buffer", keyword_length = 4, max_item_count = 4}, {name = "nvim_lsp"}, {name = "nvim_lua"},
+        {name = "buffer", keyword_length = 4, max_item_count = 4}, {name = "nvim_lsp", max_item_count = 6}, {name = "nvim_lua", max_item_count = 6},
         {name = "calc"}, {name = "path"}, {name = "luasnip", max_item_count = 4},
         {name = 'look', keyword_length = 4, max_item_count = 4}
     }
