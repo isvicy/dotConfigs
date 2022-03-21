@@ -20,9 +20,9 @@ return packer.startup(function(use)
     use("williamboman/nvim-lsp-installer") -- https://github.com/williamboman/nvim-lsp-installer
     use("folke/lua-dev.nvim") -- https://github.com/folke/lua-dev.nvim
     use({
-        'ray-x/navigator.lua',
+        'ray-x/navigator.lua', -- https://github.com/ray-x/navigator.lua
         requires = {
-            'ray-x/guihua.lua',
+            'ray-x/guihua.lua', -- https://github.com/ray-x/guihua.lua
             run = 'cd lua/fzy && make'
         }
     })
