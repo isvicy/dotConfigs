@@ -1,4 +1,4 @@
-local utils = require("personal/utils")
+local utils = require("ky.personal.utils")
 local lsp_installer = require("nvim-lsp-installer")
 
 local lspinstall_dir = vim.fn.stdpath('data') .. '/lsp_servers'

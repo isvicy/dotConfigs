@@ -1,5 +1,5 @@
 -- Plugins Mappings
-local utils = require("personal.utils")
+local utils = require("ky.personal.utils")
 
 -- Personal
 utils.map("n", "<leader>cc", "<cmd>lua require('personal.nvim_func').compile_run_cpp('sp', '20')<CR>")

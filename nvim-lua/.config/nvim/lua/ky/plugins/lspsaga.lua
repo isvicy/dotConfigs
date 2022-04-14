@@ -1,5 +1,5 @@
 --- In lsp attach function
-local utils = require("personal/utils")
+local utils = require("ky.personal.utils")
 
 utils.map("n", "gr", "<cmd>Lspsaga lsp_finder<cr>")
 utils.map("n", "gpd", "<cmd>lua require'lspsaga.provider'.preview_definition()<CR>")
