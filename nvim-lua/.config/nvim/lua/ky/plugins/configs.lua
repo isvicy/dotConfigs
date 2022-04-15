@@ -122,8 +122,6 @@ vim.g.copilot_filetypes = {
 -- Theme
 -- g["zenbones_darken_noncurrent_window"] = true
 -- g["zenbones_lightness"] = "dim"
-vim.cmd [[set background=dark]]
-vim.cmd [[colorscheme neobones]]
 --[[ vim.api.nvim_command("hi GHListDark guifg=#333333")
 vim.api.nvim_command("hi GHTextViewDark guifg=#333333") ]]
 

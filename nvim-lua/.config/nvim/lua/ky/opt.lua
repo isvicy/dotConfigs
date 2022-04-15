@@ -39,6 +39,8 @@ cmd("set list listchars=tab:\\|\\ ,trail:▫ ")
 cmd("filetype plugin on")
 cmd("syntax on")
 cmd("abbr rg Rg")
+cmd("set background=dark")
+cmd("colorscheme neobones")
 
 -- Set
 set("clipboard", "unnamedplus")
