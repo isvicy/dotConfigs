@@ -6,12 +6,12 @@ cmd([[packadd packer.nvim]]) -- load the package manager
 
 local packer = require("packer")
 
-packer.init({git = {clone_timeout = 360}})
+packer.init({ git = { clone_timeout = 360 } })
 
 -- PLugins
 return packer.startup(function(use)
     -- Packer can manage itself as an optional plugin
-    use({"wbthomason/packer.nvim", opt = true})
+    use({ "wbthomason/packer.nvim", opt = true })
 
     -- nvim specified stuff
     use("neovim/nvim-lspconfig") -- https://github.com/neovim/nvim-lspconfig
@@ -26,6 +26,13 @@ return packer.startup(function(use)
             run = 'cd lua/fzy && make'
         }
     })
+    use({
+        "folke/trouble.nvim", -- https://github.com/folke/trouble.nvim
+        requires = "kyazdani42/nvim-web-devicons",
+        config = function()
+            require("trouble").setup {}
+        end
+    })
     -- Telescope family
     use({
         "nvim-telescope/telescope.nvim",
@@ -34,8 +41,8 @@ return packer.startup(function(use)
             "nvim-lua/plenary.nvim" -- https://github.com/nvim-lua/plenary.nvim
         }
     }) -- https://github.com/nvim-telescope/telescope.nvim
-    use({"nvim-telescope/telescope-fzf-native.nvim", run = "make"}) -- https://github.com/nvim-telescope/telescope-fzf-native.nvim
-    use({"nvim-telescope/telescope-media-files.nvim"}) -- https://github.com/nvim-telescope/telescope-media-files.nvim
+    use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }) -- https://github.com/nvim-telescope/telescope-fzf-native.nvim
+    use({ "nvim-telescope/telescope-media-files.nvim" }) -- https://github.com/nvim-telescope/telescope-media-files.nvim
     use({
         "nvim-treesitter/nvim-treesitter", -- https://github.com/nvim-treesitter/nvim-treesitter
         run = ":TSUpdate"
@@ -65,7 +72,7 @@ return packer.startup(function(use)
     use("szw/vim-maximizer") -- https://github.com/szw/vim-maximizer
     use({
         "kyazdani42/nvim-tree.lua", -- https://github.com/kyazdani42/nvim-tree.lua
-        requires = {"kyazdani42/nvim-web-devicons", opt = true} -- https://github.com/kyazdani42/nvim-web-devicons
+        requires = { "kyazdani42/nvim-web-devicons", opt = true } -- https://github.com/kyazdani42/nvim-web-devicons
     })
     use("akinsho/nvim-bufferline.lua") -- https://github.com/akinsho/nvim-bufferline.lua
     use("ellisonleao/glow.nvim") -- https://github.com/ellisonleao/glow.nvim
@@ -73,7 +80,7 @@ return packer.startup(function(use)
     -- Auto pair
     use({
         "windwp/nvim-autopairs", -- https://github.com/windwp/nvim-autopairs
-        config = function() require("nvim-autopairs").setup({disable_filetype = {"TelescopePrompt", "vim"}}) end
+        config = function() require("nvim-autopairs").setup({ disable_filetype = { "TelescopePrompt", "vim" } }) end
     })
     -- Term
     use("akinsho/nvim-toggleterm.lua") -- https://github.com/akinsho/nvim-toggleterm.lua
@@ -123,7 +130,7 @@ return packer.startup(function(use)
         "mcchrish/zenbones.nvim", -- https://github.com/mcchrish/zenbones.nvim
         requires = "rktjmp/lush.nvim" -- https://github.com/rktjmp/lush.nvim
     })
-    use {'nvim-lualine/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons', opt = true}}
+    use { 'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true } }
     use("ojroques/vim-oscyank")
 
 end)

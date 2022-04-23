@@ -33,3 +33,10 @@ utils.map("v", "<leader>c", ":OSCYank<CR>")
 
 -- Copilot
 vim.api.nvim_set_keymap("i", "<C-y>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
+
+-- Trouble
+utils.map("n", "<leader>xx", "<cmd>Trouble<cr>")
+utils.map("n", "<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>")
+utils.map("n", "<leader>xd", "<cmd>Trouble document_diagnostics<cr>")
+utils.map("n", "<leader>xl", "<cmd>Trouble loclist<cr>")
+utils.map("n", "<leader>xq", "<cmd>Trouble quickfix<cr>")
