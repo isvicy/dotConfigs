@@ -33,14 +33,9 @@ require('navigator').setup({
         buf_set_keymap("n", "gf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
         buf_set_keymap("v", "<Leader>rf", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
     end,
-    --[[ lsp = {
-        format_on_save = false,
+    lsp = {
+        format_on_save = true,
         sumneko_lua = luadev,
-        gopls = {cmd = {install_root_dir .. "/go/gopls", "--remote=auto"}, usePlaceholders = false},
-        efm = {cmd = {install_root_dir .. "/efm/efm-langserver"}, filetypes = {"python", "lua"}},
-        pyright = {cmd = {install_root_dir .. "/python/node_modules/.bin/pyright-langserver", "--stdio"}},
-        tsserver = {cmd = {install_root_dir .. "/tsserver/node_modules/.bin/typescript-language-server", "--stdio"}},
-        rust_analyzer = {cmd = {install_root_dir .. "/rust/rust-analyzer"}}
-    } ]]
+    }
 })
 
