@@ -53,16 +53,23 @@ cmp.setup({
 
             -- set a name for each source
             vim_item.menu =
-                ({buffer = "[Buffer]", nvim_lsp = "[LSP]", luasnip = "[LuaSnip]", nvim_lua = "[Lua]"})[entry.source.name]
+                ({
+                    buffer = "[Buffer]",
+                    nvim_lsp = "[LSP]",
+                    nvim_lua = "[Lua]",
+                    luasnip = "[LuaSnip]"
+                })[entry.source.name]
             return vim_item
         end
     },
 
-    experimental = {ghost_text = false},
+    experimental = { ghost_text = true },
 
     sources = {
-        {name = "buffer", keyword_length = 4, max_item_count = 4}, {name = "nvim_lsp", max_item_count = 6}, {name = "nvim_lua", max_item_count = 6},
-        {name = "calc"}, {name = "path"}, {name = "luasnip", max_item_count = 4},
+        {name = "buffer", keyword_length = 4, max_item_count = 4},
+        {name = "nvim_lsp", max_item_count = 6},
+        {name = "nvim_lua", max_item_count = 6},
+        {name = "luasnip", max_item_count = 4},
         {name = 'look', keyword_length = 4, max_item_count = 4}
     }
 })

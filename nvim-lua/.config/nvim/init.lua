@@ -8,6 +8,7 @@
 require("ky.plugins")
 
 -- General
+require("ky.disable_builtin")
 require("ky.opt")
 require("ky.map")
 
