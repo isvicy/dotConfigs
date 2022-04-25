@@ -17,7 +17,6 @@ return packer.startup(function(use)
     use("neovim/nvim-lspconfig") -- https://github.com/neovim/nvim-lspconfig
     use("nvim-lua/lsp-status.nvim") -- https://github.com/nvim-lua/lsp-status.nvim
     use("ray-x/lsp_signature.nvim") -- https://github.com/ray-x/lsp_signature.nvim
-    use("williamboman/nvim-lsp-installer") -- https://github.com/williamboman/nvim-lsp-installer
     use("folke/lua-dev.nvim") -- https://github.com/folke/lua-dev.nvim
     use({
         'ray-x/navigator.lua', -- https://github.com/ray-x/navigator.lua
