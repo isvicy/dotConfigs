@@ -35,7 +35,7 @@ require('navigator').setup({
     end,
     lsp = {
         format_on_save = true,
-        sumneko_lua = luadev,
+        -- sumneko_lua = luadev,
     }
 })
 
