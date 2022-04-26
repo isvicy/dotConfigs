@@ -1,11 +1,11 @@
 local config = {
-    options = {section_separators = {'', ''}, component_separators = {'', ''}, theme = 'auto'},
-    sections = {lualine_c = {{'filename', file_status = true, path = 1}}}
+    options = { section_separators = { '', '' }, component_separators = { '', '' }, theme = 'auto' },
+    sections = { lualine_c = { { 'filename', file_status = true, path = 1 } } }
 }
 
 local function ins_left(component) table.insert(config.sections.lualine_c, component) end
 
-ins_left({function() return "%=" end})
+ins_left({ function() return "%=" end })
 
 ins_left({
     -- Lsp server name
@@ -25,7 +25,7 @@ ins_left({
         return msg
     end,
     icon = " LSP:",
-    color = {fg = "#000000", gui = "bold"}
+    color = { fg = "#000000", gui = "bold" }
 })
 
 ins_left({

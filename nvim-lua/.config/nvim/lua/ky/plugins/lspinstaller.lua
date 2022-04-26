@@ -7,7 +7,7 @@ local luadev = {}
 local ok, l = pcall(require, "lua-dev")
 if ok and l then
     local sumneko_dir = lspinstall_dir .. '/sumneko_lua/extension/server'
-    luadev = l.setup({library = {vimruntime = true, types = true, plugins = true}})
+    luadev = l.setup({ library = { vimruntime = true, types = true, plugins = true } })
     luadev.sumneko_root_path = sumneko_dir
     luadev.sumneko_binary = sumneko_dir .. '/bin/' .. utils.get_system_name() .. '/lua-language-server'
 end

@@ -15,7 +15,7 @@ require("toggleterm").setup({
 })
 
 -- Vim-wiki
-g["vimwiki_list"] = {{path = "~/vimwiki/", syntax = "markdown", ext = ".md"}}
+g["vimwiki_list"] = { { path = "~/vimwiki/", syntax = "markdown", ext = ".md" } }
 
 -- BufferLine
 require("bufferline").setup({
@@ -31,16 +31,16 @@ require("bufferline").setup({
 })
 
 -- CtrlSF
-g["ctrlsf_auto_focus"] = {at = "start"}
+g["ctrlsf_auto_focus"] = { at = "start" }
 g["ctrlsf_position"] = "right"
 
 -- Nvim-tree
 require('nvim-tree').setup {
     auto_close = false,
     hijack_netrw = true,
-    update_focused_file = {enable = true},
-    view = {width = 30, height = 30, side = 'left', auto_resize = true},
-    filters = {custom = {".git", "node_modules", ".cache"}}
+    update_focused_file = { enable = true },
+    view = { width = 30, height = 30, side = 'left', auto_resize = true },
+    filters = { custom = { ".git", "node_modules", ".cache" } }
 }
 
 -- Diffview
@@ -48,7 +48,7 @@ local cb = require("diffview.config").diffview_callback
 
 require("diffview").setup({
     diff_binaries = false, -- Show diffs for binaries
-    file_panel = {width = 35},
+    file_panel = { width = 35 },
     key_bindings = {
         -- The `view` bindings are active in the diff buffers, only when the current
         -- tabpage is a Diffview.
@@ -106,16 +106,16 @@ lsp_status.register_progress()
 vim.g["copilot_no_tab_map"] = true
 vim.g["copilot_assume_mapped"] = true
 vim.g.copilot_filetypes = {
-  ["*"] = false,
-  ["javascript"] = true,
-  ["typescript"] = true,
-  ["lua"] = false,
-  ["rust"] = true,
-  ["c"] = true,
-  ["c#"] = true,
-  ["c++"] = true,
-  ["go"] = true,
-  ["python"] = true,
+    ["*"] = false,
+    ["javascript"] = true,
+    ["typescript"] = true,
+    ["lua"] = false,
+    ["rust"] = true,
+    ["c"] = true,
+    ["c#"] = true,
+    ["c++"] = true,
+    ["go"] = true,
+    ["python"] = true,
 }
 
 

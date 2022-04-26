@@ -36,8 +36,8 @@ local config = {
             -- We are going to use lualine_c an lualine_x as left and
             -- right section. Both are highlighted by c theme .  So we
             -- are just setting default looks o statusline
-            normal = {c = {fg = colors.fg, bg = colors.bg}},
-            inactive = {c = {fg = colors.fg, bg = colors.inactive_bg}}
+            normal = { c = { fg = colors.fg, bg = colors.bg } },
+            inactive = { c = { fg = colors.fg, bg = colors.inactive_bg } }
         }
     },
     sections = {
@@ -75,7 +75,7 @@ end
 
 ins_left({
     function() return "▊" end,
-    color = {fg = colors.blue}, -- Sets highlighting of component
+    color = { fg = colors.blue }, -- Sets highlighting of component
     left_padding = 0 -- We don't need space before this
 })
 
@@ -133,11 +133,11 @@ ins_left({
     left_padding = 0
 })
 
-ins_left({"filename", condition = conditions.buffer_not_empty, path = 1, color = {fg = colors.magenta, gui = "bold"}})
+ins_left({ "filename", condition = conditions.buffer_not_empty, path = 1, color = { fg = colors.magenta, gui = "bold" } })
 
 ins_left({
     "diff",
-    symbols = {added = " ", modified = " ", removed = " "},
+    symbols = { added = " ", modified = " ", removed = " " },
     color_added = colors.green,
     color_modified = colors.orange,
     color_removed = colors.red,
@@ -146,8 +146,8 @@ ins_left({
 
 ins_left({
     "diagnostics",
-    sources = {"nvim_lsp"},
-    symbols = {error = " ", warn = " ", info = " "},
+    sources = { "nvim_lsp" },
+    symbols = { error = " ", warn = " ", info = " " },
     color_error = colors.red,
     color_warn = colors.yellow,
     color_info = colors.cyan
@@ -155,7 +155,7 @@ ins_left({
 
 -- Insert mid section. You can make any number of sections in neovim :)
 -- for lualine it's any number greater then 2
-ins_left({function() return "%=" end})
+ins_left({ function() return "%=" end })
 
 ins_left({
     -- Lsp server name
@@ -175,7 +175,7 @@ ins_left({
         return msg
     end,
     icon = " LSP:",
-    color = {fg = "#ffffff", gui = "bold"}
+    color = { fg = "#ffffff", gui = "bold" }
 })
 
 ins_left({
@@ -190,14 +190,14 @@ ins_right({
     "branch",
     icon = "",
     condition = conditions.check_git_workspace,
-    color = {fg = colors.violet, gui = "bold"}
+    color = { fg = colors.violet, gui = "bold" }
 })
 
-ins_right({"filetype", colored = true})
+ins_right({ "filetype", colored = true })
 
-ins_right({"location"})
+ins_right({ "location" })
 
-ins_right({"progress", color = {fg = colors.fg, gui = "bold"}})
+ins_right({ "progress", color = { fg = colors.fg, gui = "bold" } })
 
 ins_right({
     -- filesize component
@@ -205,7 +205,7 @@ ins_right({
         local function format_file_size(file)
             local size = vim.fn.getfsize(file)
             if size <= 0 then return "" end
-            local sufixes = {"b", "k", "m", "g"}
+            local sufixes = { "b", "k", "m", "g" }
             local i = 1
             while size > 1024 do
                 size = size / 1024
@@ -213,6 +213,7 @@ ins_right({
             end
             return string.format("%.1f%s", size, sufixes[i])
         end
+
         local file = vim.fn.expand("%:p")
         if string.len(file) == 0 then return "" end
         return format_file_size(file)
@@ -220,6 +221,6 @@ ins_right({
     condition = conditions.buffer_not_empty
 })
 
-ins_right({function() return "▊" end, color = {fg = colors.blue}, right_padding = 0})
+ins_right({ function() return "▊" end, color = { fg = colors.blue }, right_padding = 0 })
 
 lualine.setup(config)

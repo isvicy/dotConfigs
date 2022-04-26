@@ -1,6 +1,6 @@
 -- Neovim Options
 local cmd = vim.cmd
-local scopes = {o = vim.o, b = vim.bo, w = vim.wo}
+local scopes = { o = vim.o, b = vim.bo, w = vim.wo }
 local set = vim.api.nvim_set_option
 
 -- Helper Functions

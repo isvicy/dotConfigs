@@ -9,4 +9,3 @@ utils.map("n", "K", "<cmd>Lspsaga hover_doc<cr>")
 utils.map("n", "gl", "<cmd>Lspsaga show_line_diagnostics<cr>")
 utils.map("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<cr>")
 utils.map("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<cr>")
-
