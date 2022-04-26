@@ -29,6 +29,9 @@ require('navigator').setup({
         tsserver = {
             init_options = require("nvim-lsp-ts-utils").init_options,
             on_attach = function(client, bufnr) -- on_attach for gopls
+                -- use null-ls for file format
+                client.resolved_capabilities.document_formatting = false
+
                 local ts_utils = require("nvim-lsp-ts-utils")
                 ts_utils.setup({})
                 ts_utils.setup_client(client)
