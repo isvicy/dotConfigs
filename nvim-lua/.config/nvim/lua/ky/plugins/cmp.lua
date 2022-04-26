@@ -10,6 +10,10 @@ local has_words_before = function()
 end
 
 cmp.setup({
+    completion = {
+        completeopt = "menuone,noinsert",
+    },
+
     snippet = {
         expand = function(args)
             luasnip.lsp_expand(args.body) -- For `luasnip` users.
@@ -17,12 +21,12 @@ cmp.setup({
     },
 
     mapping = {
-        ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), {'i', 'c'}),
-        ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), {'i', 'c'}),
-        ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), {'i', 'c'}),
+        ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+        ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+        ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
         ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-        ['<C-e>'] = cmp.mapping({i = cmp.mapping.abort(), c = cmp.mapping.close()}),
-        ['<CR>'] = cmp.mapping.confirm({select = true}), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+        ['<C-e>'] = cmp.mapping({ i = cmp.mapping.abort(), c = cmp.mapping.close() }),
+        ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
         ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
@@ -33,7 +37,7 @@ cmp.setup({
             else
                 fallback()
             end
-        end, {"i", "s"}),
+        end, { "i", "s" }),
         ["<S-Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_prev_item()
@@ -42,23 +46,22 @@ cmp.setup({
             else
                 fallback()
             end
-        end, {"i", "s"})
+        end, { "i", "s" })
     },
 
     formatting = {
-        fields = {"kind", "abbr", "menu"},
+        fields = { "kind", "abbr", "menu" },
         format = function(entry, vim_item)
             -- fancy icons and a name of kind
             vim_item.kind = require("lspkind").presets.default[vim_item.kind] .. " " .. vim_item.kind
 
             -- set a name for each source
-            vim_item.menu =
-                ({
-                    buffer = "[Buffer]",
-                    nvim_lsp = "[LSP]",
-                    nvim_lua = "[Lua]",
-                    luasnip = "[LuaSnip]"
-                })[entry.source.name]
+            vim_item.menu = ({
+                buffer = "[Buffer]",
+                nvim_lsp = "[LSP]",
+                nvim_lua = "[Lua]",
+                luasnip = "[LuaSnip]"
+            })[entry.source.name]
             return vim_item
         end
     },
@@ -66,10 +69,10 @@ cmp.setup({
     experimental = { ghost_text = true },
 
     sources = {
-        {name = "buffer", keyword_length = 4, max_item_count = 4},
-        {name = "nvim_lsp", max_item_count = 6},
-        {name = "nvim_lua", max_item_count = 6},
-        {name = "luasnip", max_item_count = 4},
-        {name = 'look', keyword_length = 4, max_item_count = 4}
+        { name = "buffer", keyword_length = 4, max_item_count = 4 },
+        { name = "nvim_lsp", max_item_count = 6 },
+        { name = "nvim_lua", max_item_count = 6 },
+        { name = "luasnip", max_item_count = 4 },
+        { name = 'look', keyword_length = 4, max_item_count = 4 }
     }
 })

@@ -23,9 +23,22 @@ require('navigator').setup({
         diagnostic_head_severity_1 = "🈲",
     },
     lsp = {
-        disable_lsp = { "jedi_language_server", "pylsp" },
+        disable_lsp = { "jedi_language_server", "pylsp", "graphql-lsp", "deno", "ngserver" },
         format_on_save = true,
         sumneko_lua = luadev,
+        tsserver = {
+            init_options = require("nvim-lsp-ts-utils").init_options,
+            on_attach = function(client, bufnr) -- on_attach for gopls
+                local ts_utils = require("nvim-lsp-ts-utils")
+                ts_utils.setup({})
+                ts_utils.setup_client(client)
+                local opts = { silent = true }
+                vim.api.nvim_buf_set_keymap(bufnr, "n", "<Leader>gs", ":TSLspOrganize<CR>", opts)
+                vim.api.nvim_buf_set_keymap(bufnr, "n", "<Leader>gr", ":TSLspRenameFile<CR>", opts)
+                vim.api.nvim_buf_set_keymap(bufnr, "n", "<Leader>gi", ":TSLspImportAll<CR>", opts)
+            end,
+
+        },
     }
 })
 

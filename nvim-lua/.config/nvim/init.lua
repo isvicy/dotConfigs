@@ -14,6 +14,7 @@ require("ky.map")
 
 -- Plugins Settings
 require("ky.plugins.map")
+require("ky.plugins.null_ls")
 require("ky.plugins.navigator")
 require("ky.plugins.telescope")
 require("ky.plugins.gitsigns")

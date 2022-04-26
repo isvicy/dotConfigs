@@ -32,6 +32,10 @@ return packer.startup(function(use)
             require("trouble").setup {}
         end
     })
+    use({
+        "jose-elias-alvarez/null-ls.nvim", -- https://github.com/jose-elias-alvarez/null-ls.nvim
+        requires = { "nvim-lua/plenary.nvim" }, -- https://github.com/nvim-lua/plenary.nvim
+    })
     -- Telescope family
     use({
         "nvim-telescope/telescope.nvim",
@@ -106,6 +110,7 @@ return packer.startup(function(use)
         config = function() require("todo-comments").setup({}) end
     })
     use("github/copilot.vim") -- https://github.com/github/copilot.vim
+    use("jose-elias-alvarez/nvim-lsp-ts-utils") -- https://github.com/jose-elias-alvarez/nvim-lsp-ts-utils
     -- Git
     use("tpope/vim-fugitive") -- https://github.com/tpope/vim-fugitive
     use("lewis6991/gitsigns.nvim") -- https://github.com/lewis6991/gitsigns.nvim
