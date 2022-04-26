@@ -22,7 +22,7 @@ dir="${base_dir}/lua-language-server"
 if [ -d "${dir}" ]; then
     echo "cloned"
 else
-    git clone https://github.com/sumneko/lua-language-server ${base_dir}
+    git clone https://github.com/sumneko/lua-language-server ${dir}
 fi
 
 cd ${dir}
