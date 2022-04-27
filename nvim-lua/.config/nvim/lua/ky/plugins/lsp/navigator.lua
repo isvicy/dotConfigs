@@ -1,9 +1,3 @@
-local luadev = {}
-local ok, l = pcall(require, "lua-dev")
-if ok and l then
-    luadev = l.setup({ library = { vimruntime = true, types = true, plugins = true } })
-end
-
 require('navigator').setup({
     default_mapping = true,
     lsp_installer = false,
@@ -32,7 +26,6 @@ require('navigator').setup({
     lsp = {
         disable_lsp = { "jedi_language_server", "pylsp", "graphql-lsp", "deno", "ngserver" },
         format_on_save = true,
-        sumneko_lua = luadev,
         tsserver = {
             init_options = require("nvim-lsp-ts-utils").init_options,
             on_attach = function(client, bufnr) -- on_attach for gopls
