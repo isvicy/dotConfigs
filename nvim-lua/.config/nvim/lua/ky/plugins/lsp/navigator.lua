@@ -22,6 +22,13 @@ require('navigator').setup({
         diagnostic_head = '🐛',
         diagnostic_head_severity_1 = "🈲",
     },
+    on_attach = function(client, bufnr)
+        if not pcall(require, "lsp-status") then
+            return
+        end
+        local lsp_status = require("lsp-status")
+        lsp_status.on_attach(client)
+    end,
     lsp = {
         disable_lsp = { "jedi_language_server", "pylsp", "graphql-lsp", "deno", "ngserver" },
         format_on_save = true,

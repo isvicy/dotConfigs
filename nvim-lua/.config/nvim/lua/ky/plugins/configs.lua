@@ -89,19 +89,6 @@ require("indent_blankline").setup {
     show_trailing_blankline_indent = false,
 }
 
--- LSP status
-local lsp_status = require("lsp-status")
-lsp_status.config({
-    diagnostics = false,
-    indicator_errors = "E",
-    indicator_warnings = "W",
-    indicator_info = "i",
-    indicator_hint = "?",
-    indicator_ok = "Ok",
-    status_symbol = ""
-})
-lsp_status.register_progress()
-
 -- Copilot
 vim.g["copilot_no_tab_map"] = true
 vim.g["copilot_assume_mapped"] = true
