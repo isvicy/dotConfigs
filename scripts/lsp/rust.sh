@@ -12,3 +12,14 @@ fi
 source $HOME/.cargo/env
 
 rustup component add rust-src
+
+if ! command -v stylua &> /dev/null
+then
+    cargo install stylua
+fi
+
+if ! command -v selene &> /dev/null
+then
+    cargo install selene
+fi
+

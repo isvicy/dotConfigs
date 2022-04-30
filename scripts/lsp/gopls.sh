@@ -59,4 +59,6 @@ fi
 
 cd /tmp
 go install golang.org/x/tools/gopls@latest
+# shell formatter
+go install mvdan.cc/sh/v3/cmd/shfmt@latest
 

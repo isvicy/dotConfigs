@@ -4,8 +4,8 @@ set -o nounset
 set -o pipefail
 set -x
 
-command_name=(pyright-langserver bash-language-server typescript-language-server tsc vscode-json-language-server eslint_d prettier)
-npm_package_name=(pyright bash-language-server typescript-language-server typescript vscode-langservers-extracted eslint_d prettier)
+command_name=(pyright-langserver bash-language-server typescript-language-server tsc vscode-json-language-server eslint_d prettierd fixjson write-good)
+npm_package_name=(pyright bash-language-server typescript-language-server typescript vscode-langservers-extracted eslint_d @fsouza/prettierd fixjson write-good)
 
 for i in "${!command_name[@]}";
 do
