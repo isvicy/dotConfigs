@@ -25,7 +25,7 @@ require('navigator').setup({
     end,
     lsp = {
         disable_lsp = { "jedi_language_server", "pylsp", "graphql-lsp", "deno", "ngserver" },
-        format_on_save = true,
+        format_on_save = false,
         tsserver = {
             init_options = require("nvim-lsp-ts-utils").init_options,
             on_attach = function(client, bufnr) -- on_attach for gopls
