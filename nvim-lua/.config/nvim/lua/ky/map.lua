@@ -42,4 +42,4 @@ utils.map("n", "<leader>p", '"0p')
 -- write only if something is changed
 utils.map("n", "<leader>u", "<cmd>up<CR>")
 -- make *  highlight current work
-utils.map("n", "*", ":execute \"normal! *N\"<cr>")
+utils.map("n", "*", ':execute "normal! *N"<cr>')

@@ -2,7 +2,7 @@ local M = {}
 
 vim.o.completeopt = "menu,menuone,noselect"
 
-local types = require "cmp.types"
+local types = require("cmp.types")
 
 local kind_icons = {
   Text = "",
@@ -35,13 +35,13 @@ local kind_icons = {
 function M.setup()
   local has_words_before = function()
     local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-    return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match "%s" == nil
+    return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
   end
 
-  local luasnip = require "luasnip"
-  local cmp = require "cmp"
+  local luasnip = require("luasnip")
+  local cmp = require("cmp")
 
-  cmp.setup {
+  cmp.setup({
     completion = { completeopt = "menu,menuone,noinsert", keyword_length = 1 },
     -- experimental = { native_menu = false, ghost_text = false },
     -- view = {
@@ -71,7 +71,7 @@ function M.setup()
     },
     mapping = {
       -- ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
-      ["<C-l>"] = cmp.mapping {
+      ["<C-l>"] = cmp.mapping({
         i = function(fallback)
           if luasnip.choice_active() then
             luasnip.change_choice(1)
@@ -79,31 +79,31 @@ function M.setup()
             fallback()
           end
         end,
-      },
-      ["<C-u>"] = cmp.mapping {
+      }),
+      ["<C-u>"] = cmp.mapping({
         i = function(fallback)
           if luasnip.choice_active() then
-            require "luasnip.extras.select_choice"()
+            require("luasnip.extras.select_choice")()
           else
             fallback()
           end
         end,
-      },
+      }),
       -- ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
       ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
       ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
       ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-      ["<C-e>"] = cmp.mapping { i = cmp.mapping.close(), c = cmp.mapping.close() },
-      ["<CR>"] = cmp.mapping {
-        i = cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Replace, select = false },
+      ["<C-e>"] = cmp.mapping({ i = cmp.mapping.close(), c = cmp.mapping.close() }),
+      ["<CR>"] = cmp.mapping({
+        i = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false }),
         c = function(fallback)
           if cmp.visible() then
-            cmp.confirm { behavior = cmp.ConfirmBehavior.Replace, select = false }
+            cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
           else
             fallback()
           end
         end,
-      },
+      }),
       ["<C-j>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
@@ -161,13 +161,13 @@ function M.setup()
         "c",
       }),
       ["<C-y>"] = {
-        i = cmp.mapping.confirm { select = false },
+        i = cmp.mapping.confirm({ select = false }),
       },
       ["<C-n>"] = {
-        i = cmp.mapping.select_next_item { behavior = types.cmp.SelectBehavior.Insert },
+        i = cmp.mapping.select_next_item({ behavior = types.cmp.SelectBehavior.Insert }),
       },
       ["<C-p>"] = {
-        i = cmp.mapping.select_prev_item { behavior = types.cmp.SelectBehavior.Insert },
+        i = cmp.mapping.select_prev_item({ behavior = types.cmp.SelectBehavior.Insert }),
       },
     },
     sources = {
@@ -188,7 +188,7 @@ function M.setup()
         winhighlight = "NormalFloat:NormalFloat,FloatBorder:TelescopeBorder",
       },
     },
-  }
+  })
 
   -- Use buffer source for `/`
   cmp.setup.cmdline("/", {
@@ -207,8 +207,8 @@ function M.setup()
   })
 
   -- Auto pairs
-  local cmp_autopairs = require "nvim-autopairs.completion.cmp"
-  cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done { map_char = { tex = "" } })
+  local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+  cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))
 end
 
 return M

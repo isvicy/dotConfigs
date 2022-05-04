@@ -4,15 +4,15 @@ local M = {}
 function M.find_files()
   if PLUGINS.telescope.enabled then
     local opts = {}
-    local telescope = require "telescope.builtin"
+    local telescope = require("telescope.builtin")
 
     local ok = pcall(telescope.git_files, opts)
     if not ok then
       telescope.find_files(opts)
     end
   else
-    local fzf = require "fzf-lua"
-    if vim.fn.trim(vim.fn.system "git rev-parse --is-inside-work-tree") == "true" then
+    local fzf = require("fzf-lua")
+    if vim.fn.trim(vim.fn.system("git rev-parse --is-inside-work-tree")) == "true" then
       fzf.git_files()
     else
       fzf.files()
@@ -41,10 +41,10 @@ end
 
 -- Find dotfiles
 function M.find_dotfiles()
-  require("telescope.builtin").find_files {
+  require("telescope.builtin").find_files({
     prompt_title = "<Dotfiles>",
     cwd = "$HOME/workspace/alpha2phi/dotfiles/",
-  }
+  })
 end
 
 return M

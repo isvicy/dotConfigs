@@ -1,6 +1,6 @@
 local M = {}
 
-local utils = require "utils"
+local utils = require("utils")
 
 local vimspector_python = [[
 {
@@ -36,7 +36,7 @@ function M.generate_debug_profile()
 
   if ft == "python" then
     -- Get Python path
-    local python3 = vim.fn.exepath "python"
+    local python3 = vim.fn.exepath("python")
     local debugProfile = string.format(vimspector_python, python3)
 
     -- Generate debug profile in a new window
@@ -47,7 +47,7 @@ function M.generate_debug_profile()
     vim.api.nvim_win_set_buf(win, bufNew)
 
     local lines = {}
-    for s in debugProfile:gmatch "[^\r\n]+" do
+    for s in debugProfile:gmatch("[^\r\n]+") do
       table.insert(lines, s)
     end
     vim.api.nvim_buf_set_lines(bufNew, 0, -1, false, lines)
@@ -67,7 +67,7 @@ function M.toggle_human_mode()
 end
 
 function M.setup()
-  vim.cmd [[packadd! vimspector]] -- Load vimspector
+  vim.cmd([[packadd! vimspector]]) -- Load vimspector
   debuggers() -- Configure debuggers
 end
 

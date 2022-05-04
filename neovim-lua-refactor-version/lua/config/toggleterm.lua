@@ -1,7 +1,7 @@
 local M = {}
 
 function M.setup()
-  require("toggleterm").setup {
+  require("toggleterm").setup({
     size = 20,
     hide_numbers = true,
     open_mapping = [[<C-\>]],
@@ -11,7 +11,7 @@ function M.setup()
     start_in_insert = true,
     persist_size = true,
     direction = "horizontal",
-  }
+  })
 end
 
 return M

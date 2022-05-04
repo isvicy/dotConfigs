@@ -5,8 +5,10 @@ local set = vim.api.nvim_set_option
 
 -- Helper Functions
 local function opt(scope, key, value)
-    scopes[scope][key] = value
-    if scope ~= "o" then scopes["o"][key] = value end
+  scopes[scope][key] = value
+  if scope ~= "o" then
+    scopes["o"][key] = value
+  end
 end
 
 -- Settings

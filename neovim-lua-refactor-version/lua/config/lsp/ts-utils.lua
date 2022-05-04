@@ -10,7 +10,7 @@ function M.setup(client)
   -- }
   --
   -- ts.setup_client(client)
-  local ts = require "typescript"
+  local ts = require("typescript")
   ts.setup()
 end
 

@@ -1,10 +1,10 @@
 local M = {}
 
 local function configure()
-  local dap_install = require "dap-install"
-  dap_install.setup {
-    installation_path = vim.fn.stdpath "data" .. "/dapinstall/",
-  }
+  local dap_install = require("dap-install")
+  dap_install.setup({
+    installation_path = vim.fn.stdpath("data") .. "/dapinstall/",
+  })
 
   local dap_breakpoint = {
     error = {
@@ -33,12 +33,12 @@ local function configure()
 end
 
 local function configure_exts()
-  require("nvim-dap-virtual-text").setup {
+  require("nvim-dap-virtual-text").setup({
     commented = true,
-  }
+  })
 
-  local dap, dapui = require "dap", require "dapui"
-  dapui.setup {} -- use default
+  local dap, dapui = require("dap"), require("dapui")
+  dapui.setup({}) -- use default
   dap.listeners.after.event_initialized["dapui_config"] = function()
     dapui.open()
   end

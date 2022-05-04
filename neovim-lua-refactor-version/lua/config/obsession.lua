@@ -1,6 +1,6 @@
 local M = {}
 
-vim.g.session_dir = vim.fn.stdpath "config" .. "/sessions"
+vim.g.session_dir = vim.fn.stdpath("config") .. "/sessions"
 
 function M.setup()
   -- vim.cmd [[command! -nargs=1 MkSession call MkSession(<f-args>)]]
@@ -10,11 +10,11 @@ function M.setup()
 end
 
 function M.mkSession()
-  print "Creating session..."
+  print("Creating session...")
 end
 
 function M.loadSession()
-  print "Loading session..."
+  print("Loading session...")
 end
 
 return M

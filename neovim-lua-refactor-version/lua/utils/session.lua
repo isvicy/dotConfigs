@@ -1,23 +1,23 @@
 local M = {}
 
-local utils = require "utils"
+local utils = require("utils")
 
-vim.g.session_dir = vim.fn.stdpath "config" .. "/sessions"
+vim.g.session_dir = vim.fn.stdpath("config") .. "/sessions"
 
 if vim.fn.isdirectory(vim.g.session_dir) == 0 then
   vim.fn.mkdir(vim.g.session_dir, "p")
 end
 
 local function get_session_name()
-  if vim.fn.trim(vim.fn.system "git rev-parse --is-inside-work-tree") == "true" then
-    return vim.fn.trim(vim.fn.system "basename `git rev-parse --show-toplevel`")
+  if vim.fn.trim(vim.fn.system("git rev-parse --is-inside-work-tree")) == "true" then
+    return vim.fn.trim(vim.fn.system("basename `git rev-parse --show-toplevel`"))
   else
     return "Session.vim"
   end
 end
 
-local actions = require "telescope.actions"
-local action_state = require "telescope.actions.state"
+local actions = require("telescope.actions")
+local action_state = require("telescope.actions.state")
 
 local function restore_session(prompt_bufnr, _)
   actions.select_default:replace(function()
@@ -83,7 +83,7 @@ end
 
 function M.toggle_session()
   if track_session then
-    vim.api.nvim_del_augroup_by_name "SessionTracking" -- nvim 0.7 and above only
+    vim.api.nvim_del_augroup_by_name("SessionTracking") -- nvim 0.7 and above only
     track_session = false
     utils.info("Session tracking disabled", "Session")
   else

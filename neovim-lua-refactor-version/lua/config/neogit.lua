@@ -6,7 +6,7 @@ function M.setup()
     return
   end
 
-  neogit.setup {}
+  neogit.setup({})
 end
 
 return M

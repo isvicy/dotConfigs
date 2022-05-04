@@ -1,6 +1,6 @@
 local M = {}
 
-local utils = require "utils"
+local utils = require("utils")
 
 M.highlight = true
 

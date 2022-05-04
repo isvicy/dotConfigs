@@ -1,7 +1,7 @@
 local M = {}
 
 function M.setup()
-  require("bufferline").setup {
+  require("bufferline").setup({
     options = {
       mode = "buffers",
       numbers = "buffer_id",
@@ -31,7 +31,7 @@ function M.setup()
         return mod_a > mod_b
       end,
     },
-  }
+  })
 end
 
 return M
