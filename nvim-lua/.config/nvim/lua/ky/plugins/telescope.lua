@@ -28,7 +28,7 @@ telescope.setup({
       vertical = { width_padding = 0.08, height_padding = 0.12, preview_height = 0.62 },
     },
     file_sorter = require("telescope.sorters").get_fuzzy_file,
-    file_ignore_patterns = { ".git" },
+    file_ignore_patterns = { "^.git/" },
     generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
     winblend = 0,
     border = {},
