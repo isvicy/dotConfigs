@@ -52,6 +52,9 @@ for _, plugin in pairs(disabled_built_ins) do
   g["loaded_" .. plugin] = 1
 end
 
+-- remove clipboard provider check to speed up nvim startup
+g.loaded_clipboard_provider = 1
+
 -- Remap leader and local leader to <Space>
 api.nvim_set_keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
 g.mapleader = " "
