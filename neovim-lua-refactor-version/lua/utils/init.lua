@@ -28,6 +28,21 @@ function M.buf_set_keymap(bufnr, mode, lhs, rhs, opts)
   vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, options)
 end
 
+function M.dump(o)
+  if type(o) == "table" then
+    local s = "{ "
+    for k, v in pairs(o) do
+      if type(k) ~= "number" then
+        k = '"' .. k .. '"'
+      end
+      s = s .. "[" .. k .. "] = " .. M.dump(v) .. ","
+    end
+    return s .. "} "
+  else
+    return tostring(o)
+  end
+end
+
 function M.t(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
 end

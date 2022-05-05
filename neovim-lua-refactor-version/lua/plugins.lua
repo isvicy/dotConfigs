@@ -381,6 +381,7 @@ function M.setup()
         "hrsh7th/cmp-nvim-lua",
         "ray-x/cmp-treesitter",
         "hrsh7th/cmp-cmdline",
+        "octaltree/cmp-look", -- https://github.com/octaltree/cmp-look
         "saadparwaiz1/cmp_luasnip",
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-nvim-lsp-signature-help",

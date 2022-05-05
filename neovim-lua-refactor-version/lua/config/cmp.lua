@@ -173,6 +173,15 @@ function M.setup()
       { name = "nvim_lua", max_item_count = 4 },
       { name = "path", max_item_count = 2 },
       { name = "nvim_lsp_signature_help" },
+      {
+        name = "look",
+        keyword_length = 2,
+        max_item_count = 4,
+        option = {
+          convert_case = true,
+          loud = true,
+        },
+      },
       -- { name = "spell" },
       -- { name = "emoji" },
       -- { name = "calc" },

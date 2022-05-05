@@ -22,11 +22,12 @@ function M.format()
     -- vim.lsp.buf.formatting_sync(nil, 2000) -- deprecated
     vim.lsp.buf.formatting({
       async = true,
-      filter = function(clients)
-        return vim.tbl_filter(function(client)
-          return client.name ~= "tsserver"
-        end, clients)
-      end,
+      -- NOTE: some lsp don't support this syntax
+      -- filter = function(clients)
+      --   return vim.tbl_filter(function(client)
+      --     return client.name ~= "tsserver"
+      --   end, clients)
+      -- end,
     })
   end
 end
@@ -41,6 +42,7 @@ function M.setup(client, buf)
     enable = not (client.name == "null-ls")
   end
 
+  -- FIXME: this could make some non null-ls lsp which don't has format cap enabled auto-format by accident
   client.resolved_capabilities.document_formatting = enable
   client.resolved_capabilities.document_range_formatting = enable
   if client.resolved_capabilities.document_formatting then
