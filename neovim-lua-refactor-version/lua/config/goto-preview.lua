@@ -10,6 +10,7 @@ local function keymaps()
 end
 
 function M.setup()
+  require("goto-preview").setup({})
   keymaps()
 end
 
