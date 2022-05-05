@@ -20,7 +20,7 @@ end
 function M.format()
   if M.autoformat then
     -- vim.lsp.buf.formatting_sync(nil, 2000) -- deprecated
-    vim.lsp.buf.format({
+    vim.lsp.buf.formatting({
       async = true,
       filter = function(clients)
         return vim.tbl_filter(function(client)
