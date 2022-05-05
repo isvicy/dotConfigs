@@ -1,7 +1,5 @@
 local M = {}
 
-vim.o.completeopt = "menu,menuone,noselect"
-
 local types = require("cmp.types")
 
 local kind_icons = {
@@ -42,11 +40,8 @@ function M.setup()
   local cmp = require("cmp")
 
   cmp.setup({
-    completion = { completeopt = "menu,menuone,noinsert", keyword_length = 1 },
-    -- experimental = { native_menu = false, ghost_text = false },
-    -- view = {
-    --   entries = "native",
-    -- },
+    completion = { completeopt = "menu,menuone,noinsert", keyword_length = 4 },
+    experimental = { ghost_text = true },
     snippet = {
       expand = function(args)
         require("luasnip").lsp_expand(args.body)
@@ -171,12 +166,12 @@ function M.setup()
       },
     },
     sources = {
-      { name = "nvim_lsp" },
-      { name = "luasnip" },
-      { name = "treesitter" },
-      { name = "buffer" },
-      { name = "nvim_lua" },
-      { name = "path" },
+      { name = "nvim_lsp", max_item_count = 6 },
+      { name = "luasnip", max_item_count = 2 },
+      { name = "treesitter", max_item_count = 4 },
+      { name = "buffer", max_item_count = 4 },
+      { name = "nvim_lua", max_item_count = 4 },
+      { name = "path", max_item_count = 2 },
       { name = "nvim_lsp_signature_help" },
       -- { name = "spell" },
       -- { name = "emoji" },
