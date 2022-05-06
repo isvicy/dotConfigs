@@ -26,6 +26,8 @@ local sources = {
   b.formatting.black.with({ extra_args = { "--fast" } }),
   b.formatting.isort,
   b.formatting.stylua,
+  b.formatting.gofumpt,
+  b.formatting.goimports,
 
   -- diagnostics
   b.diagnostics.write_good,
@@ -33,6 +35,7 @@ local sources = {
   b.diagnostics.flake8,
   b.diagnostics.tsc,
   b.diagnostics.selene,
+  b.diagnostics.golangci_lint,
   with_diagnostics_code(b.diagnostics.shellcheck),
 
   -- code actions
