@@ -553,7 +553,13 @@ function M.setup()
     })
 
     -- AI completion
-    use({ "github/copilot.vim", event = "InsertEnter" })
+    use({
+      "github/copilot.vim",
+      event = "InsertEnter",
+      config = function()
+        require("config.copilot").setup()
+      end,
+    })
 
     -- Legendary
     use({
