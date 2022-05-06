@@ -4,6 +4,8 @@ set -o nounset
 set -o pipefail
 set -x
 
+PATH=${HOME}/.local/go/bin:${PATH}
+
 downloadGolang() {
 	machine_out="$(uname -s)"
 	case "${machine_out}" in
@@ -40,9 +42,9 @@ downloadGolang() {
 		echo "no match download link"
 		exit 1
 	fi
-	ensureTargetDir ${HOME}/.local/bin
+	ensureTargetDir ${HOME}/.local
 	curl ${download_link} -o go.tar.gz
-	tar -xvzf ./go.tar.gz -C ${HOME}/.local/bin
+	tar -xvzf ./go.tar.gz -C ${HOME}/.local
 }
 
 ensureTargetDir() {

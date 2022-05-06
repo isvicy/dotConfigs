@@ -7,22 +7,22 @@ set -x
 
 base_dir="${HOME}/github"
 if [ -d "${base_dir}" ]; then
-    echo "${base_dir} existed"
+	echo "${base_dir} existed"
 else
-    mkdir ${base_dir}
+	mkdir ${base_dir}
 fi
 target_dir="${HOME}/.local/bin"
 if [ -d "${target_dir}" ]; then
-    echo "${target_dir} existed"
+	echo "${target_dir} existed"
 else
-    mkdir -p ${target_dir}
+	mkdir -p ${target_dir}
 fi
 
 dir="${base_dir}/lua-language-server"
 if [ -d "${dir}" ]; then
-    echo "cloned"
+	echo "cloned"
 else
-    git clone https://github.com/sumneko/lua-language-server ${dir}
+	git clone https://github.com/sumneko/lua-language-server ${dir}
 fi
 
 cd ${dir}
@@ -34,7 +34,6 @@ cd ../..
 ./3rd/luamake/luamake rebuild
 target_file="${HOME}/.local/bin/lua-language-server"
 if [ -L "${target_file}" ]; then
-    rm --force --recursive ${target_file}
+	rm --force --recursive ${target_file}
 fi
 ln -s ${dir}/bin/lua-language-server ${HOME}/.local/bin
-
