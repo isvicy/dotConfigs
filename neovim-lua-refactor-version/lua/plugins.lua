@@ -662,7 +662,7 @@ function M.setup()
       config = function()
         require("bad_practices").setup()
       end,
-      disable = true,
+      disable = false,
     })
 
     -- Bootstrap Neovim
