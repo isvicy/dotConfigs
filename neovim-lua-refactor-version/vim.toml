@@ -5,6 +5,10 @@ name = "vim"
 [vim]
 any = true
 
+[PLUGINS]
+any = true
+
+
 [[describe.args]]
 type = "string"
 [[describe.args]]
