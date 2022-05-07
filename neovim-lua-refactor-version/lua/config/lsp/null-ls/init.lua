@@ -6,7 +6,7 @@ local b = nls.builtins
 
 local with_diagnostics_code = function(builtin)
   return builtin.with({
-    diagnostics_format = "#{m} [#{c}]",
+    diagnostics_format = "[#{c}] #{m} (#{s})",
   })
 end
 
@@ -30,12 +30,12 @@ local sources = {
   b.formatting.goimports,
 
   -- diagnostics
-  b.diagnostics.write_good,
-  b.diagnostics.eslint_d,
-  b.diagnostics.flake8,
-  b.diagnostics.tsc,
-  b.diagnostics.selene,
-  b.diagnostics.golangci_lint,
+  with_diagnostics_code(b.diagnostics.write_good),
+  with_diagnostics_code(b.diagnostics.eslint_d),
+  with_diagnostics_code(b.diagnostics.flake8),
+  with_diagnostics_code(b.diagnostics.tsc),
+  with_diagnostics_code(b.diagnostics.selene),
+  with_diagnostics_code(b.diagnostics.golangci_lint),
   with_diagnostics_code(b.diagnostics.shellcheck),
 
   -- code actions
