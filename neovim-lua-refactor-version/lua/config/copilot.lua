@@ -18,7 +18,9 @@ function M.setup()
     ["python"] = true,
   }
 
-  require("utils").set_keymap("i", "<C-y>", 'copilot#Accept("<CR>")', { expr = true })
+  if not PLUGINS.coq.enabled then
+    require("utils").set_keymap("i", "<C-y>", 'copilot#Accept("<CR>")', { expr = true })
+  end
 end
 
 return M
