@@ -24,5 +24,7 @@ install() {
 	fi
 }
 
+install
+
 cabal update
 cabal install ShellCheck
