@@ -1,5 +1,7 @@
 local M = {}
 
+vim.o.completeopt = "menu,menuone,noselect"
+
 local types = require("cmp.types")
 
 local kind_icons = {
@@ -31,16 +33,18 @@ local kind_icons = {
 }
 
 function M.setup()
+  local luasnip = require("luasnip")
+  local cmp = require("cmp")
+
   local has_words_before = function()
     local line, col = unpack(vim.api.nvim_win_get_cursor(0))
     return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
   end
 
-  local luasnip = require("luasnip")
-  local cmp = require("cmp")
-
   cmp.setup({
-    completion = { completeopt = "menu,menuone,noinsert", keyword_length = 4 },
+    completion = { --[[completeopt = "menu,menuone,noinsert",]]
+      keyword_length = 2,
+    },
     experimental = { ghost_text = true },
     snippet = {
       expand = function(args)
@@ -60,6 +64,7 @@ function M.setup()
           treesitter = "[Treesitter]",
           path = "[Path]",
           nvim_lsp_signature_help = "[Signature]",
+          look = "[Look]",
         })[entry.source.name]
         return vim_item
       end,
@@ -91,15 +96,8 @@ function M.setup()
       ["<C-e>"] = cmp.mapping({ i = cmp.mapping.close(), c = cmp.mapping.close() }),
       ["<CR>"] = cmp.mapping({
         i = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false }),
-        c = function(fallback)
-          if cmp.visible() then
-            cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
-          else
-            fallback()
-          end
-        end,
       }),
-      ["<C-j>"] = cmp.mapping(function(fallback)
+      ["<C-n>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
         elseif luasnip.expand_or_jumpable() then
@@ -114,22 +112,7 @@ function M.setup()
         "s",
         "c",
       }),
-      ["<Tab>"] = cmp.mapping(function(fallback)
-        if cmp.visible() then
-          cmp.select_next_item()
-        elseif luasnip.expand_or_jumpable() then
-          luasnip.expand_or_jump()
-        elseif has_words_before() then
-          cmp.complete()
-        else
-          fallback()
-        end
-      end, {
-        "i",
-        "s",
-        "c",
-      }),
-      ["<C-k>"] = cmp.mapping(function(fallback)
+      ["<C-p>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_prev_item()
         elseif luasnip.jumpable(-1) then
@@ -142,36 +125,14 @@ function M.setup()
         "s",
         "c",
       }),
-      ["<S-Tab>"] = cmp.mapping(function(fallback)
-        if cmp.visible() then
-          cmp.select_prev_item()
-        elseif luasnip.jumpable(-1) then
-          luasnip.jump(-1)
-        else
-          fallback()
-        end
-      end, {
-        "i",
-        "s",
-        "c",
-      }),
-      ["<C-y>"] = {
-        i = cmp.mapping.confirm({ select = false }),
-      },
-      ["<C-n>"] = {
-        i = cmp.mapping.select_next_item({ behavior = types.cmp.SelectBehavior.Insert }),
-      },
-      ["<C-p>"] = {
-        i = cmp.mapping.select_prev_item({ behavior = types.cmp.SelectBehavior.Insert }),
-      },
     },
     sources = {
-      { name = "nvim_lsp", max_item_count = 6 },
-      { name = "luasnip", max_item_count = 2 },
-      { name = "treesitter", max_item_count = 4 },
-      { name = "buffer", max_item_count = 4 },
-      { name = "nvim_lua", max_item_count = 4 },
-      { name = "path", max_item_count = 2 },
+      { name = "buffer", max_item_count = 4, priority = 1 },
+      { name = "treesitter", max_item_count = 4, priotiry = 1 },
+      { name = "nvim_lsp", max_item_count = 6, priority = 3 },
+      { name = "nvim_lua", max_item_count = 4, priority = 3 },
+      { name = "luasnip", max_item_count = 2, priority = 5 },
+      { name = "path", max_item_count = 2, priotiry = 2 },
       { name = "nvim_lsp_signature_help" },
       {
         name = "look",
@@ -181,10 +142,8 @@ function M.setup()
           convert_case = true,
           loud = true,
         },
+        priotiry = 2,
       },
-      -- { name = "spell" },
-      -- { name = "emoji" },
-      -- { name = "calc" },
     },
     window = {
       documentation = {
@@ -199,15 +158,6 @@ function M.setup()
     sources = {
       { name = "buffer" },
     },
-  })
-
-  -- Use cmdline & path source for ':'
-  cmp.setup.cmdline(":", {
-    sources = cmp.config.sources({
-      { name = "path" },
-    }, {
-      { name = "cmdline" },
-    }),
   })
 
   -- Auto pairs
