@@ -67,8 +67,7 @@ local servers = {
       },
     },
   },
-  tsserver = {},
-  vimls = {},
+  tsserver = { disable_formatting = true },
 }
 
 -- local lsp_signature = require "lsp_signature"

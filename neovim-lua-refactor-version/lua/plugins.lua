@@ -397,6 +397,73 @@ function M.setup()
       disable = not PLUGINS.nvim_cmp.enabled,
     })
 
+    -- Completion
+    use({
+      "ms-jpq/coq_nvim",
+      branch = "coq",
+      -- event = "VimEnter",
+      event = "InsertEnter",
+      opt = true,
+      run = ":COQdeps",
+      config = function()
+        require("config.coq").setup()
+      end,
+      -- requires = {
+      --   { "ms-jpq/coq.artifacts", branch = "artifacts" },
+      --   { "ms-jpq/coq.thirdparty", branch = "3p", module = "coq_3p" },
+      -- },
+      disable = not PLUGINS.coq.enabled,
+    })
+
+    if PLUGINS.coq.enabled then
+      use({
+        "neovim/nvim-lspconfig",
+        opt = true,
+        event = "VimEnter",
+        wants = {
+          "nvim-lsp-installer",
+          "coq_nvim",
+          "lua-dev.nvim",
+          "vim-illuminate",
+          "null-ls.nvim",
+          "schemastore.nvim",
+          "typescript.nvim",
+          "goto-preview", -- https://github.com/rmagatti/goto-preview
+          "nvim-code-action-menu", -- https://github.com/weilbith/nvim-code-action-menu
+        },
+        config = function()
+          require("config.lsp").setup()
+        end,
+        requires = {
+          "williamboman/nvim-lsp-installer",
+          "folke/lua-dev.nvim",
+          "RRethy/vim-illuminate",
+          "jose-elias-alvarez/null-ls.nvim",
+          {
+            "j-hui/fidget.nvim",
+            config = function()
+              require("fidget").setup({})
+            end,
+          },
+          "b0o/schemastore.nvim",
+          "jose-elias-alvarez/typescript.nvim",
+          {
+            "rmagatti/goto-preview",
+            config = function()
+              require("config.goto-preview").setup()
+            end,
+          }, -- https://github.com/rmagatti/goto-preview
+          {
+            "weilbith/nvim-code-action-menu",
+            cmd = "CodeActionMenu",
+            config = function()
+              require("config.code-action-menu").setup()
+            end,
+          }, -- https://github.com/weilbith/nvim-code-action-menu
+        },
+      })
+    end
+
     -- Auto pairs
     use({
       "windwp/nvim-autopairs",
