@@ -407,10 +407,10 @@ function M.setup()
       config = function()
         require("config.coq").setup()
       end,
-      -- requires = {
-      --   { "ms-jpq/coq.artifacts", branch = "artifacts" },
-      --   { "ms-jpq/coq.thirdparty", branch = "3p", module = "coq_3p" },
-      -- },
+      requires = {
+        { "ms-jpq/coq.artifacts", branch = "artifacts" },
+        { "ms-jpq/coq.thirdparty", branch = "3p", module = "coq_3p" },
+      },
       disable = not PLUGINS.coq.enabled,
     })
 
