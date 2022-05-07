@@ -669,7 +669,7 @@ function M.setup()
         require("bqf").setup()
       end,
     })
-    use({ "kevinhwang91/nvim-hlslens", event = "BufReadPre", disable = true })
+    use({ "kevinhwang91/nvim-hlslens", event = "BufReadPre", disable = false })
     use({ "nvim-pack/nvim-spectre", module = "spectre", keys = { "<leader>s" } })
 
     -- Performance
