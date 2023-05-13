@@ -1,4 +1,8 @@
 # dotConfigs
+**Note: **
+
+This repo is totally a mess now. I open a new repo as home of my dots. see: [dots](https://github.com/ak2kay/dots)
+
 
 Collection of dot configs for nvim, tmux, and other linux tools.
 
